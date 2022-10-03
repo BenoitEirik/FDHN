@@ -21,6 +21,9 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
+  // color1: FFDE01
+  // color2: FFB200
+  // color3: 303030
   css: [
     '@/assets/css/main.css'
   ],
@@ -35,13 +38,15 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxt/postcss8'
+    '@nuxt/postcss8',
+    '@nuxt/image'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxt/image'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
