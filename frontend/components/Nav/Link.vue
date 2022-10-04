@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class="p-5 text-2xl hover:scale-110 duration-150" :to="to">
+  <nuxt-link class="p-5 text-2xl hover:scale-110 duration-150 ease-out text-center" :to="to">
     {{ name }}
   </nuxt-link>
 </template>
@@ -21,6 +21,6 @@ export default {
 
 <style>
 .nuxt-link-exact-active {
-  color: #FFB200;
+  color: #eab308;
 }
 </style>

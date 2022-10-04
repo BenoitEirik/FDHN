@@ -1,6 +1,17 @@
 <template>
-  <div class="w-full flex">
+  <div class="relative w-full flex">
     <NavLogo class="flex-none" />
-    <NavLinks class="flex-1" />
+    <NavLinks :drop="checkedBurger" />
+    <NavBurger class="flex-1" @checked="(bool) => checkedBurger = bool" />
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      checkedBurger: false
+    }
+  }
+}
+</script>
