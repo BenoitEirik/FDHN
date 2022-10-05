@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: '00243-Regular';
-    font-style: normal;
-    src: url('@/assets/fonts/00216 Regular.ttf') format("truetype");
-}
-
-@font-face {
-    font-family: 'Wallon';
-    src: url('@/assets/fonts/Wallon.otf') format("opentype");
+    font-family: 'Cardiff';
+    src: url('@/assets/fonts/cardif__.ttf') format("truetype");
 }

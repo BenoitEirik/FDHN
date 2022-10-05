@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :class="(drop ? 'opacity-on':'opacity-off') + ' p-5 text-2xl hover:scale-110 transition-all ease-out text-center'" :to="to">
+  <nuxt-link :class="(drop ? 'opacity-on':'opacity-off') + ' p-5 text-xl hover:scale-110 transition-all ease-out text-center'" :to="to">
     {{ name }}
   </nuxt-link>
 </template>
