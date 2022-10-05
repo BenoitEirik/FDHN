@@ -1,5 +1,7 @@
 <template>
-  <div>Accueil</div>
+  <div style="height: 10000px">
+    Accueil
+  </div>
 </template>
 
 <script>

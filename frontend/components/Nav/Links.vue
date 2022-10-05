@@ -1,9 +1,9 @@
 <template>
-  <div :class="(drop ? 'dropdown':'dropup') + ' md:static absolute p-8 flex md:flex-row flex-col md:justify-end justify-center items-center left-0 top-full right-0 w-full'">
-    <NavLink to="/" name="Accueil" />
-    <NavLink to="/homme-nouveau" name="L'Homme Nouveau" />
-    <NavLink to="/temoignages" name="Témoignages" />
-    <NavLink to="/dons" name="Dons" />
+  <div :class="(drop ? 'dropdown':'dropup') + ' md:static absolute pr-8 flex md:flex-row flex-col md:justify-end justify-center items-center left-0 top-full right-0 w-full bg-white'">
+    <NavLink to="/" name="Accueil" :drop="drop" />
+    <NavLink to="/homme-nouveau" name="L'Homme Nouveau" :drop="drop" />
+    <NavLink to="/temoignages" name="Témoignages" :drop="drop" />
+    <NavLink to="/dons" name="Dons" :drop="drop" />
   </div>
 </template>
 
