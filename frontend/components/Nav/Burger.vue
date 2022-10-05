@@ -16,6 +16,12 @@ export default {
       checked: false
     }
   },
+  created () {
+    this.$nuxt.$on('check-burger', () => {
+      this.checked = !this.checked
+      this.$nuxt.$emit('drop-menu', this.checked)
+    })
+  },
   beforeMount () {
     window.addEventListener('resize', this.resizeBrowserHandler)
   },
@@ -26,12 +32,12 @@ export default {
     resizeBrowserHandler (event) {
       if (Number(event.target.innerWidth) > 768) {
         this.checked = false
-        this.$emit('checked', this.checked)
+        this.$nuxt.$emit('drop-menu', this.checked)
       }
     },
     check () {
       this.checked = !this.checked
-      this.$emit('checked', this.checked)
+      this.$nuxt.$emit('drop-menu', this.checked)
     }
   }
 }

@@ -1,5 +1,9 @@
 <template>
-  <nuxt-link :class="(drop ? 'opacity-on':'opacity-off') + ' p-5 text-xl hover:scale-110 transition-all ease-out text-center'" :to="to">
+  <nuxt-link
+    class="p-5 text-xl hover:scale-110 transition-all ease-out text-center"
+    :to="to"
+    @click.native="$nuxt.$emit('check-burger', false)"
+  >
     {{ name }}
   </nuxt-link>
 </template>
@@ -14,10 +18,6 @@ export default {
     name: {
       type: String,
       default: ''
-    },
-    drop: {
-      type: Boolean,
-      default: false
     }
   }
 }
@@ -26,17 +26,5 @@ export default {
 <style>
 .nuxt-link-exact-active {
   color: #eab308;
-}
-.opacity-on {
-  opacity: 1;
-}
-.opacity-off {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-@media (min-width: 768px) {
-  .opacity-on, .opacity-off {
-    opacity: 1;
-  }
 }
 </style>
