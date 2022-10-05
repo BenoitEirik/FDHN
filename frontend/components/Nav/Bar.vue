@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky top-0 inset-x-0 bg-white">
+  <div class="sticky top-0 inset-x-0 bg-white z-10">
     <div class="relative flex">
       <NavLogo class="flex-none" />
       <NavLinks class="flex-1" />

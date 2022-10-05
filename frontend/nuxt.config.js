@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Fond de Dotation de l\'Homme Nouveau',
+    title: 'Fond de dotation de l\'Homme Nouveau',
     htmlAttrs: {
       lang: 'fr'
     },
@@ -38,15 +38,15 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxt/postcss8',
-    '@nuxtjs/google-fonts'
+    '@nuxt/postcss8'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxt/image'
+    '@nuxt/image',
+    '@nuxt/content'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

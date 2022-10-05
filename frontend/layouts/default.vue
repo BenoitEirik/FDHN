@@ -1,5 +1,5 @@
 <template>
-  <div class="font-['Cardiff']">
+  <div>
     <NavBar />
     <Nuxt />
   </div>
