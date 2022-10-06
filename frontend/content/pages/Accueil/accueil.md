@@ -12,7 +12,7 @@ transmet...
 Et, plus le temps passe, plus nous avons à cœur de voir ce nous avons nous-mêmes reçu porter du fruit. Nous
 voudrions transmettre ce qui a été le moteur de notre vie, la Foi, l’Espérance et la Charité.  
 
-## Transmettre la flamme de la petite fille Espérance  
+## Transmettre la flamme de *la petite fille Espérance*  
 
 Au soir de notre vie, nous aspirons à voir notre monde éclairé par la Présence de Dieu. Or, nous constatons tous
 qu’il souffre, trop souvent sans le savoir, de son absence. Notre monde obscurcit la Lumière que Dieu veut
