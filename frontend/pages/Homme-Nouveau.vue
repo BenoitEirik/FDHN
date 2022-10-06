@@ -10,20 +10,16 @@
         class="max-w-5xl prose-lg text-justify"
         :document="page"
       />
-      <nuxt-content
-        class="max-w-5xl p-9 prose-lg bg-red-700 text-center text-white rounded"
-        :document="cadre"
-      />
+      <HommenouveauCadre :cadre="cadre" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Accueil',
   async asyncData ({ $content }) {
-    const page = await $content('pages/Homme Nouveau/homme-nouveau').fetch()
-    const cadre = await $content('pages/Homme Nouveau/cadre').fetch()
+    const page = await $content('pages/Homme-Nouveau/homme-nouveau').fetch()
+    const cadre = await $content('pages/Homme-Nouveau/cadre').fetch()
     return {
       page,
       cadre
