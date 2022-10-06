@@ -1,6 +1,8 @@
 ---
-title: Nous TRANSMETTONS ce que nous avons de PLUS SACRÉ
+title: « Nous TRANSMETTONS ce que nous avons de PLUS SACRÉ... »
 ---
+
+<AccueilAvatar></AccueilAvatar>
 
 Madame, Mademoiselle, Monsieur,
 
