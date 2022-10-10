@@ -27,4 +27,7 @@ export default {
 .nuxt-link-exact-active {
   color: #eab308;
 }
+.nuxt-link-active {
+  color: #eab308;
+}
 </style>
