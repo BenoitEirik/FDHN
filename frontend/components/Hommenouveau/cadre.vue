@@ -1,11 +1,11 @@
 <template>
-  <div class="max-w-5xl bg-red-700 rounded cadre-shadow">
+  <div :class="'max-w-5xl rounded cadre-shadow ' + bgClass">
     <img
-      class="m-auto pt-9 px-9 cadre-logo-drop-shadow"
-      src="@/assets/images/logo-HN.png"
+      class="m-auto pt-9 px-9 max-w-2xl cadre-logo-drop-shadow"
+      :src="img"
     >
     <nuxt-content
-      class="px-9 pb-9 prose-lg  text-center text-white"
+      :class="'px-9 pb-9 prose-lg  text-center ' + colorClass"
       :document="cadre"
     />
   </div>
@@ -19,6 +19,18 @@ export default {
       default () {
         return {}
       }
+    },
+    bgClass: {
+      type: String,
+      default: 'bg-white'
+    },
+    colorClass: {
+      type: String,
+      default: 'text-black'
+    },
+    img: {
+      type: String,
+      default: ''
     }
   }
 }
@@ -26,7 +38,7 @@ export default {
 
 <style>
 .cadre-shadow {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .cadre-logo-drop-shadow {
   filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);

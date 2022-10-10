@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center">
     <div class="m-6">
       <h1 class="p-6 text-3xl text-center">
-        {{ page.title }}
+        {{ page1.title }}
       </h1>
       <div class="mt-10 max-w-5xl">
         <vueper-slides
@@ -23,8 +23,13 @@
           </vueper-slide>
         </vueper-slides>
       </div>
-      <nuxt-content class="max-w-5xl prose-lg text-justify" :document="page" />
-      <HommenouveauCadre :cadre="cadre" />
+      <nuxt-content class="max-w-5xl prose-lg text-justify" :document="page1" />
+      <HommenouveauCadre :cadre="cadre1" :bg-class="'bg-red-700'" :color-class="'text-white'" :img="require(`../assets/images/Logo-HN.png`)" />
+      <h1 class="mt-12 p-6 text-3xl text-center">
+        {{ page2.title }}
+      </h1>
+      <nuxt-content class="max-w-5xl prose-lg text-justify" :document="page2" />
+      <HommenouveauCadre :cadre="cadre2" :bg-class="'bg-white'" :img="require(`../assets/images/Logo-FDHN.png`)" />
     </div>
   </div>
 </template>
@@ -36,11 +41,15 @@ import 'vueperslides/dist/vueperslides.css'
 export default {
   components: { VueperSlides, VueperSlide },
   async asyncData ({ $content }) {
-    const page = await $content('pages/Homme-Nouveau/homme-nouveau').fetch()
-    const cadre = await $content('pages/Homme-Nouveau/cadre').fetch()
+    const page1 = await $content('pages/Homme-Nouveau/page-1').fetch()
+    const cadre1 = await $content('pages/Homme-Nouveau/cadre-1').fetch()
+    const page2 = await $content('pages/Homme-Nouveau/page-2').fetch()
+    const cadre2 = await $content('pages/Homme-Nouveau/cadre-2').fetch()
     return {
-      page,
-      cadre
+      page1,
+      cadre1,
+      page2,
+      cadre2
     }
   },
   data () {
