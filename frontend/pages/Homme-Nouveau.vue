@@ -1,13 +1,11 @@
 <template>
   <div class="flex flex-col items-center">
     <div class="m-6">
-      <div class="relative w-full h-14">
-        <h1 class="absolute w-9/12 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl text-center">
-          {{ page.title }}
-        </h1>
-      </div>
+      <h1 class="p-6 text-3xl text-center">
+        {{ page.title }}
+      </h1>
       <nuxt-content
-        class="max-w-5xl prose-lg text-justify"
+        class="mt-10 max-w-5xl prose-lg text-justify"
         :document="page"
       />
       <HommenouveauCadre :cadre="cadre" />

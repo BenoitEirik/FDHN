@@ -1,5 +1,5 @@
 <template>
-  <div :class="(droppedMenu ? 'dropdown':'dropup') + ' md:static absolute pr-8 flex md:flex-row flex-col md:justify-end justify-center items-center left-0 top-full right-0 w-full bg-white'">
+  <div :class="(droppedMenu ? 'dropdown':'dropup') + ' md:static absolute pr-8 flex md:flex-row flex-col md:justify-end justify-center items-center left-0 top-full right-0 w-full bg-white z-50'">
     <NavLink
       to="/"
       name="Accueil"
