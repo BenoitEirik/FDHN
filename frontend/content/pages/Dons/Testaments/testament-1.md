@@ -1,0 +1,3 @@
+## Exemple de testament rédigé pour le legs universel  
+
+*« Ceci est mon testament qui révoque toute disposition antérieure. Ce testament est écrit de ma main, au 5 le haras au bois, 60 270 Gouvieux. Je soussigné Jean-Pierre Beaugé, né le 25 septembre 1932 à Saint-Cloud (Hauts de Seine), demeurant 5 le haras au bois, 60 270 Gouvieux, prends les dispositions suivantes en cas de décès : J’institue comme mon légataire universel le Fonds de dotation de L’Homme Nouveau, dont le siège est situé 62 rue des Chantiers - 78000 Versailles. Je lui lègue l’ensemble des biens meubles et immeubles qui composeront ma succes- sion au jour de mon décès, sans exception ni réserve. Fait à Gouvieux, le 1 er octobre 2021. »*  

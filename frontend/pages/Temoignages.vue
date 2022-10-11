@@ -4,11 +4,11 @@
       <h1 class="p-6 text-3xl text-center">
         {{ page.title }}
       </h1>
-      <div class="relative mt-10 flex justify-center flex-wrap items-end">
+      <div class="relative mt-10 flex justify-center flex-wrap items-center">
         <img class="absolute -z-10 w-full h-full object-cover rounded-md" src="@/assets/images/604a6d05811832441d2a83a0.jpg">
-        <TemoignagesCard class="self-start" :data="temoignages[0]" />
-        <TemoignagesCard class="self-end" :data="temoignages[1]" />
-        <TemoignagesCard class="self-start" :data="temoignages[2]" />
+        <TemoignagesCard :data="temoignages[0]" />
+        <TemoignagesCard :data="temoignages[1]" />
+        <TemoignagesCard :data="temoignages[2]" />
       </div>
     </div>
   </div>
