@@ -1,6 +1,8 @@
 ---
-title: Quelques questions...
+title: Le legs
 ---
+
+## Quelques questions...  
 
 **Que se passe-t-il si je ne prends pas de dispositions testamentaires ?**  
 Vos biens seront remis à vos héritiers suivant les règles successorales prévues par la loi. Si vous n’avez plus de famille, votre patrimoine sera réputé en déshérence et sera transmis à l’État. C’est précisément pour cette raison qu’il faut prendre des dispositions testamentaires dès que cela vous est possible.  

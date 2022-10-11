@@ -1,6 +1,8 @@
 ---
-title: Transmettez votre patrimoine par testament
+title: Le legs
 ---
+
+## Transmettez votre patrimoine par testament  
 
 Vous pouvez léguer en faveur du Fonds de dotation de **L’Homme Nouveau**. Ainsi, vous transmettez tout ou partie seulement de votre patrimoine grâce à un testament rédigé de votre vivant qui ne prendra effet qu’après votre décès. Ainsi, le legs ne vous prive en aucun cas de votre bien tant que vous êtes vivant !  
 Par le legs, vous choisissez de transmettre votre patrimoine, le fruit de ce que vous avez vous-mêmes reçu et que vous avez enrichi par une vie de travail. Ce geste fort s’enracine dans nos convictions les plus profondes. Le legs répond à la question implicite : *« Que deviendra mon patrimoine après mon décès ? »*  
