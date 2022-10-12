@@ -4,21 +4,51 @@
       <h1 class="p-6 text-3xl text-center">
         {{ page1.title }}
       </h1>
-      <div class="mt-10 p-6 w-full flex flex-col justify-center items-center">
-        <input type="number" value="1" @change="(event) => { amount = event.target.value }">
+      <div class="mt-10 w-full flex flex-col justify-center items-center">
+        <div class="form-control max-w-lg w-full">
+          <label class="label">
+            <span class="label-text">Adresse email</span>
+          </label>
+          <label class="input-group">
+            <span>Email</span>
+            <input type="text" placeholder="info@site.com" class="w-full input input-bordered" @change="(event) => { email = event.target.value }">
+          </label>
+          <label class="label">
+            <span class="label-text">Montant du don</span>
+          </label>
+          <label class="input-group">
+            <input ref="amountRef" type="text" placeholder="10" class="w-full input input-bordered" @change="(event) => { amount = (event.target.value + '00') }">
+            <span>€</span>
+          </label>
+          <div class="divider">
+            Ou
+          </div>
+          <div class="mb-6 w-full flex justify-center btn-group">
+            <button class="btn btn-primary" @click="() => { $refs.amountRef.value = '50' }">
+              50€
+            </button>
+            <button class="btn btn-primary" @click="() => { $refs.amountRef.value = '100' }">
+              100€
+            </button>
+            <button class="btn btn-primary" @click="() => { $refs.amountRef.value = '200' }">
+              200€
+            </button>
+            <button class="btn btn-primary" @click="() => { $refs.amountRef.value = '500' }">
+              500€
+            </button>
+          </div>
+        </div>
         <stripe-element-payment
           v-if="activeStripeElementPayment"
           ref="paymentRef"
-          class="m-6 max-w-lg w-11/12"
+          class="max-w-lg w-11/12 min-h-16"
           :test-mode="true"
           :pk="pk"
           :elements-options="elementsOptions"
           :confirm-params="confirmParams"
           locale="fr"
         />
-        <button
-          @click="pay"
-        >
+        <button class="m-6 btn btn-primary w-64 rounded-full btn-outline" @click="pay">
           Payer
         </button>
       </div>
@@ -44,14 +74,20 @@ export default {
   },
   data () {
     return {
+      amount: '100',
+      email: '',
       activeStripeElementPayment: false,
-      amount: 1,
       pk: 'pk_test_51LnlDkGhbwlwOqG4tzagnMSU9DXDDSZkWR9mPya3FwEvDu8Ke22cc0OLX3nh7hvd4JTkPT7wsYiiZE58gTZQWs3b0096rhjREm',
       confirmParams: {
         return_url: 'http://127.0.0.1:3000/payment-success',
         receipt_email: ''
       },
       elementsOptions: {
+        fonts: [
+          {
+            cssSrc: 'https://fonts.googleapis.com/css2?family=Hahmlet&display=swap'
+          }
+        ],
         apparence: {
           theme: 'stripe',
           variables: {

@@ -10,7 +10,11 @@ module.exports = {
   theme: {
     extend: {}
   },
+  daisyui: {
+    themes: ['bumblebee']
+  },
   plugins: [
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+    require('daisyui')
   ]
 }
