@@ -2,7 +2,7 @@
   <div class="md:hidden relative min-w-20">
     <input class="absolute left-0 top-0 w-full h-full cursor-pointer opacity-0" type="checkbox" value="false" @change="check()">
     <div class="p-6 absolute left-0 top-0 w-full h-full flex justify-end items-center pointer-events-none">
-      <p class="text-2xl" :style="checked ? 'color: #FBBF24':''">
+      <p class="text-xl" :style="checked ? 'color: #FBBF24':''">
         MENU
       </p>
     </div>
@@ -16,13 +16,14 @@ export default {
       checked: false
     }
   },
-  created () {
-    this.$nuxt.$on('check-burger', () => {
-      this.checked = !this.checked
-      this.$nuxt.$emit('drop-menu', this.checked)
-    })
-  },
   beforeMount () {
+    this.$nuxt.$on('check-burger', () => {
+      // Apply only if the window is mobile
+      if (Number(window.innerWidth) <= 768) {
+        this.checked = !this.checked
+        this.$nuxt.$emit('drop-menu', this.checked)
+      }
+    })
     window.addEventListener('resize', this.resizeBrowserHandler)
   },
   beforeDestroy () {
