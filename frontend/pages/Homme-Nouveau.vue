@@ -7,6 +7,7 @@
       <div class="mt-10 max-w-5xl">
         <vueper-slides
           class="no-shadow"
+          prevent-y-scroll
           :dragging-distance="50"
           bullets-outside
           arrows
