@@ -11,8 +11,10 @@ export default {
       window.addEventListener('scroll', () => {
         if (document.documentElement.scrollTop > 150) {
           this.$refs.logo.classList.add('reduced-navbar')
+          this.$refs.logo.classList.remove('reduced-navbar-removing')
         } else {
           this.$refs.logo.classList.remove('reduced-navbar')
+          this.$refs.logo.classList.add('reduced-navbar-removing')
         }
       })
     })
@@ -23,12 +25,15 @@ export default {
 <style>
 .reduced-navbar {
   width: 170px !important;
-  transition: all 100ms linear;
+  transition: width 100ms linear;
+}
+.reduced-navbar-removing {
+  transition: width 100ms linear;
 }
 @media (min-width: 768px) {
   .reduced-navbar {
     width: 200px !important;
-    transition: all 100ms linear;
+    transition: width 100ms linear;
   }
 }
 </style>
