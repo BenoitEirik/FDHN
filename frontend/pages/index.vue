@@ -11,12 +11,12 @@
         </h1>
       </div>
       <nuxt-content
-        class="mt-10 max-w-5xl md:prose-lg sm:prose-base prose-sm text-justify"
+        class="mt-10 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify"
         :document="page"
       />
       <div>
         <nuxt-content
-          class="text-right prose-lg"
+          class="text-right prose md:prose-lg sm:prose-base prose-sm"
           :document="signature"
         />
         <div class="w-full flex justify-end">

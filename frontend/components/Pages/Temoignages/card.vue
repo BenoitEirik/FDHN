@@ -5,7 +5,7 @@
       src="@/assets/images/quote-open.png"
     >
     <nuxt-content
-      class="p-6 max-w-lg md:prose-lg sm:prose-base prose-sm text-justify border-yellow-500 border-2 rounded-md"
+      class="p-6 max-w-lg prose md:prose-lg sm:prose-base prose-sm text-justify border-yellow-500 border-2 rounded-md"
       :document="data"
     />
     <img

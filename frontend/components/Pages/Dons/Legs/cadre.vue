@@ -1,7 +1,7 @@
 <template>
   <div :class="'max-w-5xl rounded cadre-shadow ' + bgClass">
     <nuxt-content
-      :class="'p-9 md:prose-lg sm:prose-base prose-sm  text-center ' + colorClass"
+      :class="'p-9 prose md:prose-lg sm:prose-base prose-sm  text-center ' + colorClass"
       :document="cadre"
     />
   </div>
