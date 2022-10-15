@@ -2,7 +2,7 @@
 title: « Nous TRANSMETTONS ce que nous avons de PLUS SACRÉ... »
 ---
 
-<AccueilAvatar></AccueilAvatar>
+<PagesAccueilAvatar></PagesAccueilAvatar>
 
 Madame, Mademoiselle, Monsieur,
 

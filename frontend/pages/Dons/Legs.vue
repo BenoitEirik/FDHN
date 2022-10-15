@@ -5,7 +5,7 @@
         {{ page1.title }}
       </h1>
       <nuxt-content class="max-w-5xl prose-lg text-justify" :document="page1" />
-      <DonsLegsCadre :cadre="cadre1" :bg-class="'bg-red-700'" :color-class="'text-white'" />
+      <PagesDonsLegsCadre :cadre="cadre1" :bg-class="'bg-red-700'" :color-class="'text-white'" />
       <nuxt-content class="max-w-5xl prose-lg text-justify" :document="page2" />
     </div>
   </div>

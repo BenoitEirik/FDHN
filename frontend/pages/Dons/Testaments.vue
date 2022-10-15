@@ -10,9 +10,9 @@
       <div
         class="flex justify-center items-center flex-wrap"
       >
-        <TemoignagesCard :data="testaments[0]" />
-        <TemoignagesCard :data="testaments[1]" />
-        <TemoignagesCard :data="testaments[2]" />
+        <PagesTemoignagesCard :data="testaments[0]" />
+        <PagesTemoignagesCard :data="testaments[1]" />
+        <PagesTemoignagesCard :data="testaments[2]" />
       </div>
     </div>
   </div>

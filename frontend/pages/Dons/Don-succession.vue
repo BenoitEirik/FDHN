@@ -5,7 +5,7 @@
         {{ page1.title }}
       </h1>
       <nuxt-content class="max-w-5xl prose-lg text-justify" :document="page1" />
-      <DonsDonationsCadre :cadre="cadre1" :bg-class="'bg-white'" />
+      <PagesDonsDonationsCadre :cadre="cadre1" :bg-class="'bg-white'" />
       <div class="mt-6 w-full flex justify-center">
         <img
           class="max-w-4xl rounded"

@@ -6,9 +6,9 @@
       </h1>
       <div class="relative mt-10 flex justify-center flex-wrap items-center">
         <img class="absolute -z-10 w-full h-full object-cover rounded-md" src="@/assets/images/604a6d05811832441d2a83a0.jpg">
-        <TemoignagesCard :data="temoignages[0]" />
-        <TemoignagesCard :data="temoignages[1]" />
-        <TemoignagesCard :data="temoignages[2]" />
+        <PagesTemoignagesCard :data="temoignages[0]" />
+        <PagesTemoignagesCard :data="temoignages[1]" />
+        <PagesTemoignagesCard :data="temoignages[2]" />
       </div>
     </div>
   </div>
