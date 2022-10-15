@@ -6,28 +6,27 @@
 
 <script>
 export default {
-  beforeMount () {
-    window.addEventListener('scroll', this.scrollBrowserHandler)
-  },
-  methods: {
-    scrollBrowserHandler () {
-      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        this.$refs.logo.classList.add('scrolling')
-      } else {
-        this.$refs.logo.classList.remove('scrolling')
-      }
-    }
+  mounted () {
+    this.$nextTick(() => {
+      window.addEventListener('scroll', () => {
+        if (document.documentElement.scrollTop > 150) {
+          this.$refs.logo.classList.add('reduced-navbar')
+        } else {
+          this.$refs.logo.classList.remove('reduced-navbar')
+        }
+      })
+    })
   }
 }
 </script>
 
 <style>
-.scrolling {
+.reduced-navbar {
   width: 170px !important;
   transition: all 100ms linear;
 }
 @media (min-width: 768px) {
-  .scrolling {
+  .reduced-navbar {
     width: 200px !important;
     transition: all 100ms linear;
   }
