@@ -5,7 +5,7 @@
       :src="img"
     >
     <nuxt-content
-      :class="'px-9 pb-9 prose-lg  text-center ' + colorClass"
+      :class="'px-9 pb-9 md:prose-lg sm:prose-base prose-sm  text-center ' + colorClass"
       :document="cadre"
     />
   </div>

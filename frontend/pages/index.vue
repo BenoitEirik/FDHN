@@ -11,7 +11,7 @@
         </h1>
       </div>
       <nuxt-content
-        class="mt-10 max-w-5xl prose-lg text-justify"
+        class="mt-10 max-w-5xl md:prose-lg sm:prose-base prose-sm text-justify"
         :document="page"
       />
       <div>

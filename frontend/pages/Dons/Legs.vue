@@ -4,9 +4,9 @@
       <h1 class="p-6 text-3xl text-center">
         {{ page1.title }}
       </h1>
-      <nuxt-content class="max-w-5xl prose-lg text-justify" :document="page1" />
+      <nuxt-content class="max-w-5xl md:prose-lg sm:prose-base prose-sm text-justify" :document="page1" />
       <PagesDonsLegsCadre :cadre="cadre1" :bg-class="'bg-red-700'" :color-class="'text-white'" />
-      <nuxt-content class="max-w-5xl prose-lg text-justify" :document="page2" />
+      <nuxt-content class="max-w-5xl md:prose-lg sm:prose-base prose-sm text-justify" :document="page2" />
     </div>
   </div>
 </template>

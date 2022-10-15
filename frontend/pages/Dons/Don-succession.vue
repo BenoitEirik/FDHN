@@ -4,7 +4,7 @@
       <h1 class="p-6 text-3xl text-center">
         {{ page1.title }}
       </h1>
-      <nuxt-content class="max-w-5xl prose-lg text-justify" :document="page1" />
+      <nuxt-content class="max-w-5xl md:prose-lg sm:prose-base prose-sm text-justify" :document="page1" />
       <PagesDonsDonationsCadre :cadre="cadre1" :bg-class="'bg-white'" />
       <div class="mt-6 w-full flex justify-center">
         <img
