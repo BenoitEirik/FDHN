@@ -7,14 +7,16 @@
       <div class="mt-10 max-w-5xl">
         <vueper-slides
           class="no-shadow"
+          :dragging-distance="50"
+          bullets-outside
+          arrows
+          :arrows-outside="false"
           :visible-slides="3"
           :gap="3"
           slide-multiple
           :slide-ratio="1.2/3"
-          prevent-y-scroll
           autoplay
           :breakpoints="breakpoints"
-          :arrows="false"
         >
           <vueper-slide v-for="(slide, i) in slides" :key="i">
             <template #content>
@@ -64,6 +66,10 @@ export default {
         'image-020.png'
       ],
       breakpoints: {
+        640: {
+          visibleSlides: 1,
+          slideRatio: 1 / 1.2
+        },
         768: {
           visibleSlides: 1,
           slideRatio: 1 / 1.5
@@ -77,3 +83,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.vueperslides__arrow {
+  color: black;
+}
+</style>
