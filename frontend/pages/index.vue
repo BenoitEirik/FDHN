@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center">
     <div class="m-6">
-      <div class="relative w-full ">
+      <div class="relative w-full">
         <img
           class="relative w-56 -z-10 left-1/2 -translate-x-1/2"
           src="@/assets/images/brochure/image-001.png"
@@ -16,7 +16,7 @@
       />
       <div>
         <nuxt-content
-          class="text-right prose md:prose-lg sm:prose-base prose-sm"
+          class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-right"
           :document="signature"
         />
         <div class="w-full flex justify-end">

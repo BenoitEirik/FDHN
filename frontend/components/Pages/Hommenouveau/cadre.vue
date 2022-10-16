@@ -1,11 +1,11 @@
 <template>
-  <div :class="'max-w-5xl rounded cadre-shadow ' + bgClass">
+  <div class="max-w-5xl rounded cadre-shadow">
     <img
       class="m-auto pt-9 px-9 w-96 cadre-logo-drop-shadow"
       :src="img"
     >
     <nuxt-content
-      :class="'px-9 pb-9 prose md:prose-lg sm:prose-base prose-sm  text-center ' + colorClass"
+      class="px-9 pb-9 max-w-full prose md:prose-lg sm:prose-base prose-sm"
       :document="cadre"
     />
   </div>
@@ -19,14 +19,6 @@ export default {
       default () {
         return {}
       }
-    },
-    bgClass: {
-      type: String,
-      default: 'bg-white'
-    },
-    colorClass: {
-      type: String,
-      default: 'text-black'
     },
     img: {
       type: String,
