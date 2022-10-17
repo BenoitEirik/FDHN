@@ -27,12 +27,12 @@
         </vueper-slides>
       </div>
       <nuxt-content class="max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page1" />
-      <PagesHommenouveauCadre :cadre="cadre1" :img="require(`@/assets/images/logo-HN.png`)" />
+      <PagesHommenouveauCadre :cadre="cadre1" :img="require(`@/assets/images/hn.png`)" />
       <h1 class="mt-12 p-6 text-3xl text-center">
         {{ page2.title }}
       </h1>
       <nuxt-content class="max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page2" />
-      <PagesHommenouveauCadre :cadre="cadre2" :img="require(`@/assets/images/logo-FDHN.png`)" />
+      <PagesHommenouveauCadre :cadre="cadre2" :img="require(`@/assets/images/fdhn.png`)" />
     </div>
   </div>
 </template>
