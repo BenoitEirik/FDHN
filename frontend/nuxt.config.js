@@ -49,6 +49,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxt/image',
     '@nuxt/content',
+    '@nuxtjs/robots',
     '@nuxtjs/sitemap'
   ],
 
@@ -56,6 +57,12 @@ export default {
     exclude: [
       '/payment-success'
     ]
+  },
+
+  robots: {
+    UserAgent: '*',
+    Disallow: '/payment-success',
+    Sitemap: 'https://fdhn.fr/sitemap.xml'
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
