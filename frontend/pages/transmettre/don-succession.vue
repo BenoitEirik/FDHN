@@ -20,8 +20,8 @@
 export default {
   name: 'DonSuccession',
   async asyncData ({ $content }) {
-    const page1 = await $content('pages/Dons/Don succession/page-1').fetch()
-    const cadre1 = await $content('pages/Dons/Don succession/cadre-1').fetch()
+    const page1 = await $content('pages/transmettre/don-succession/page-1').fetch()
+    const cadre1 = await $content('pages/transmettre/don-succession/cadre-1').fetch()
     return {
       page1,
       cadre1

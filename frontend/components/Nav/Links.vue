@@ -9,12 +9,24 @@
       name="L'Homme Nouveau"
     />
     <NavLink
+      to="/autres-projets"
+      name="Autres projets"
+    />
+    <NavLink
       to="/temoignages"
       name="Témoignages"
     />
     <NavLink
-      to="/dons"
-      name="Dons"
+      to="/don"
+      name="Faire un don"
+    />
+    <NavLink
+      to="/transmettre"
+      name="Transmettre"
+    />
+    <NavLink
+      to="/contact"
+      name="Contact"
     />
   </div>
 </template>

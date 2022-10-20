@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Fond de dotation de l\'Homme Nouveau',
+    title: 'Fonds de dotation de l\'Homme Nouveau',
     htmlAttrs: {
       lang: 'fr'
     },

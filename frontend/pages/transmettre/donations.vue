@@ -14,8 +14,8 @@
 export default {
   name: 'Donations',
   async asyncData ({ $content }) {
-    const page1 = await $content('pages/Dons/Donations/page-1').fetch()
-    const cadre1 = await $content('pages/Dons/Donations/cadre-1').fetch()
+    const page1 = await $content('pages/transmettre/donations/page-1').fetch()
+    const cadre1 = await $content('pages/transmettre/donations/cadre-1').fetch()
     return {
       page1,
       cadre1

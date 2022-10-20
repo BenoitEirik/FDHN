@@ -22,11 +22,11 @@
 export default {
   name: 'Testaments',
   async asyncData ({ $content }) {
-    const page1 = await $content('pages/Dons/Testaments/page-1').fetch()
+    const page1 = await $content('pages/transmettre/testaments/page-1').fetch()
     const testaments = [
-      await $content('pages/Dons/Testaments/testament-1').fetch(),
-      await $content('pages/Dons/Testaments/testament-2').fetch(),
-      await $content('pages/Dons/Testaments/testament-3').fetch()
+      await $content('pages/transmettre/testaments/testament-1').fetch(),
+      await $content('pages/transmettre/testaments/testament-2').fetch(),
+      await $content('pages/transmettre/testaments/testament-3').fetch()
     ]
     return {
       page1,

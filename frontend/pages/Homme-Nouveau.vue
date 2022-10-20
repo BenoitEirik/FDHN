@@ -44,10 +44,10 @@ import 'vueperslides/dist/vueperslides.css'
 export default {
   components: { VueperSlides, VueperSlide },
   async asyncData ({ $content }) {
-    const page1 = await $content('pages/Homme-Nouveau/page-1').fetch()
-    const cadre1 = await $content('pages/Homme-Nouveau/cadre-1').fetch()
-    const page2 = await $content('pages/Homme-Nouveau/page-2').fetch()
-    const cadre2 = await $content('pages/Homme-Nouveau/cadre-2').fetch()
+    const page1 = await $content('pages/homme-nouveau/page-1').fetch()
+    const cadre1 = await $content('pages/homme-nouveau/cadre-1').fetch()
+    const page2 = await $content('pages/homme-nouveau/page-2').fetch()
+    const cadre2 = await $content('pages/homme-nouveau/cadre-2').fetch()
     return {
       page1,
       cadre1,

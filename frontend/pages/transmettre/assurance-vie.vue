@@ -13,7 +13,7 @@
 export default {
   name: 'AssuranceVie',
   async asyncData ({ $content }) {
-    const page1 = await $content('pages/Dons/Assurance vie/page-1').fetch()
+    const page1 = await $content('pages/transmettre/assurance-vie/page-1').fetch()
     return {
       page1
     }

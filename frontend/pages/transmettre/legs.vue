@@ -15,9 +15,9 @@
 export default {
   name: 'Legs',
   async asyncData ({ $content }) {
-    const page1 = await $content('pages/Dons/Legs/page-1').fetch()
-    const page2 = await $content('pages/Dons/Legs/page-2').fetch()
-    const cadre1 = await $content('pages/Dons/Legs/cadre-1').fetch()
+    const page1 = await $content('pages/transmettre/legs/page-1').fetch()
+    const page2 = await $content('pages/transmettre/legs/page-2').fetch()
+    const cadre1 = await $content('pages/transmettre/legs/cadre-1').fetch()
     return {
       page1,
       page2,

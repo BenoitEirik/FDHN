@@ -67,7 +67,7 @@
 export default {
   name: 'FaireUnDon',
   async asyncData ({ $content }) {
-    const page1 = await $content('pages/Dons/page-1').fetch()
+    const page1 = await $content('pages/don/page-1').fetch()
     return {
       page1
     }

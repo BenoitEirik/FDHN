@@ -18,11 +18,11 @@
 export default {
   name: 'Temoignages',
   async asyncData ({ $content }) {
-    const page = await $content('pages/Temoignages/page-1').fetch()
+    const page = await $content('pages/temoignages/page-1').fetch()
     const temoignages = [
-      await $content('pages/Temoignages/temoignage-1').fetch(),
-      await $content('pages/Temoignages/temoignage-2').fetch(),
-      await $content('pages/Temoignages/temoignage-3').fetch()
+      await $content('pages/temoignages/temoignage-1').fetch(),
+      await $content('pages/temoignages/temoignage-2').fetch(),
+      await $content('pages/temoignages/temoignage-3').fetch()
     ]
     return {
       page,
