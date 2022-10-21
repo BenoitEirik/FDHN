@@ -34,8 +34,8 @@
 export default {
   name: 'Accueil',
   async asyncData ({ $content }) {
-    const page = await $content('pages/Accueil/accueil').fetch()
-    const signature = await $content('pages/Accueil/signature').fetch()
+    const page = await $content('pages/accueil/accueil').fetch()
+    const signature = await $content('pages/accueil/signature').fetch()
     return {
       page,
       signature
