@@ -53,11 +53,11 @@
         </button>
       </div>
       <div class="mt-10 p-6 max-w-5xl flex justify-center flex-wrap items-center bg-orange-50 rounded">
-        <PagesDonsCard name="Legs" to="/dons/legs" />
-        <PagesDonsCard name="Testaments" to="/dons/testaments" />
-        <PagesDonsCard name="Donations" to="/dons/donations" />
-        <PagesDonsCard name="Assurance vie" to="/dons/assurance-vie" />
-        <PagesDonsCard name="Don succession" to="/dons/don-succession" />
+        <PagesDonsCard name="Legs" to="/transmettre/legs" />
+        <PagesDonsCard name="Testaments" to="/transmettre/testaments" />
+        <PagesDonsCard name="Donations" to="/transmettre/donations" />
+        <PagesDonsCard name="Assurance vie" to="/transmettre/assurance-vie" />
+        <PagesDonsCard name="Don succession" to="/transmettre/don-succession" />
       </div>
     </div>
   </div>

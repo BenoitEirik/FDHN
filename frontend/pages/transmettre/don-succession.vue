@@ -7,10 +7,11 @@
       <nuxt-content class="max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page1" />
       <PagesDonsDonationsCadre :cadre="cadre1" :bg-class="'bg-white'" />
       <div class="mt-6 max-w-5xl flex justify-center">
-        <img
+        <nuxt-img
           class="rounded"
-          src="@/assets/images/brochure/image-038.png"
-        >
+          format="webp"
+          src="brochure/image-038.png"
+        />
       </div>
     </div>
   </div>

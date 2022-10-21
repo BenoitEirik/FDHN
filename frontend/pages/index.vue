@@ -2,10 +2,11 @@
   <div class="flex flex-col items-center">
     <div class="m-6">
       <div class="relative w-full">
-        <img
+        <nuxt-img
           class="relative w-56 -z-10 left-1/2 -translate-x-1/2"
-          src="@/assets/images/brochure/image-001.png"
-        >
+          format="webp"
+          src="brochure/image-001.png"
+        />
         <h1 class="absolute w-11/12 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl text-center">
           {{ page.title }}
         </h1>
@@ -20,10 +21,11 @@
           :document="signature"
         />
         <div class="w-full flex justify-end">
-          <img
+          <nuxt-img
             class="w-48"
-            src="@/assets/images/brochure/image-005.png"
-          >
+            format="webp"
+            src="brochure/image-005.png"
+          />
         </div>
       </div>
     </div>

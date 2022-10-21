@@ -1,9 +1,10 @@
 <template>
   <div class="max-w-5xl rounded cadre-shadow">
-    <img
+    <nuxt-img
       class="m-auto pt-9 px-9 w-96 cadre-logo-drop-shadow"
+      format="webp"
       :src="img"
-    >
+    />
     <nuxt-content
       class="px-9 pb-9 max-w-full prose md:prose-lg sm:prose-base prose-sm"
       :document="cadre"

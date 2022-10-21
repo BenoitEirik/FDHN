@@ -75,6 +75,18 @@ export default {
     '/api': '~/api/index.js'
   },
 
+  image: {
+    domains: ['fdhn.fr'],
+    dir: 'assets/images',
+    screens: {
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      '2xl': 1536
+    }
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     loaders: {
