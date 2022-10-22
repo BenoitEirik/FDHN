@@ -14,7 +14,6 @@
           :arrows-outside="false"
           :visible-slides="3"
           :gap="3"
-          slide-multiple
           :slide-ratio="1.2/3"
           autoplay
           :breakpoints="breakpoints"

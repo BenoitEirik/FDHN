@@ -40,7 +40,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxt/postcss8'
+    '@nuxt/postcss8',
+    '@nuxtjs/google-fonts'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -63,6 +64,12 @@ export default {
     UserAgent: '*',
     Disallow: '/payment-success',
     Sitemap: 'https://fdhn.fr/sitemap.xml'
+  },
+
+  googleFonts: {
+    families: {
+      Hahmlet: [400]
+    }
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
