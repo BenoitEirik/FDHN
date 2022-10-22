@@ -1,5 +1,5 @@
 ---
-title: « Nous TRANSMETTONS ce que nous avons de PLUS SACRÉ... »
+title: « Nous transmettons ce que nous avons de plus sacré... »
 ---
 
 <PagesAccueilAvatar></PagesAccueilAvatar>

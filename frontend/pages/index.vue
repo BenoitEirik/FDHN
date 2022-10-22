@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center">
     <div class="m-6">
-      <div class="relative w-full">
+      <div class="relative w-full prose sm:prose-base prose-sm max-w-full">
         <nuxt-img
           class="relative w-56 -z-10 left-1/2 -translate-x-1/2"
           format="webp"
