@@ -1,5 +1,5 @@
 <template>
-  <div :class="(droppedMenu ? 'dropdown':'dropup') + ' lg:static absolute px-8 flex lg:flex-row flex-col lg:flex-wrap lg:justify-end justify-evenly lg:items-center items-start left-0 top-full right-0 w-full bg-white z-50'">
+  <div :class="(droppedMenu ? 'dropdown':'dropup') + ' lg:static absolute px-8 flex lg:flex-row flex-col lg:flex-wrap lg:justify-end justify-evenly lg:items-center items-start left-0 top-full right-0 w-full bg-white z-50 overflow-hidden'">
     <NavLink
       to="/"
       name="Accueil"
@@ -48,17 +48,18 @@ export default {
 
 <style>
 .dropdown {
-  display: flex;
+  left: 0;
   height: calc(100vh - 100%);
-  transform: all 1s ease-out;
+  transition: left 300ms ease-in-out;
 }
 .dropup {
-  display: none;
-  height: 0;
+  left: -100%;
+  height: calc(100vh - 100%);
+  transition: left 300ms ease-in-out;
 }
 @media (min-width: 1024px) {
   .dropdown, .dropup {
-    display: flex;
+    transform: unset;
     height: auto;
   }
 }

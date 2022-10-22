@@ -31,6 +31,6 @@ export default {
 .bottom-border {
   border-bottom: 1px solid #eab308;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  transition: all 2s;
+  transition: all 1s;
 }
 </style>
