@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     ref="myLink"
-    class="p-5 text-xl hover:scale-110 transition-all ease-out text-center"
+    :class="'p-5 text-xl hover:scale-110 transition-all ease-out text-center ' + (activeDonateClass ? 'decorated':'')"
     :to="to"
     @click.native="$nuxt.$emit('check-burger', false)"
   >
@@ -21,18 +21,20 @@ export default {
       default: ''
     }
   },
+  data () {
+    return {
+      activeDonateClass: false
+    }
+  },
   mounted () {
     if (this.name.includes('don')) {
-      this.$refs.myLink.$el.classList.add('decorated')
+      this.activeDonateClass = true
     }
   }
 }
 </script>
 
 <style scoped>
-.nuxt-link-exact-active {
-  color: #eab308;
-}
 .decorated {
   text-decoration: underline;
   text-decoration-color: #eab308;
