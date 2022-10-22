@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     ref="myLink"
-    :class="'px-5 py-2 md:text-xl text-lg transition-all ease-out text-center rounded-lg nuxt-link-effect ' + (donateLinkClass ? 'decorated':'')"
+    :class="'px-5 py-2 lg:w-auto w-full md:text-xl text-lg transition-all ease-out lg:text-center text-left rounded-lg nuxt-link-effect ' + (donateLinkClass ? 'decorated':'')"
     :to="to"
     @click.native="$nuxt.$emit('check-burger', false)"
   >

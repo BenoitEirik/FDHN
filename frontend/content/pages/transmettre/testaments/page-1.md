@@ -1,8 +1,10 @@
 ---
-title: Nos conseils...
-to: /transmettre/legs
+title: Le testament
+to: /transmettre/testament
 description: La rédaction d’un testament est un acte personnel et individuel. Indiquez votre état civil complet prénom, nom, date et lieu de naissance précis, adresse.
 ---
+
+## Nos conseils...
 
 La rédaction d’un testament est un acte personnel et individuel.  
 Indiquez votre état civil complet : prénom, nom, date et lieu de naissance précis, adresse.  
