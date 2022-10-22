@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     ref="myLink"
-    :class="'p-5 text-xl hover:scale-110 transition-all ease-out text-center nuxt-link-effect ' + (activeDonateClass ? 'decorated':'')"
+    :class="'px-5 py-2 md:text-xl text-lg transition-all ease-out text-center rounded-lg nuxt-link-effect ' + (donateLinkClass ? 'decorated':'')"
     :to="to"
     @click.native="$nuxt.$emit('check-burger', false)"
   >
@@ -23,12 +23,12 @@ export default {
   },
   data () {
     return {
-      activeDonateClass: false
+      donateLinkClass: false
     }
   },
   mounted () {
     if (this.name.includes('don')) {
-      this.activeDonateClass = true
+      this.donateLinkClass = true
     }
   }
 }
@@ -36,11 +36,13 @@ export default {
 
 <style>
 .nuxt-link-exact-active {
-    color: #eab308;
+  background: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: #eab308 !important;
 }
 .nuxt-link-effect {
   background: linear-gradient(to right, #eab308 50%, #000 0%);
-  background-size: 200% 200%;
+  background-size: 200% 100%;
   background-position: 100%;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -52,6 +54,6 @@ export default {
 .decorated {
   text-decoration: underline;
   text-decoration-color: #eab308;
-  text-decoration-thickness: 3px;
+  text-decoration-thickness: 2px;
 }
 </style>
