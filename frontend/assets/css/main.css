@@ -6,8 +6,3 @@
     font-family: 'Hahmlet';
     src: url('@/assets/fonts/Hahmlet-Regular.ttf');
 }
-
-
-.nuxt-link-exact-active {
-    color: #eab308;
-}
