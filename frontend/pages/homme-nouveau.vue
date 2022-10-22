@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col items-center">
     <div class="m-6">
-      <h1 class="p-6 text-3xl text-center">
-        {{ page1.title }}
-      </h1>
-      <div class="mt-10 max-w-5xl">
+      <!-- Title -->
+      <OtherTitle :title="page1.title" />
+      <!-- Content -->
+      <div class="max-w-5xl">
         <vueper-slides
           class="no-shadow"
           prevent-y-scroll

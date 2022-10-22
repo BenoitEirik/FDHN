@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col items-center">
     <div class="m-6">
-      <h1 class="p-6 text-3xl text-center">
-        {{ page1.title }}
-      </h1>
-      <div class="mt-10 w-full flex flex-col justify-center items-center">
+      <!-- Title -->
+      <OtherTitle :title="page1.title" />
+      <!-- Content -->
+      <div class="w-full flex flex-col justify-center items-center">
         <div class="form-control max-w-lg w-full">
           <label class="label">
             <span class="label-text">Adresse email</span>

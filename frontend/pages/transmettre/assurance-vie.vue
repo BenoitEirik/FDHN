@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col items-center">
     <div class="m-6">
-      <h1 class="p-6 text-3xl text-center">
-        {{ page1.title }}
-      </h1>
+      <!-- Title -->
+      <OtherTitle :title="page1.title" />
+      <!-- Content -->
       <nuxt-content class="max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page1" />
     </div>
   </div>

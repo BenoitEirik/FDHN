@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center">
     <div class="m-6">
       <!-- Title -->
-      <OtherlTitle :title="page1.title" />
+      <OtherTitle :title="page1.title" />
       <!-- Content -->
       <div class="p-6 max-w-5xl w-full flex flex-wrap justify-center gap-6">
         <PagesTransmettreCard

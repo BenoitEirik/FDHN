@@ -12,9 +12,11 @@ export default {
         if (document.documentElement.scrollTop > 150) {
           this.$refs.logo.classList.add('reduced-navbar')
           this.$refs.logo.classList.remove('reduced-navbar-removing')
+          this.$emit('reduced', true)
         } else {
           this.$refs.logo.classList.remove('reduced-navbar')
           this.$refs.logo.classList.add('reduced-navbar-removing')
+          this.$emit('reduced', false)
         }
       })
     })
