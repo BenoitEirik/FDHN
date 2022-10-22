@@ -1,5 +1,7 @@
 ---
 title: Le don sur succession
+to: /transmettre/don-succession
+description: Il est possible pour vos héritiers de donner au Fonds de dotation de L’Homme Nouveau une partie des biens reçus lors de la succession. Ainsi, ils pourront réduire le montant des droits à payer chaque don donnant lieu à un abattement.
 ---
 
 ## Une formule intéressante pour vos héritiers  

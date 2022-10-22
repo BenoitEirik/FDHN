@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center">
     <div class="m-6">
       <!-- Title -->
-      <GlobalTitle :title="page1.title" />
+      <OtherTitle :title="page1.title" />
       <!-- Content -->
       <nuxt-content v-for="projet in projets" :key="projet.title" class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="projet" />
     </div>

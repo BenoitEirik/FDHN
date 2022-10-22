@@ -1,5 +1,7 @@
 ---
 title: L'assurance vie
+to: /transmettre/assurance-vie
+description: L’assurance vie est un contrat d’épargne qui permet de transmettre un capital dans un cadre juridique et fiscal avantageux. Il est ainsi possible de désigner le Fonds de dotation de L’Homme Nouveau comme bénéficiaire de votre contrat, pour partie ou en totalité.
 ---
 
 ## Le placement d’Espérance  

@@ -1,5 +1,7 @@
 ---
 title: La donations
+to: /transmettre/donations
+description: La donation permet de transmettre un bien de votre vivant, de manière irrévocable et à effet immédiat. Elle doit obligatoirement faire l’objet d’un acte notarié. Ainsi, un tel acte permet d’organiser, vous-mêmes et de votre vivant, la transmission de vos biens.  
 ---
 
 ## Pour une transmission immédiate  
