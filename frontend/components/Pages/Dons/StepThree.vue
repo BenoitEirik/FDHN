@@ -3,14 +3,9 @@
     <div class="hero-content prose sm:prose-base prose-sm text-center">
       <div class="max-w-md">
         <h1>
-          Merci
+          Paiement en cours...
         </h1>
-        <p class="py-6">
-          Le don a été effectué, merci de votre générosité !
-        </p>
-        <button class="btn btn-primary" @click="$router.push({ path: '/' })">
-          Retourner à la page d'accueil
-        </button>
+        <button class="btn btn-ghost btn-lg loading" />
       </div>
     </div>
   </div>

@@ -11,19 +11,6 @@
           @active-step="isStepActive"
           @stepper-finished="alert"
         />
-        <!-- <stripe-element-payment
-          v-if="activeStripeElementPayment"
-          ref="paymentRef"
-          class="max-w-lg w-11/12 min-h-16"
-          :test-mode="true"
-          :pk="pk"
-          :elements-options="elementsOptions"
-          :confirm-params="confirmParams"
-          locale="fr"
-        />
-        <button class="m-6 btn btn-primary w-64 rounded-full btn-outline" @click="pay">
-          Payer
-        </button> -->
       </div>
     </div>
   </div>
@@ -46,7 +33,7 @@ export default {
     return {
       steps: [
         {
-          icon: 'info',
+          icon: 'euro_symbol',
           name: 'first',
           title: 'Étape 1',
           subtitle: 'Montant du don',
@@ -62,7 +49,7 @@ export default {
           completed: false
         },
         {
-          icon: 'check',
+          icon: 'done_outline',
           name: 'third',
           title: 'Étape 3',
           subtitle: 'Finalisation',

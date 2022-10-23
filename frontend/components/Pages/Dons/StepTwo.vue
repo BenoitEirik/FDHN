@@ -7,6 +7,7 @@
       :test-mode="true"
       :pk="pk"
       :elements-options="elementsOptions"
+      :confirm-params="confirmParams"
       locale="fr"
     />
     <button class="m-6 btn btn-primary w-64 rounded-full btn-outline" @click="pay">
@@ -17,19 +18,11 @@
 
 <script>
 export default {
-  asyncData ({ req }) {
-    console.log(req.headers)
-    const hostname = req.headers
-    return {
-      hostname
-    }
-  },
   data () {
     return {
-      amount: '100',
       email: '',
       activeStripeElementPayment: false,
-      pk: 'pk_test_51LnlDkGhbwlwOqG4tzagnMSU9DXDDSZkWR9mPya3FwEvDu8Ke22cc0OLX3nh7hvd4JTkPT7wsYiiZE58gTZQWs3b0096rhjREm',
+      pk: this.$config.stripePublicToken,
       elementsOptions: {
         fonts: [
           {
@@ -48,17 +41,24 @@ export default {
             borderRadius: '8px'
           }
         }
+      },
+      confirmParams: {
+        return_url: 'https://fdhn.fr/payment-success'
       }
     }
   },
+  computed: {
+    amount () {
+      return this.$store.state.amount
+    }
+  },
   mounted () {
-    console.log('testestes')
     this.generatePaymentIntent()
   },
   methods: {
     generatePaymentIntent () {
       this.$axios.$post('/api/create-payment-intent', {
-        amount: 100
+        amount: this.amount
       }).then((paymentIntent) => {
         this.elementsOptions.clientSecret = paymentIntent.clientSecret
         this.activeStripeElementPayment = true

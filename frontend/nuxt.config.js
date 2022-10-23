@@ -20,6 +20,11 @@ export default {
     ]
   },
 
+  // to load env var in Nuxt component template
+  publicRuntimeConfig: {
+    stripePublicToken: process.env.STRIPE_PK
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   // color1: FFDE01
   // color2: FFB200
