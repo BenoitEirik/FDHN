@@ -25,6 +25,7 @@
     "stripe": "^10.13.0",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
+    "vue-stepper": "^1.4.2",
     "vue-template-compiler": "^2.6.14",
     "vueperslides": "^2.15.3",
     "webpack": "^4.46.0"
@@ -42,6 +43,8 @@
     "eslint-plugin-nuxt": "^3.1.0",
     "eslint-plugin-vue": "^8.2.0",
     "postcss": "^8.4.17",
+    "sass": "^1.55.0",
+    "sass-loader": "^10.3.1",
     "tailwindcss": "^3.1.8"
   }
 }

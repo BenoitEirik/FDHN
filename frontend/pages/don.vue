@@ -4,41 +4,14 @@
       <!-- Title -->
       <OtherTitle :title="page1.title" />
       <!-- Content -->
-      <div class="w-full flex flex-col justify-center items-center">
-        <div class="form-control max-w-lg w-full">
-          <label class="label">
-            <span class="label-text">Adresse email</span>
-          </label>
-          <label class="input-group">
-            <span>Email</span>
-            <input type="text" placeholder="info@site.com" class="w-full input input-bordered" @change="(event) => { email = event.target.value }">
-          </label>
-          <label class="label">
-            <span class="label-text">Montant du don</span>
-          </label>
-          <label class="input-group">
-            <input ref="amountRef" type="text" placeholder="10" class="w-full input input-bordered" @change="(event) => { amount = (event.target.value + '00') }">
-            <span>€</span>
-          </label>
-          <div class="divider">
-            Ou
-          </div>
-          <div class="mb-6 w-full flex justify-center btn-group">
-            <button class="btn btn-primary" @click="() => { $refs.amountRef.value = '50' }">
-              50€
-            </button>
-            <button class="btn btn-primary" @click="() => { $refs.amountRef.value = '100' }">
-              100€
-            </button>
-            <button class="btn btn-primary" @click="() => { $refs.amountRef.value = '200' }">
-              200€
-            </button>
-            <button class="btn btn-primary" @click="() => { $refs.amountRef.value = '500' }">
-              500€
-            </button>
-          </div>
-        </div>
-        <stripe-element-payment
+      <div class="max-w-5xl">
+        <horizontal-stepper
+          :steps="steps"
+          @completed-step="completeStep"
+          @active-step="isStepActive"
+          @stepper-finished="alert"
+        />
+        <!-- <stripe-element-payment
           v-if="activeStripeElementPayment"
           ref="paymentRef"
           class="max-w-lg w-11/12 min-h-16"
@@ -50,13 +23,17 @@
         />
         <button class="m-6 btn btn-primary w-64 rounded-full btn-outline" @click="pay">
           Payer
-        </button>
+        </button> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import StepOne from '@/components/Pages/Dons/StepOne.vue'
+import StepTwo from '@/components/Pages/Dons/StepTwo.vue'
+import StepThree from '@/components/Pages/Dons/StepThree.vue'
+
 export default {
   name: 'FaireUnDon',
   async asyncData ({ $content }) {
@@ -67,49 +44,56 @@ export default {
   },
   data () {
     return {
-      amount: '100',
-      email: '',
-      activeStripeElementPayment: false,
-      pk: 'pk_test_51LnlDkGhbwlwOqG4tzagnMSU9DXDDSZkWR9mPya3FwEvDu8Ke22cc0OLX3nh7hvd4JTkPT7wsYiiZE58gTZQWs3b0096rhjREm',
-      confirmParams: {
-        return_url: 'http://127.0.0.1:3000/payment-success',
-        receipt_email: ''
-      },
-      elementsOptions: {
-        fonts: [
-          {
-            cssSrc: 'https://fonts.googleapis.com/css2?family=Hahmlet&display=swap'
-          }
-        ],
-        apparence: {
-          theme: 'stripe',
-          variables: {
-            colorPrimary: '#eab308',
-            colorBackground: '#ffffff',
-            colorText: '#30313d',
-            colorDanger: '#b91c1c',
-            fontFamily: 'Hahmlet',
-            spacingUnit: '2px',
-            borderRadius: '8px'
-          }
+      steps: [
+        {
+          icon: 'info',
+          name: 'first',
+          title: 'Étape 1',
+          subtitle: 'Montant du don',
+          component: StepOne,
+          completed: false
+        },
+        {
+          icon: 'credit_card',
+          name: 'second',
+          title: 'Étape 2',
+          subtitle: 'Moyen de paiement',
+          component: StepTwo,
+          completed: false
+        },
+        {
+          icon: 'check',
+          name: 'third',
+          title: 'Étape 3',
+          subtitle: 'Finalisation',
+          component: StepThree,
+          completed: false
         }
-      }
+      ]
     }
   },
-  mounted () {
-    this.generatePaymentIntent()
-  },
   methods: {
-    generatePaymentIntent () {
-      this.$axios.$post('/api/create-payment-intent', {
-        amount: 100
-      }).then((paymentIntent) => {
-        this.elementsOptions.clientSecret = paymentIntent.clientSecret
-        this.activeStripeElementPayment = true
+    // Executed when @completed-step event is triggered
+    completeStep (payload) {
+      this.steps.forEach((step) => {
+        if (step.name === payload.name) {
+          step.completed = true
+        }
       })
     },
-    pay () {
-      this.$refs.paymentRef.submit()
+    // Executed when @active-step event is triggered
+    isStepActive (payload) {
+      this.steps.forEach((step) => {
+        if (step.name === payload.name) {
+          if (step.completed === true) {
+            step.completed = false
+          }
+        }
+      })
+    },
+    // Executed when @stepper-finished event is triggered
+    alert (payload) {
+      alert('Votre don est finalisé, merci de votre générosité !')
     }
   }
 }

@@ -30,7 +30,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '@/plugins/vue-stripe.js', mode: 'client' }
+    { src: '@/plugins/vue-stripe.js', mode: 'client' },
+    { src: '@/plugins/vue-stepper.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
