@@ -15,7 +15,8 @@ export default {
     const page1 = await $content('pages/autres-projets/page-1').fetch()
     const projets = [
       await $content('pages/autres-projets/projets/projet-1').fetch(),
-      await $content('pages/autres-projets/projets/projet-2').fetch()
+      await $content('pages/autres-projets/projets/projet-2').fetch(),
+      await $content('pages/autres-projets/projets/projet-3').fetch()
     ]
     return {
       page1,
