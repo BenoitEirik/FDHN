@@ -5,20 +5,24 @@
       <OtherTitle :title="page1.title" />
       <!-- Content -->
       <nuxt-content class="max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page1" />
-      <PagesDonsDonationsCadre :cadre="cadre1" :bg-class="'bg-white'" />
+      <PagesDonsDonationCadre :cadre="cadre1" :bg-class="'bg-white'" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Donations',
   async asyncData ({ $content }) {
-    const page1 = await $content('pages/transmettre/donations/page-1').fetch()
-    const cadre1 = await $content('pages/transmettre/donations/cadre-1').fetch()
+    const page1 = await $content('pages/transmettre/donation/page-1').fetch()
+    const cadre1 = await $content('pages/transmettre/donation/cadre-1').fetch()
     return {
       page1,
       cadre1
+    }
+  },
+  head () {
+    return {
+      title: 'La donation - Fonds de dotation de l\'Homme Nouveau'
     }
   }
 }

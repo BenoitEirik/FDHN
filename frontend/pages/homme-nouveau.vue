@@ -80,6 +80,11 @@ export default {
         }
       }
     }
+  },
+  head () {
+    return {
+      title: 'L\'Homme Nouveau - Fonds de dotation de l\'Homme Nouveau'
+    }
   }
 }
 </script>

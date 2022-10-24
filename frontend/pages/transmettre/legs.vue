@@ -23,6 +23,11 @@ export default {
       page2,
       cadre1
     }
+  },
+  head () {
+    return {
+      title: 'Le legs - Fonds de dotation de l\'Homme Nouveau'
+    }
   }
 }
 </script>

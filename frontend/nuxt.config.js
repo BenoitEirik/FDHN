@@ -8,7 +8,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'Madame, Mademoiselle, Monsieur, au fil des grandes étapes de notre existence, nous travaillons, réalisons des projets, prenons des engagements ; nous tissons des liens et surtout, nous vivons, jour après jour, l’Église a reçu de Notre Seigneur et qu’Elle nous transmet... Et, plus le temps passe, plus nous avons à cœur de voir ce nous avons nous-mêmes reçu porter du fruit. Nous voudrions transmettre ce qui a été le moteur de notre vie, la Foi, l’Espérance et la Charité.' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [

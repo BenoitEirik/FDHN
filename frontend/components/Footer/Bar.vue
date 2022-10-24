@@ -10,7 +10,7 @@
       <Mailto class="btn btn-primary" mail="fondshn@gmail.com" subject="[fdhn.fr] Prise de contact" body="" title="Presser pour joindre le Fonds de dotation">
         Contacter
       </Mailto>
-      <p>Copyright © 2022 - Tout droits réservés</p>
+      <p>Copyright © {{ new Date().getFullYear() }} - Tout droits réservés</p>
     </div>
   </footer>
 </template>

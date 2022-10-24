@@ -19,3 +19,13 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  head () {
+    return {
+      title: 'Contact - Fonds de dotation de l\'Homme Nouveau'
+    }
+  }
+}
+</script>

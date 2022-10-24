@@ -28,6 +28,11 @@ export default {
       page,
       temoignages
     }
+  },
+  head () {
+    return {
+      title: 'Témoigngages - Fonds de dotation de l\'Homme Nouveau'
+    }
   }
 }
 </script>

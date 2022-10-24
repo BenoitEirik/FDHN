@@ -26,6 +26,11 @@ export default {
       page1,
       projects
     }
+  },
+  head () {
+    return {
+      title: 'Transmettre - Fonds de dotation de l\'Homme Nouveau'
+    }
   }
 }
 </script>

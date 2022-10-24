@@ -17,6 +17,11 @@ export default {
     return {
       page1
     }
+  },
+  head () {
+    return {
+      title: 'L\'assurance vie - Fonds de dotation de l\'Homme Nouveau'
+    }
   }
 }
 </script>

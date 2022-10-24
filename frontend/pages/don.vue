@@ -72,6 +72,11 @@ export default {
       ]
     }
   },
+  head () {
+    return {
+      title: 'Faire un don - Fonds de dotation de l\'Homme Nouveau'
+    }
+  },
   methods: {
     // Executed when @completed-step event is triggered
     completeStep (payload) {
@@ -79,7 +84,6 @@ export default {
         if (step.name === payload.name) {
           if (step.name === 'first') {
             this.$nuxt.$emit('store-metadata')
-            console.log('storing metadata...')
           }
           step.completed = true
         }

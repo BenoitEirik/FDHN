@@ -21,6 +21,11 @@ export default {
       page1,
       projets
     }
+  },
+  head () {
+    return {
+      title: 'Autres projets - Fonds de dotation de l\'Homme Nouveau'
+    }
   }
 }
 </script>

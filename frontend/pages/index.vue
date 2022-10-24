@@ -34,13 +34,17 @@
 
 <script>
 export default {
-  name: 'Accueil',
   async asyncData ({ $content }) {
     const page = await $content('pages/accueil/accueil').fetch()
     const signature = await $content('pages/accueil/signature').fetch()
     return {
       page,
       signature
+    }
+  },
+  head () {
+    return {
+      title: 'Fonds de dotation de l\'Homme Nouveau'
     }
   }
 }

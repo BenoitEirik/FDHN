@@ -1,11 +1,11 @@
 ---
-title: L'association Amitié Charles de Foucauld
+title: Le CIELT
 ---
 
-## L'association Amitié Charles de Foucauld
+## Le CIELT
 
-<PagesAutresProjetsImage src="projets/charles_foucauld.jpg" class="md:w-80 sm:w-72 w-64"></PagesAutresProjetsImage>
+<PagesAutresProjetsImage src="projets/logo-cielt.jpg" class="md:w-44 sm:w-36 w-28"></PagesAutresProjetsImage>
 
-Fondée en 1947, cette association ayant pour objet de mieux connaître et de faire connaître la personnalité de Charles de Foucauld, dans toutes les dimensions de sa vie et de son œuvre, militaire, scientifique, religieuse, sacerdotale et missionnaire, s'est mise au service de la Postulation pour aider de toutes les manières, intellectuelles, éditoriales et financières, le progrès de la Cause de béatification puis de canonisation, qui a abouti en 2022. Demeurant impliquée dans l'édition des écrits spirituels et des correspondances de saint Charles de Foucauld, elle poursuit la collecte de toutes informations et archives nouvelles, publie une revue trimestrielle et organise des voyages sur les lieux où a vécu le saint.  
-**Adresse** : Amitiés Charles de Foucauld, 56 rue du Val d'Or, 92150 Suresnes.  
-**Site** : [amitiescharlesdefoucauld.fr](https://amitiescharlesdefoucauld.fr)  
+Le Centre International d'Études sur le Linceul de Turin a été fondé en 1990 par un groupe de scientifiques internationaux, à la suite de la datation au carbone 14 du Saint Suaire publiée dans la revue Nature en 1989. Ce centre se propose de promouvoir l’organisation de tous travaux et recherches à caractère scientifique se rapportant au Linceul de Turin, ainsi que la diffusion, auprès du plus large public, de toute information à caractère scientifique se rapportant au Linceul de Turin. Cela implique aussi de faire constater, rectifier ou dénoncer toute désinformation éventuelle, de la part des médias nationaux ou étrangers, portant atteinte à la connaissance du public de l’état réel des travaux et recherches à caractère scientifique se rapportant au Linceul de Turin. Son prochain colloque se tiendra le 9 mars 2023 à Paris.  
+**Adresse** : CIELT, 2 rue de Noailles, 78000 Versailles.  
+**Site** : [cielt.fr](https://cielt.fr)  

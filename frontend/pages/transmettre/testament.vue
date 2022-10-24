@@ -32,6 +32,11 @@ export default {
       page1,
       testaments
     }
+  },
+  head () {
+    return {
+      title: 'Le testament - Fonds de dotation de l\'Homme Nouveau'
+    }
   }
 }
 </script>

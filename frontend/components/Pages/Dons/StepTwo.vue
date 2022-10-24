@@ -77,7 +77,6 @@ export default {
     }
   },
   mounted () {
-    console.log('check all data:', this.amount, this.reason, this.lastname, this.firstname, this.email)
     this.generatePaymentIntent()
   },
   methods: {

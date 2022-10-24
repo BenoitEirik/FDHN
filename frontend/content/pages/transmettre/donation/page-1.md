@@ -1,10 +1,10 @@
 ---
-title: La donations
-to: /transmettre/donations
+title: La donation
+to: /transmettre/donation
 description: La donation permet de transmettre un bien de votre vivant, de manière irrévocable et à effet immédiat. Elle doit obligatoirement faire l’objet d’un acte notarié. Ainsi, un tel acte permet d’organiser, vous-mêmes et de votre vivant, la transmission de vos biens.  
 ---
 
-## Pour une transmission immédiate  
+## Pour une transmission immédiate
 
 **La donation permet de transmettre un bien de votre vivant, de manière irrévocable et à effet immédiat. Elle doit obligatoirement faire l’objet d’un acte notarié.**  
 Ainsi, un tel acte permet d’organiser, vous-mêmes et de votre vivant, la transmission de vos biens.  
@@ -18,7 +18,7 @@ Ainsi, un tel acte permet d’organiser, vous-mêmes et de votre vivant, la tran
 * **La donation en nue-propriété :** ici, votre bien ne vous appartient plus, mais vous, ou la personne de votre choix, en conservez la jouissance jusqu’à la fin de votre vie.  
 * **La donation temporaire d’usufruit :** par cet acte, vous restez propriétaire de votre bien, mais vous attribuez à un tiers le droit de jouir de ce bien pendant une durée minimale de 3 ans (portefeuille, titres, biens locatifs). C’est aussi un moyen de réduire le niveau de votre patrimoine imposable dans le cadre de l’IFI.  
 
-## Questions légitimes...  
+## Questions légitimes...
 
 **Dans le cadre d’une donation, puis-je choisir le montant de ce que je veux transmettre ?**  
 Oui, dans les limites imposées par la loi et surtout de la quotité disponible.  
