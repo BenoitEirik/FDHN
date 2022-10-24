@@ -62,6 +62,7 @@ export default {
   ],
 
   sitemap: {
+    hostname: 'https://fdhn.fr',
     exclude: [
       '/payment-success'
     ]
