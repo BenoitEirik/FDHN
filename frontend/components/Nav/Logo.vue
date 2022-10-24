@@ -1,6 +1,6 @@
 <template>
   <nuxt-link to="/">
-    <img ref="logo" src="@/assets/images/fdhn.webp" class="md:w-64 w-48">
+    <img ref="logo" src="@/assets/images/fdhn.webp" class="lg:w-64 w-48">
   </nuxt-link>
 </template>
 

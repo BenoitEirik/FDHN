@@ -53,6 +53,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
+    'nuxt-protected-mailto',
     '@nuxtjs/axios',
     '@nuxt/image',
     '@nuxt/content',
@@ -111,6 +112,12 @@ export default {
       plugins: {
         tailwindcss: {},
         autoprefixer: {}
+      }
+    },
+    html: {
+      // Necessary for nuxt-protected-mailto
+      minify: {
+        decodeEntities: false
       }
     }
   }

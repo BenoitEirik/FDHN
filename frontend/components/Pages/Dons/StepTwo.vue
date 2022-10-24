@@ -1,16 +1,21 @@
 <template>
-  <div class="px-6 pt-12 flex flex-col justify-center items-center">
+  <div class="relative px-6 pt-12 w-full flex flex-col justify-center items-center">
+    <div ref="loaderRef" class="absolute m-6 inset-0 bg-white z-40 flex justify-center items-center">
+      <button class="btn btn-ghost btn-lg loading" />
+    </div>
     <stripe-element-payment
       v-if="activeStripeElementPayment"
       ref="paymentRef"
       class="max-w-lg w-11/12 min-h-16"
-      :test-mode="true"
+      :test-mode="testMode"
       :pk="pk"
       :elements-options="elementsOptions"
       :confirm-params="confirmParams"
       locale="fr"
+      @element-ready="removeLoader"
+      @element-change="updateAmount"
     />
-    <button class="m-6 btn btn-primary w-64 rounded-full btn-outline" @click="pay">
+    <button ref="btnRef" class="m-6 btn btn-primary w-64 rounded-full btn-outline" @click="pay">
       Payer
     </button>
   </div>
@@ -20,6 +25,7 @@
 export default {
   data () {
     return {
+      testMode: false,
       email: '',
       activeStripeElementPayment: false,
       pk: this.$config.stripePublicToken,
@@ -49,13 +55,27 @@ export default {
   },
   computed: {
     amount () {
-      return this.$store.state.amount
+      return this.$store.state.amount + '00'
     }
   },
+  beforeMount () {
+
+  },
   mounted () {
+    console.log('amount:', this.amount)
     this.generatePaymentIntent()
   },
   methods: {
+    removeLoader () {
+      this.$refs.loaderRef.classList.add('hidden')
+    },
+    setStripeTestMode () {
+      if (window.location.hostname === 'fdhn.fr') {
+        this.testMode = false
+      } else {
+        this.testMode = true
+      }
+    },
     generatePaymentIntent () {
       this.$axios.$post('/api/create-payment-intent', {
         amount: this.amount
@@ -64,9 +84,15 @@ export default {
         this.activeStripeElementPayment = true
       })
     },
+    updateAmount () {
+      // TODO
+    },
     pay () {
+      this.$refs.btnRef.innerHTML = ''
+      this.$refs.btnRef.classList.add('loading')
       this.$refs.paymentRef.submit()
       this.$emit('can-continue', { value: true })
+      this.$emit('change-next', { value: true })
     }
   }
 }
