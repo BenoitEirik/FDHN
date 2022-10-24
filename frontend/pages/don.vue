@@ -77,6 +77,10 @@ export default {
     completeStep (payload) {
       this.steps.forEach((step) => {
         if (step.name === payload.name) {
+          if (step.name === 'first') {
+            this.$nuxt.$emit('store-metadata')
+            console.log('storing metadata...')
+          }
           step.completed = true
         }
       })

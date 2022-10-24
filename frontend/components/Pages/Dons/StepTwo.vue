@@ -26,7 +26,6 @@ export default {
   data () {
     return {
       testMode: false,
-      email: '',
       activeStripeElementPayment: false,
       pk: this.$config.stripePublicToken,
       elementsOptions: {
@@ -49,20 +48,36 @@ export default {
         }
       },
       confirmParams: {
-        return_url: 'https://fdhn.fr/payment-success'
+        return_url: 'https://fdhn.fr/payment-success',
+        payment_method_data: {}
       }
     }
   },
   computed: {
     amount () {
       return this.$store.state.amount + '00'
+    },
+    reason () {
+      return `Cause : ${this.$store.state.reason}`
+    },
+    lastname () {
+      return this.$store.state.lastname
+    },
+    firstname () {
+      return this.$store.state.firstname
+    },
+    email () {
+      return this.$store.state.email
     }
   },
   beforeMount () {
-
+    this.confirmParams.payment_method_data.billing_details = {
+      name: `${this.lastname} ${this.firstname}`,
+      email: this.email
+    }
   },
   mounted () {
-    console.log('amount:', this.amount)
+    console.log('check all data:', this.amount, this.reason, this.lastname, this.firstname, this.email)
     this.generatePaymentIntent()
   },
   methods: {
@@ -78,7 +93,8 @@ export default {
     },
     generatePaymentIntent () {
       this.$axios.$post('/api/create-payment-intent', {
-        amount: this.amount
+        amount: this.amount,
+        description: this.reason
       }).then((paymentIntent) => {
         this.elementsOptions.clientSecret = paymentIntent.clientSecret
         this.activeStripeElementPayment = true
