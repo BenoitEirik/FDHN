@@ -1,6 +1,21 @@
 <template>
   <div class="flex flex-col items-center">
     <div class="m-6">
+      <!-- Breadcrumbs -->
+      <div class="lg:text-lg sm:text-base text-sm breadcrumbs">
+        <ul>
+          <li>
+            <nuxt-link to="/transmettre">
+              Transmettre
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/transmettre/testament">
+              Testaments
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
       <!-- Title -->
       <OtherTitle :title="page1.title" />
       <!-- Content -->
@@ -10,9 +25,7 @@
       <div
         class="flex justify-center items-center flex-wrap"
       >
-        <PagesTemoignagesCard :data="testaments[0]" />
-        <PagesTemoignagesCard :data="testaments[1]" />
-        <PagesTemoignagesCard :data="testaments[2]" />
+        <PagesTemoignagesCard v-for="(testament, index) in testaments" :key="index" :data="testament" />
       </div>
     </div>
   </div>

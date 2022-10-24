@@ -1,6 +1,21 @@
 <template>
   <div class="flex flex-col items-center">
     <div class="m-6">
+      <!-- Breadcrumbs -->
+      <div class="lg:text-lg sm:text-base text-sm breadcrumbs">
+        <ul>
+          <li>
+            <nuxt-link to="/transmettre">
+              Transmettre
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/transmettre/donation">
+              La donation
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
       <!-- Title -->
       <OtherTitle :title="page1.title" />
       <!-- Content -->
