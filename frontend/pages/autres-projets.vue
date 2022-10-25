@@ -4,6 +4,7 @@
       <!-- Title -->
       <OtherTitle :title="page1.title" />
       <!-- Content -->
+      <nuxt-content class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page1" />
       <nuxt-content v-for="projet in projets" :key="projet.title" class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="projet" />
     </div>
   </div>
