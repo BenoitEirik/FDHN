@@ -83,7 +83,7 @@ export default {
   },
   head () {
     return {
-      title: 'L\'Homme Nouveau - Fonds de dotation de l\'Homme Nouveau'
+      title: 'L\'Homme Nouveau - Fonds de dotation de L\'Homme Nouveau'
     }
   }
 }

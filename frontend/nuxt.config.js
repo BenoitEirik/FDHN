@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Fonds de dotation de l\'Homme Nouveau',
+    title: 'Fonds de dotation de L\'Homme Nouveau',
     htmlAttrs: {
       lang: 'fr'
     },
@@ -22,7 +22,7 @@ export default {
 
   // to load env var in Nuxt component template
   publicRuntimeConfig: {
-    stripePublicToken: process.env.STRIPE_PK
+    STRIPE_PK: process.env.STRIPE_PK
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

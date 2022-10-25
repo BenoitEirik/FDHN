@@ -45,7 +45,7 @@ export default {
   },
   head () {
     return {
-      title: 'Contact - Fonds de dotation de l\'Homme Nouveau'
+      title: 'Contact - Fonds de dotation de L\'Homme Nouveau'
     }
   }
 }

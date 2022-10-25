@@ -22,17 +22,17 @@ Beaucoup parmi nous se posent de légitimes questions : « Pouvons-nous offrir a
 à tous ceux qui ont souffert de l’absence (apparente) de Dieu des oasis spirituels et intellectuels pour
 satisfaire leur soif. » Pour l’exprimer autrement, beaucoup, notamment parmi nos lecteurs, veulent transmettre
 l’Espérance, petite fille de rien du tout si chère à Charles Péguy.  
-Aujourd’hui, L’Homme Nouveau compte parmi ces oasis. 74 ans après sa fondation, le magazine et toutes les
+Aujourd’hui, L’**Homme Nouveau** compte parmi ces oasis. 74 ans après sa fondation, le magazine et toutes les
 initiatives-sœurs participent, à leur place et avec les moyens que la Providence leur offre, de la vitalité de
 notre Église.  
 Nous savons cependant que nous pourrions faire beaucoup mieux et surtout toucher beaucoup plus de lecteurs,
-notamment, je me permets de le répéter, les plus jeunes. L’Homme Nouveau a aujourd’hui beaucoup de projets qui
+notamment, je me permets de le répéter, les plus jeunes. L’**Homme Nouveau** a aujourd’hui beaucoup de projets qui
 permettront de démultiplier son rayon d’action. Les collaborateurs sont prêts, il ne nous manque que des moyens
 financiers.  
-À cet effet, nous avons créé le Fonds de dotation de L’Homme Nouveau qui permettra, entre autres, aux particuliers
+À cet effet, nous avons créé le Fonds de dotation de L’**Homme Nouveau** qui permettra, entre autres, aux particuliers
 qui souhaitent nous soutenir, d’effectuer un legs ou une donation.
 Nous avons lancé un appel auprès de nos amis et de nos lecteurs. Nombre d’entre vous ont répondu. La seule
-évocation de la possibilité de soutenir L’Homme Nouveau au moyen d’une libéralité a suscité beaucoup
+évocation de la possibilité de soutenir L’**Homme Nouveau** au moyen d’une libéralité a suscité beaucoup
 d’enthousiasme.  
 
 ## Voulez-vous participer à ce grand élan d’Espérance ?  

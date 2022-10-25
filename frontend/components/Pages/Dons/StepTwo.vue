@@ -27,7 +27,7 @@ export default {
     return {
       testMode: false,
       activeStripeElementPayment: false,
-      pk: this.$config.stripePublicToken,
+      pk: this.$config.STRIPE_PK,
       elementsOptions: {
         fonts: [
           {
@@ -71,6 +71,7 @@ export default {
     }
   },
   beforeMount () {
+    // Billing details
     this.confirmParams.payment_method_data.billing_details = {
       name: `${this.lastname} ${this.firstname}`,
       email: this.email
@@ -93,7 +94,13 @@ export default {
     generatePaymentIntent () {
       this.$axios.$post('/api/create-payment-intent', {
         amount: this.amount,
-        description: this.reason
+        description: this.reason,
+        metadata: {
+          Cause: this.reason,
+          Nom: this.lastname,
+          Prénom: this.firstname,
+          Email: this.email
+        }
       }).then((paymentIntent) => {
         this.elementsOptions.clientSecret = paymentIntent.clientSecret
         this.activeStripeElementPayment = true

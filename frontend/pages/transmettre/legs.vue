@@ -41,7 +41,7 @@ export default {
   },
   head () {
     return {
-      title: 'Le legs - Fonds de dotation de l\'Homme Nouveau'
+      title: 'Le legs - Fonds de dotation de L\'Homme Nouveau'
     }
   }
 }

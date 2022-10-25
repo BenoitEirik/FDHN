@@ -35,7 +35,7 @@ export default {
   },
   head () {
     return {
-      title: 'L\'assurance vie - Fonds de dotation de l\'Homme Nouveau'
+      title: 'L\'assurance vie - Fonds de dotation de L\'Homme Nouveau'
     }
   }
 }

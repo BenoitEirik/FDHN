@@ -26,7 +26,7 @@ export default {
   },
   head () {
     return {
-      title: 'Autres projets - Fonds de dotation de l\'Homme Nouveau'
+      title: 'Autres projets - Fonds de dotation de L\'Homme Nouveau'
     }
   }
 }

@@ -48,7 +48,7 @@ export default {
   },
   head () {
     return {
-      title: 'Le testament - Fonds de dotation de l\'Homme Nouveau'
+      title: 'Le testament - Fonds de dotation de L\'Homme Nouveau'
     }
   }
 }

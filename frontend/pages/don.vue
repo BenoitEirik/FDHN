@@ -74,7 +74,14 @@ export default {
   },
   head () {
     return {
-      title: 'Faire un don - Fonds de dotation de l\'Homme Nouveau'
+      title: 'Faire un don - Fonds de dotation de L\'Homme Nouveau',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Faites un don au Fonds de dotation de L\'Homme Nouveau pour aider aux financement des projets qu\'ils soutiennent. Parmis ces projets vous retrouverez en plus de L\'Homme Nouveau, la Scolafricaine, le CIELT et l\'association Amitié Charles de Foucauld. Visitez la page « Faire un don » pour en apprendre davantage.'
+        }
+      ]
     }
   },
   methods: {

@@ -29,7 +29,7 @@ export default {
   },
   head () {
     return {
-      title: 'Transmettre - Fonds de dotation de l\'Homme Nouveau'
+      title: 'Transmettre - Fonds de dotation de L\'Homme Nouveau'
     }
   }
 }

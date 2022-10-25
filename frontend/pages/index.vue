@@ -44,7 +44,14 @@ export default {
   },
   head () {
     return {
-      title: 'Fonds de dotation de l\'Homme Nouveau'
+      title: 'Fonds de dotation de L\'Homme Nouveau',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Madame, Mademoiselle, Monsieur, au fil des grandes étapes de notre existence, nous travaillons, réalisons des projets, prenons des engagements ; nous tissons des liens et surtout, nous vivons, jour après jour, l’Église a reçu de Notre Seigneur et qu’Elle nous transmet... Et, plus le temps passe, plus nous avons à cœur de voir ce nous avons nous-mêmes reçu porter du fruit. Nous voudrions transmettre ce qui a été le moteur de notre vie, la Foi, l’Espérance et la Charité.'
+        }
+      ]
     }
   }
 }
