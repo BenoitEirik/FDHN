@@ -20,7 +20,7 @@
       <OtherTitle :title="page1.title" />
       <!-- Content -->
       <nuxt-content class="max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page1" />
-      <PagesDonsDonationCadre :cadre="cadre1" :bg-class="'bg-white'" />
+      <PagesTransmettreDonationCadre :cadre="cadre1" :bg-class="'bg-white'" />
       <div class="mt-6 max-w-5xl flex justify-center">
         <nuxt-img
           class="rounded"
