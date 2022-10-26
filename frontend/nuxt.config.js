@@ -36,7 +36,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '@/plugins/vue-stripe.js', mode: 'client' },
-    { src: '@/plugins/vue-stepper.js', mode: 'client' }
+    { src: '@/plugins/vue-stepper.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -104,6 +104,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: [
+      // Need for build vue-stepper
+      'vue-stepper'
+    ],
     loaders: {
       vue: {
         prettify: false
