@@ -29,7 +29,7 @@ export default {
   },
   head () {
     return {
-      title: 'Transmettre - Fonds de dotation de L\'Homme Nouveau'
+      title: 'Comment soutenir durablement nos projets ? - Fonds de dotation de L\'Homme Nouveau'
     }
   }
 }

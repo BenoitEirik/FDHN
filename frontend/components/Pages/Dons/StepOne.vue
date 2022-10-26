@@ -6,7 +6,7 @@
         <span class="label-text">Montant</span>
       </label>
       <label class="input-group">
-        <input v-model="amount" type="text" placeholder="1€ minimum" class="input input-bordered focus:input-primary w-full max-w-xs" @change="validateAmount">
+        <input v-model="amount" type="text" placeholder="1€ minimum" class="input input-bordered focus:input-primary w-full" @change="validateAmount">
         <span>€</span>
       </label>
       <label class="label">
@@ -16,7 +16,7 @@
       <label class="label">
         <span class="label-text">Cause</span>
       </label>
-      <select v-model="reason" class="select select-bordered focus:select-primary ">
+      <select v-model="reason" class="select select-bordered focus:select-primary w-full">
         <option disabled value="">
           Choisissez
         </option>
@@ -33,17 +33,17 @@
       <label class="label">
         <span class="label-text">Nom</span>
       </label>
-      <input v-model="lastname" type="text" placeholder="Nom" class="input input-bordered focus:input-primary w-full max-w-xs">
+      <input v-model="lastname" type="text" placeholder="Nom" class="input input-bordered focus:input-primary w-full">
       <!-- Prénom -->
       <label class="label">
         <span class="label-text">Prénom</span>
       </label>
-      <input v-model="firstname" type="text" placeholder="Prénom" class="input input-bordered focus:input-primary w-full max-w-xs">
+      <input v-model="firstname" type="text" placeholder="Prénom" class="input input-bordered focus:input-primary w-full">
       <!-- Adresse e-mail -->
       <label class="label">
         <span class="label-text">Adresse e-mail</span>
       </label>
-      <input v-model="email" type="email" placeholder="adresse@email.com" class="input input-bordered focus:input-primary w-full max-w-xs">
+      <input v-model="email" type="email" placeholder="adresse@email.com" class="input input-bordered focus:input-primary w-full">
     </div>
   </div>
 </template>

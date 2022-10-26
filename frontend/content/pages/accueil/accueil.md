@@ -7,7 +7,7 @@ title: « Nous transmettons ce que nous avons de plus sacré... »
 Madame, Mademoiselle, Monsieur,
 
 Au fil des grandes étapes de notre existence, nous travaillons, réalisons des projets, prenons des engagements ;
-nous tissons des liens et surtout, nous vivons, jour après jour, l’Église a reçu de Notre Seigneur et qu’Elle nous
+nous tissons des liens et surtout, nous vivons, jour après jour, ce que l’Église a reçu de Notre Seigneur et qu’Elle nous
 transmet...  
 Et, plus le temps passe, plus nous avons à cœur de voir ce nous avons nous-mêmes reçu porter du fruit. Nous
 voudrions transmettre ce qui a été le moteur de notre vie, la Foi, l’Espérance et la Charité.  
