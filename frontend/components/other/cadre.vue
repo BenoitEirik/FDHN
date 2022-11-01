@@ -1,13 +1,15 @@
 <template>
-  <div class="max-w-5xl rounded cadre-shadow">
+  <div class="mt-6 max-w-5xl rounded contenu-shadow">
     <nuxt-img
-      class="m-auto pt-9 px-9 w-96 cadre-logo-drop-shadow"
+      v-if="logo !== {}"
+      class="m-auto p-6 w-96 contenu-logo-drop-shadow"
       format="webp"
-      :src="img"
+      :src="$config.COCKPIT.ASSETS + logo.path"
+      :alt="logo.title"
     />
-    <nuxt-content
+    <div
       class="px-9 pb-9 max-w-full prose md:prose-lg sm:prose-base prose-sm"
-      :document="cadre"
+      v-html="contenu"
     />
   </div>
 </template>
@@ -15,13 +17,11 @@
 <script>
 export default {
   props: {
-    cadre: {
+    logo: {
       type: Object,
-      default () {
-        return {}
-      }
+      default: () => {}
     },
-    img: {
+    contenu: {
       type: String,
       default: ''
     }
@@ -29,11 +29,11 @@ export default {
 }
 </script>
 
-<style>
-.cadre-shadow {
+<style scoped>
+.contenu-shadow {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
-.cadre-logo-drop-shadow {
+.contenu-logo-drop-shadow {
   filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white);
 }
 </style>

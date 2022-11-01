@@ -11,15 +11,13 @@
           {{ page.title }}
         </h1>
       </div>
-      <nuxt-content
+      <div
         class="mt-10 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify"
-        :document="page"
-      />
+      >
+        <PagesAccueilAvatar />
+        <div v-html="page.content[0].textbox" />
+      </div>
       <div>
-        <nuxt-content
-          class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-right"
-          :document="signature"
-        />
         <div class="w-full flex justify-end">
           <nuxt-img
             class="w-48"
@@ -34,12 +32,10 @@
 
 <script>
 export default {
-  async asyncData ({ $content }) {
-    const page = await $content('pages/accueil/accueil').fetch()
-    const signature = await $content('pages/accueil/signature').fetch()
+  async asyncData ({ $axios, $config }) {
+    const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/097d5b2865326404bc00030a')
     return {
-      page,
-      signature
+      page
     }
   },
   head () {

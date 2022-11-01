@@ -22,7 +22,12 @@ export default {
 
   // to load env var in Nuxt component template
   publicRuntimeConfig: {
-    STRIPE_PK: process.env.STRIPE_PK
+    STRIPE_PK: process.env.STRIPE_PK,
+    COCKPIT: {
+      URL: 'https://admin.fdhn.fr',
+      ASSETS: 'https://admin.fdhn.fr/storage/uploads',
+      PK: 'API-3c47b03055ec7ccd975fa5858669fdb95746f55c'
+    }
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

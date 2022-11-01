@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center">
     <div class="m-6">
       <!-- Title -->
-      <OtherTitle :title="page1.title" />
+      <OtherTitle :title="page.title" />
       <!-- Content -->
       <div class="max-w-5xl">
         <vueper-slides
@@ -25,13 +25,14 @@
           </vueper-slide>
         </vueper-slides>
       </div>
-      <nuxt-content class="max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page1" />
-      <PagesHommenouveauCadre :cadre="cadre1" img="hn.png" />
-      <h1 class="mt-12 p-6 text-3xl text-center">
-        {{ page2.title }}
-      </h1>
-      <nuxt-content class="max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page2" />
-      <PagesHommenouveauCadre :cadre="cadre2" img="fdhn.png" />
+      <div v-for="(item, index) in page.content" :key="index">
+        <div
+          v-if="item.textbox !== null && item.textbox !== ''"
+          class="mt-12 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify"
+          v-html="item.textbox"
+        />
+        <OtherCadre v-else-if="item.cadre != null && item.cadre !== ''" :logo="item.cadre.logo" :contenu="item.cadre.textbox" />
+      </div>
     </div>
   </div>
 </template>
@@ -42,16 +43,10 @@ import 'vueperslides/dist/vueperslides.css'
 
 export default {
   components: { VueperSlides, VueperSlide },
-  async asyncData ({ $content }) {
-    const page1 = await $content('pages/homme-nouveau/page-1').fetch()
-    const cadre1 = await $content('pages/homme-nouveau/cadre-1').fetch()
-    const page2 = await $content('pages/homme-nouveau/page-2').fetch()
-    const cadre2 = await $content('pages/homme-nouveau/cadre-2').fetch()
+  async asyncData ({ $axios, $config }) {
+    const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/09dbd5533864632aeb0002f5')
     return {
-      page1,
-      cadre1,
-      page2,
-      cadre2
+      page
     }
   },
   data () {
