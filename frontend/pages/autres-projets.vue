@@ -10,7 +10,8 @@
         :key="index"
         class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify"
       >
-        <PagesAutresProjetsImage v-if="project.image !== null" :src="$config.COCKPIT.ASSETS + project.image.path" />
+        <h2>{{ project.title }}</h2>
+        <PagesAutresProjetsImage v-if="project.image !== null" :src="$config.COCKPIT.ASSETS + project.image.path" class="sm:m-0 m-auto md:w-48 w-28" />
         <div v-html="project.textbox" />
       </div>
     </div>

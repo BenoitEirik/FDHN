@@ -6,7 +6,7 @@
       <!-- Content -->
       <div class="relative flex justify-center flex-wrap items-center">
         <nuxt-img class="absolute -z-10 w-full h-full object-cover rounded-md" format="webp" src="604a6d05811832441d2a83a0.jpg" />
-        <PagesTemoignagesCard v-for="(temoignage, index) in temoignages" :key="index" :data="temoignage" />
+        <PagesTemoignagesCard v-for="(temoignage, index) in page.content" :key="index" :data="temoignage.textbox" />
       </div>
     </div>
   </div>
@@ -15,16 +15,11 @@
 <script>
 export default {
   name: 'Temoignages',
-  async asyncData ({ $content }) {
-    const page = await $content('pages/temoignages/page-1').fetch()
-    const temoignages = [
-      await $content('pages/temoignages/temoignage-1').fetch(),
-      await $content('pages/temoignages/temoignage-2').fetch(),
-      await $content('pages/temoignages/temoignage-3').fetch()
-    ]
+  async asyncData ({ $axios, $config }) {
+    const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/7b82f24764626302dd000263')
+
     return {
-      page,
-      temoignages
+      page
     }
   },
   head () {
