@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center">
     <div class="m-6">
       <!-- Title -->
-      <OtherTitle :title="page1.title" />
+      <OtherTitle :title="page.title" />
       <!-- Content -->
       <div class="max-w-5xl">
         <div class="hidden my-6 alert alert-warning shadow-lg">
@@ -50,10 +50,10 @@ import StepThree from '@/components/Pages/Dons/StepThree.vue'
 
 export default {
   name: 'FaireUnDon',
-  async asyncData ({ $content }) {
-    const page1 = await $content('pages/don/page-1').fetch()
+  async asyncData ({ $axios, $config }) {
+    const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/7dc58e313738396b360001fd')
     return {
-      page1
+      page
     }
   },
   data () {

@@ -1,5 +1,5 @@
 <template>
-  <div :to="to" class="card md:w-5/12 w-full bg-base-100 shadow-xl">
+  <div :to="to" class="card md:w-96 sm:w-72 w-full hover:shadow-lg shadow-md border border-[#eab308]">
     <div class="card-body prose md:prose-lg sm:prose-base prose-sm">
       <h2 class="card-title">
         {{ title }}
@@ -7,7 +7,7 @@
       <p class="line-clamp-3">
         {{ description }}
       </p>
-      <div class="card-actions justify-end">
+      <div class="card-actions justify-center">
         <button class="btn btn-primary" @click="$router.push({ path: to })">
           Ouvrir
         </button>

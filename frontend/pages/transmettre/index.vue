@@ -2,15 +2,15 @@
   <div class="flex flex-col items-center">
     <div class="m-6">
       <!-- Title -->
-      <OtherTitle :title="page1.title" />
+      <OtherTitle :title="page.title" />
       <!-- Content -->
-      <div class="p-6 max-w-5xl w-full flex flex-wrap justify-center gap-6">
+      <div class=" max-w-7xl w-full flex flex-wrap justify-center gap-6">
         <PagesTransmettreCard
-          v-for="project in projects"
-          :key="project.title"
-          :title="project.title"
-          :to="project.to"
-          :description="project.description"
+          v-for="(subpage, index) in Array.from(metadata.children)"
+          :key="index"
+          :title="subpage.title"
+          :to="$nuxt.$route.path + subpage.url"
+          :description="subpage.data.description"
         />
       </div>
     </div>
@@ -19,12 +19,14 @@
 
 <script>
 export default {
-  async asyncData ({ $content }) {
-    const page1 = await $content('pages/transmettre/page-1').only(['title']).fetch()
-    const projects = await $content('pages/transmettre', { deep: true }).where({ path: { $contains: 'page-1', $containsNone: '/pages/transmettre/page-1' } }).skip(1).only(['title', 'to', 'description']).fetch()
+  async asyncData ({ $content, $axios, $config }) {
+    const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/7dfc1b7636633153890003a5')
+    const menu = await $axios.$get($config.COCKPIT.URL + '/api/content/item/navigation')
+    const metadata = Array.from(menu.pages).find(metadata => metadata.title === 'Transmettre')
+
     return {
-      page1,
-      projects
+      page,
+      metadata
     }
   },
   head () {
