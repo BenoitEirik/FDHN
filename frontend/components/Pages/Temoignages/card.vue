@@ -1,5 +1,5 @@
 <template>
-  <div class="relative m-6 md:p-6 sm:p-5 p-4 rounded-md bg-red-50">
+  <div class="relative md:p-6 sm:p-5 p-4 rounded-md bg-red-50">
     <nuxt-img
       class="absolute left-0 top-0 md:w-16 sm:w-12 w-8  bg-red-50 z-10 rounded-full"
       format="webp"

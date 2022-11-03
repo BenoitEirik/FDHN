@@ -4,8 +4,8 @@
       <!-- Title -->
       <OtherTitle :title="page.title" />
       <!-- Content -->
-      <div class="relative flex justify-center flex-wrap items-center">
-        <nuxt-img class="absolute -z-10 w-full h-full object-cover rounded-md" format="webp" src="604a6d05811832441d2a83a0.jpg" />
+      <div class="relative sm:pt-60 pt-0 flex justify-center flex-wrap items-start gap-4">
+        <nuxt-img class="sm:absolute relative top-0 max-w-xl w-full -z-10 rounded-md" format="webp" src="604a6d05811832441d2a83a0.jpg" />
         <PagesTemoignagesCard v-for="(temoignage, index) in page.content" :key="index" :data="temoignage.textbox" />
       </div>
     </div>
