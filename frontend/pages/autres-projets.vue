@@ -2,26 +2,35 @@
   <div class="flex flex-col items-center">
     <div class="m-6">
       <!-- Title -->
-      <OtherTitle :title="page1.title" />
+      <OtherTitle :title="page.content.title" />
       <!-- Content -->
-      <nuxt-content class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page1" />
-      <nuxt-content v-for="projet in projets" :key="projet.title" class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="projet" />
+      <div class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" v-html="page.content[0].textbox" />
+      <div
+        v-for="(project, index) in projects"
+        :key="index"
+        class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify"
+      >
+        <PagesAutresProjetsImage v-if="project.image !== null" :src="$config.COCKPIT.ASSETS + project.image.path" />
+        <div v-html="project.textbox" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  async asyncData ({ $content }) {
-    const page1 = await $content('pages/autres-projets/page-1').fetch()
-    const projets = [
-      await $content('pages/autres-projets/projets/projet-1').fetch(),
-      await $content('pages/autres-projets/projets/projet-2').fetch(),
-      await $content('pages/autres-projets/projets/projet-3').fetch()
-    ]
+  async asyncData ({ $axios, $config }) {
+    const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/14ff733d626435c85500032b')
+
+    const projects = []
+    Array.from(page.content[1].causes).forEach(async (metadata) => {
+      const project = await $axios.$get($config.COCKPIT.URL + `/api/content/item/causes/${metadata._id}`)
+      projects.push(project)
+    })
+
     return {
-      page1,
-      projets
+      page,
+      projects
     }
   },
   head () {
