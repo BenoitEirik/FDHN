@@ -2,13 +2,12 @@
   <div class="flex flex-col items-center">
     <div class="m-6">
       <!-- Title -->
-      <OtherTitle :title="page.content.title" />
+      <OtherTitle :title="page.title" />
       <!-- Content -->
-      <div class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" v-html="page.content[0].textbox" />
       <div
         v-for="(project, index) in projects"
         :key="index"
-        class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify"
+        class="my-6 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify overflow-hidden"
       >
         <h2>{{ project.title }}</h2>
         <PagesAutresProjetsImage v-if="project.image !== null" :src="$config.COCKPIT.ASSETS + project.image.path" class="sm:m-0 m-auto md:w-48 w-28" />
@@ -24,7 +23,7 @@ export default {
     const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/14ff733d626435c85500032b')
 
     const projects = []
-    Array.from(page.content[1].causes).forEach(async (metadata) => {
+    Array.from(page.content[0].causes).forEach(async (metadata) => {
       const project = await $axios.$get($config.COCKPIT.URL + `/api/content/item/causes/${metadata._id}`)
       projects.push(project)
     })
