@@ -4,7 +4,10 @@
       <!-- Title -->
       <OtherTitle :title="page.title" />
       <!-- Content -->
-      <nuxt-content class="max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify" :document="page" />
+      <div
+        class="max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify"
+        v-html="page.content[0].textbox"
+      />
       <div class="form-control w-full">
         <!-- Sujet -->
         <label class="label">
@@ -35,8 +38,8 @@
 
 <script>
 export default {
-  async asyncData ({ $content }) {
-    const page = await $content('pages/contact/page').fetch()
+  async asyncData ({ $axios, $config }) {
+    const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/7fac0ebc643030d7c3000348')
     return {
       page
     }

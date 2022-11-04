@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  async asyncData ({ $content, $axios, $config }) {
+  async asyncData ({ $axios, $config }) {
     const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/7dfc1b7636633153890003a5')
     const menu = await $axios.$get($config.COCKPIT.URL + '/api/content/item/navigation')
     const metadata = Array.from(menu.pages).find(metadata => metadata.title === 'Transmettre')
