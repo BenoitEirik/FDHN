@@ -5,11 +5,12 @@
       <OtherTitle :title="page.title" />
       <!-- Content -->
       <div class=" max-w-7xl w-full flex flex-wrap justify-center gap-6">
-        <PagesTransmettreCard
+        <OtherNavcard
           v-for="(subpage, index) in Array.from(metadata.children)"
           :key="index"
           :title="subpage.title"
           :to="$nuxt.$route.path + subpage.url"
+          :subpage-id="subpage.data.page._id"
           :description="subpage.data.description"
         />
       </div>

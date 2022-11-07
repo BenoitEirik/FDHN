@@ -6,11 +6,11 @@
       src="quote-open.png"
     />
     <div
-      class="p-6 max-w-lg prose md:prose-lg sm:prose-base prose-sm text-justify border-yellow-500 border-2 rounded-md"
+      class="md:p-6 sm:p-5 p-4 max-w-lg prose md:prose-lg sm:prose-base prose-sm text-justify border-yellow-500 border-2 rounded-md"
       v-html="data"
     />
     <nuxt-img
-      class="absolute right-0 bottom-0 md:w-16 sm:w-12 w-8 bg-red-50 z-10 rounded-md"
+      class="absolute right-0 bottom-0 md:w-16 sm:w-12 w-8 bg-red-50 z-10 rounded-full"
       format="webp"
       src="quote-close.png"
     />

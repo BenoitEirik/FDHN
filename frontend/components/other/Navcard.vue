@@ -8,7 +8,7 @@
         {{ description }}
       </p>
       <div class="card-actions justify-center">
-        <button class="btn btn-primary" @click="$router.push({ path: to })">
+        <button class="btn btn-primary" @click="$router.push({ path: to, query: { id: subpageId } })">
           Ouvrir
         </button>
       </div>
@@ -24,6 +24,10 @@ export default {
       default: ''
     },
     to: {
+      type: String,
+      default: ''
+    },
+    subpageId: {
       type: String,
       default: ''
     },

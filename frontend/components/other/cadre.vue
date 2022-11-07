@@ -1,14 +1,14 @@
 <template>
-  <div class="mt-6 max-w-5xl rounded contenu-shadow">
+  <div class="mt-6 max-w-5xl w-full rounded contenu-shadow">
     <nuxt-img
-      v-if="logo !== {}"
-      class="m-auto p-6 w-96 contenu-logo-drop-shadow"
+      v-if="logo !== null"
+      class="m-auto pt-6 px-6 w-96 contenu-logo-drop-shadow"
       format="webp"
       :src="$config.COCKPIT.ASSETS + logo.path"
       :alt="logo.title"
     />
     <div
-      class="px-9 pb-9 max-w-full prose md:prose-lg sm:prose-base prose-sm"
+      class="md:p-6 sm:p-5 p-4 max-w-full prose md:prose-lg sm:prose-base prose-sm"
       v-html="contenu"
     />
   </div>
