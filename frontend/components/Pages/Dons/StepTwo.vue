@@ -1,23 +1,50 @@
 <template>
-  <div class="relative px-6 pt-12 w-full flex flex-col justify-center items-center">
-    <div ref="loaderRef" class="absolute m-6 inset-0 bg-white z-40 flex justify-center items-center">
-      <button class="btn btn-ghost btn-lg loading" />
+  <div class="px-6 py-12 flex flex-col items-center">
+    <div class="form-control w-full max-w-xs">
+      <!-- Montant -->
+      <label class="label">
+        <span class="label-text">Montant</span>
+      </label>
+      <label class="input-group">
+        <input v-model="amount" type="text" placeholder="1€ minimum" class="input input-bordered focus:input-primary w-full" @change="validateAmount">
+        <span>€</span>
+      </label>
+      <label class="label">
+        <span class="label-text-alt">Tous les dons sont défiscalisables</span>
+      </label>
+      <!-- Cause -->
+      <label class="label">
+        <span class="label-text">Cause</span>
+      </label>
+      <select v-model="reason" class="select select-bordered focus:select-primary w-full">
+        <option disabled value="">
+          Choisissez
+        </option>
+        <option v-for="option in options" :key="option.value" :value="option.value">
+          {{ option.text }}
+        </option>
+      </select>
+      <label class="label">
+        <span class="label-text-alt underline">
+          <nuxt-link to="/autres-projets">En savoir plus sur les causes</nuxt-link>
+        </span>
+      </label>
+      <!-- Nom -->
+      <label class="label">
+        <span class="label-text">Nom</span>
+      </label>
+      <input v-model="lastname" type="text" placeholder="Nom" class="input input-bordered focus:input-primary w-full">
+      <!-- Prénom -->
+      <label class="label">
+        <span class="label-text">Prénom</span>
+      </label>
+      <input v-model="firstname" type="text" placeholder="Prénom" class="input input-bordered focus:input-primary w-full">
+      <!-- Adresse e-mail -->
+      <label class="label">
+        <span class="label-text">Adresse e-mail</span>
+      </label>
+      <input v-model="email" type="email" placeholder="adresse@email.com" class="input input-bordered focus:input-primary w-full">
     </div>
-    <stripe-element-payment
-      v-if="activeStripeElementPayment"
-      ref="paymentRef"
-      class="max-w-lg w-11/12 min-h-16"
-      :test-mode="testMode"
-      :pk="pk"
-      :elements-options="elementsOptions"
-      :confirm-params="confirmParams"
-      locale="fr"
-      @element-ready="removeLoader"
-      @element-change="updateAmount"
-    />
-    <button ref="btnRef" class="m-6 btn btn-primary w-64 rounded-full btn-outline" @click="pay">
-      Payer
-    </button>
   </div>
 </template>
 
@@ -25,96 +52,47 @@
 export default {
   data () {
     return {
-      testMode: false,
-      activeStripeElementPayment: false,
-      pk: this.$config.STRIPE_PK,
-      elementsOptions: {
-        fonts: [
-          {
-            cssSrc: 'https://fonts.googleapis.com/css2?family=Hahmlet&display=swap'
-          }
-        ],
-        apparence: {
-          theme: 'stripe',
-          variables: {
-            colorPrimary: '#eab308',
-            colorBackground: '#ffffff',
-            colorText: '#30313d',
-            colorDanger: '#b91c1c',
-            fontFamily: 'Hahmlet',
-            spacingUnit: '2px',
-            borderRadius: '8px'
-          }
-        }
-      },
-      confirmParams: {
-        return_url: 'https://fdhn.fr/payment-success',
-        payment_method_data: {}
-      }
+      amount: '',
+      reason: '',
+      options: [
+        { text: 'L\'Homme Nouveau', value: 'L\'Homme Nouveau' },
+        { text: 'La Scolafricaine', value: 'La Scolafricaine' },
+        { text: 'Le CIELT', value: 'Le CIELT' },
+        { text: 'L\'association Amitié Charles de Foucauld', value: 'L\'association Amitié Charles de Foucauld' }
+      ],
+      lastname: '',
+      firstname: '',
+      email: ''
     }
   },
-  computed: {
-    amount () {
-      return this.$store.state.amount + '00'
-    },
-    reason () {
-      return `Cause : ${this.$store.state.reason}`
-    },
-    lastname () {
-      return this.$store.state.lastname
-    },
-    firstname () {
-      return this.$store.state.firstname
-    },
-    email () {
-      return this.$store.state.email
-    }
-  },
-  beforeMount () {
-    // Billing details
-    this.confirmParams.payment_method_data.billing_details = {
-      name: `${this.lastname} ${this.firstname}`,
-      email: this.email
-    }
-  },
-  mounted () {
-    this.generatePaymentIntent()
+  created () {
+    this.$nuxt.$on('store-metadata', () => {
+      this.storeMetadata()
+    })
   },
   methods: {
-    removeLoader () {
-      this.$refs.loaderRef.classList.add('hidden')
-    },
-    setStripeTestMode () {
-      if (window.location.hostname === 'fdhn.fr') {
-        this.testMode = false
+    validateAmount () {
+      if (this.isNumeric(String(this.amount))) {
+        // Validate the step
+        this.$emit('can-continue', { value: true })
       } else {
-        this.testMode = true
+        alert('Merci d\'entrer un montant valide d\'au moins 1€')
       }
     },
-    generatePaymentIntent () {
-      this.$axios.$post('/api/create-payment-intent', {
-        amount: this.amount,
-        description: this.reason,
-        metadata: {
-          Cause: this.reason,
-          Nom: this.lastname,
-          Prénom: this.firstname,
-          Email: this.email
-        }
-      }).then((paymentIntent) => {
-        this.elementsOptions.clientSecret = paymentIntent.clientSecret
-        this.activeStripeElementPayment = true
-      })
+    storeMetadata () {
+      // Store all user data
+      this.$store.commit('setAmount', Number(this.amount))
+      this.$store.commit('setReason', this.reason)
+      this.$store.commit('setReason', this.reason)
+      this.$store.commit('setLastname', this.lastname)
+      this.$store.commit('setFirstname', this.firstname)
+      this.$store.commit('setEmail', this.email)
     },
-    updateAmount () {
-      // TODO
-    },
-    pay () {
-      this.$refs.btnRef.innerHTML = ''
-      this.$refs.btnRef.classList.add('loading')
-      this.$refs.paymentRef.submit()
-      this.$emit('can-continue', { value: true })
-      this.$emit('change-next', { value: true })
+    isNumeric (str) {
+      if (typeof str !== 'string') {
+        return false
+      }
+      return !isNaN(str) && !isNaN(parseFloat(str))
     }
   }
 }

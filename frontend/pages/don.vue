@@ -44,9 +44,9 @@
 </template>
 
 <script>
-import StepOne from '@/components/Pages/Dons/StepOne.vue'
-import StepTwo from '@/components/Pages/Dons/StepTwo.vue'
-import StepThree from '@/components/Pages/Dons/StepThree.vue'
+import StepOne from '~/components/Pages/Dons/StepOne.vue'
+import StepTwo from '~/components/Pages/Dons/StepTwo.vue'
+import StepThree from '~/components/Pages/Dons/StepThree.vue'
 
 export default {
   name: 'FaireUnDon',
@@ -60,26 +60,26 @@ export default {
     return {
       steps: [
         {
-          icon: 'euro_symbol',
+          icon: 'info',
           name: 'first',
           title: 'Étape 1',
-          subtitle: 'Montant du don',
+          subtitle: 'Type de don',
           component: StepOne,
           completed: false
         },
         {
-          icon: 'credit_card',
+          icon: 'euro_symbol',
           name: 'second',
           title: 'Étape 2',
-          subtitle: 'Moyen de paiement',
+          subtitle: 'Montant du don',
           component: StepTwo,
           completed: false
         },
         {
-          icon: 'done_outline',
+          icon: 'credit_card',
           name: 'third',
           title: 'Étape 3',
-          subtitle: 'Finalisation',
+          subtitle: 'Moyen de paiement',
           component: StepThree,
           completed: false
         }
