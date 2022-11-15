@@ -56,7 +56,7 @@ export default {
       reason: '',
       options: [
         { text: 'L\'Homme Nouveau', value: 'L\'Homme Nouveau' },
-        { text: 'Le CLub des Hommes en noir', value: 'Le CLub des Hommes en noir' },
+        { text: 'Le Club des Hommes en noir', value: 'Le Club des Hommes en noir' },
         { text: 'La Scolafricaine', value: 'La Scolafricaine' },
         { text: 'Le CIELT', value: 'Le CIELT' },
         { text: 'L\'association Amitié Charles de Foucauld', value: 'L\'association Amitié Charles de Foucauld' }
