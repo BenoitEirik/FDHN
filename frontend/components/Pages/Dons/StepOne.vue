@@ -36,7 +36,7 @@ export default {
         this.$refs.btn_simple_donation.classList.add('btn-outline')
         this.$refs.btn_recurrent_donation.classList.remove('btn-outline')
         this.$emit('can-continue', { value: false })
-        window.location.href = 'https://donate.stripe.com/aEU02SeOH8jZ7Is7ss'
+        window.location.href = 'https://donate.stripe.com/fZe5ncfSL2ZFfaUcMN'
       }
     }
   }
