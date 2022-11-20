@@ -15,6 +15,7 @@ app.post('/create-payment-intent', async (req, res) => {
     description,
     metadata,
     currency: 'eur',
+    receipt_email: metadata.Email,
     automatic_payment_methods: {
       enabled: true
     }

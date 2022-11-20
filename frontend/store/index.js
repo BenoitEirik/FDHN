@@ -3,7 +3,10 @@ export const state = () => ({
   reason: '',
   lastname: '',
   firstname: '',
-  email: ''
+  email: '',
+  address: '',
+  zipcode: '',
+  city: ''
 })
 
 export const mutations = {
@@ -21,5 +24,14 @@ export const mutations = {
   },
   setEmail (state, email) {
     state.email = email
+  },
+  setAddress (state, address) {
+    state.address = address
+  },
+  setZipcode (state, zipcode) {
+    state.zipcode = zipcode
+  },
+  setCity (state, city) {
+    state.city = city
   }
 }

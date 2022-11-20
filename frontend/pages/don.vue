@@ -103,7 +103,7 @@ export default {
     completeStep (payload) {
       this.steps.forEach((step) => {
         if (step.name === payload.name) {
-          if (step.name === 'first') {
+          if (step.name === 'second') {
             this.$nuxt.$emit('store-metadata')
           }
           step.completed = true

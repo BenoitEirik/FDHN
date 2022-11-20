@@ -68,13 +68,27 @@ export default {
     },
     email () {
       return this.$store.state.email
+    },
+    address () {
+      return this.$store.state.address
+    },
+    zipcode () {
+      return this.$store.state.zipcode
+    },
+    city () {
+      return this.$store.state.city
     }
   },
   beforeMount () {
     // Billing details
     this.confirmParams.payment_method_data.billing_details = {
       name: `${this.lastname} ${this.firstname}`,
-      email: this.email
+      email: this.email,
+      address: {
+        line1: this.address,
+        postal_code: this.zipcode,
+        city: this.city
+      }
     }
   },
   mounted () {
@@ -99,7 +113,10 @@ export default {
           Cause: this.reason,
           Nom: this.lastname,
           Prénom: this.firstname,
-          Email: this.email
+          Email: this.email,
+          Adresse: this.address,
+          'Code postale': this.zipcode,
+          Ville: this.city
         }
       }).then((paymentIntent) => {
         this.elementsOptions.clientSecret = paymentIntent.clientSecret
