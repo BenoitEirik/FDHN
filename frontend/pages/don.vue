@@ -52,6 +52,7 @@ export default {
   name: 'FaireUnDon',
   async asyncData ({ $axios, $config }) {
     const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/7dc58e313738396b360001fd')
+
     return {
       page
     }
@@ -127,3 +128,16 @@ export default {
   }
 }
 </script>
+
+<style>
+.stepper-box {
+  border-radius: 8px;
+}
+.stepper-box .top .steps-wrapper .step .circle i {
+  background-color: #e0a82e !important;
+}
+.stepper-box .bottom .stepper-button.next {
+  background-color: #e0a82e !important;
+  border-radius: 8px;
+}
+</style>

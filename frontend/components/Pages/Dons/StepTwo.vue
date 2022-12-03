@@ -78,14 +78,15 @@ export default {
       address: '',
       zipcode: '',
       city: '',
-      options: [
-        { text: 'L\'Homme Nouveau', value: 'L\'Homme Nouveau' },
-        { text: 'Le Club des Hommes en noir', value: 'Le Club des Hommes en noir' },
-        { text: 'La Scolafricaine', value: 'La Scolafricaine' },
-        { text: 'Le CIELT', value: 'Le CIELT' },
-        { text: 'L\'association Amitié Charles de Foucauld', value: 'L\'association Amitié Charles de Foucauld' }
-      ]
+      options: []
     }
+  },
+  async fetch () {
+    // Retrieve list of reasons for donations (= other projects)
+    const reasons = await this.$axios.$get(this.$config.COCKPIT.URL + '/api/content/items/causes')
+    this.options = reasons.map(function (reason) {
+      return { text: reason.title, value: reason.title }
+    })
   },
   created () {
     this.$nuxt.$on('store-metadata', () => {
