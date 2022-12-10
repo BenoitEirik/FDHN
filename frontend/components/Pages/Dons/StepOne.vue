@@ -25,6 +25,18 @@ export default {
       choice: 0
     }
   },
+  mounted () {
+    // Change buttons language of the stepper
+    const nextButtons = document.getElementsByClassName('stepper-button next')
+    if (nextButtons.length !== 0) {
+      nextButtons[0].querySelector('span').innerHTML = 'Suivant'
+    }
+
+    const backButtons = document.getElementsByClassName('stepper-button previous')
+    if (backButtons.length !== 0) {
+      backButtons[0].querySelector('span').innerHTML = 'Retour'
+    }
+  },
   methods: {
     donChoice (choice) {
       this.choice = choice
