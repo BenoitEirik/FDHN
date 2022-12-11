@@ -61,7 +61,6 @@ export default {
     'nuxt-protected-mailto',
     '@nuxtjs/axios',
     '@nuxt/image',
-    '@nuxt/content',
     '@nuxtjs/robots',
     '@nuxtjs/sitemap'
   ],
