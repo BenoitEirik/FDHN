@@ -22,6 +22,24 @@ app.post('/create-payment-intent', async (req, res) => {
   })
 
   res.send({
+    id: paymentIntent.id,
+    clientSecret: paymentIntent.client_secret
+  })
+})
+
+app.post('/update-payment-intent', async (req, res) => {
+  const { id, amount, description, metadata } = req.body
+
+  // Create a PaymentIntent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.update(id, {
+    amount,
+    description,
+    metadata,
+    receipt_email: metadata.Email
+  })
+
+  res.send({
+    id: paymentIntent.id,
     clientSecret: paymentIntent.client_secret
   })
 })

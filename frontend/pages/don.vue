@@ -105,7 +105,7 @@ export default {
       this.steps.forEach((step) => {
         if (step.name === payload.name) {
           if (step.name === 'second') {
-            this.$nuxt.$emit('store-metadata')
+            this.$nuxt.$emit('process-payment-intent')
           }
           step.completed = true
         }

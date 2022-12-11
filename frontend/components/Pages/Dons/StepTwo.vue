@@ -89,8 +89,9 @@ export default {
     })
   },
   created () {
-    this.$nuxt.$on('store-metadata', () => {
-      this.storeMetadata()
+    // Create event to store metadata from don page
+    this.$nuxt.$on('process-payment-intent', () => {
+      this.processPaymentIntent()
     })
   },
   mounted () {
@@ -118,25 +119,27 @@ export default {
           this.zipcode !== '' &&
           this.city !== ''
         ) {
-          // Validate the step
+          // Enable the next button
           this.$emit('can-continue', { value: true })
         }
       } else {
-        // Validate the step
+        // Disable the next button
         this.$emit('can-continue', { value: false })
+        // Alert about the error amount
         alert('Merci d\'entrer un montant valide d\'au moins 1€')
       }
     },
-    storeMetadata () {
-      // Store all user data
-      this.$store.commit('setAmount', Number(this.amount))
-      this.$store.commit('setReason', this.reason)
-      this.$store.commit('setLastname', this.lastname)
-      this.$store.commit('setFirstname', this.firstname)
-      this.$store.commit('setEmail', this.email)
-      this.$store.commit('setAddress', this.address)
-      this.$store.commit('setZipcode', this.zipcode)
-      this.$store.commit('setCity', this.city)
+    processPaymentIntent () {
+      this.$store.dispatch('processPaymentIntent', {
+        amount: Number(this.amount),
+        reason: this.reason,
+        lastname: this.lastname,
+        firstname: this.firstname,
+        email: this.email,
+        address: this.address,
+        zipcode: this.zipcode,
+        city: this.city
+      })
     },
     isNumeric (str) {
       if (typeof str !== 'string') {
