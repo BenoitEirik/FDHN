@@ -4,9 +4,10 @@
       <!-- Title -->
       <OtherTitle :title="page.title" />
       <!-- Content -->
-      <div class="max-w-5xl">
+      <div v-for="(item, index) in page.content" :key="index">
         <vueper-slides
-          class="no-shadow"
+          v-if="item.hasOwnProperty('carousel') && item.carousel !== null && item.carousel.length !== 0"
+          class="max-w-5xl no-shadow"
           prevent-y-scroll
           :dragging-distance="50"
           bullets-outside
@@ -18,20 +19,18 @@
           autoplay
           :breakpoints="breakpoints"
         >
-          <vueper-slide v-for="(slide, i) in slides" :key="i">
+          <vueper-slide v-for="(slide, i) in item.carousel" :key="i">
             <template #content>
-              <nuxt-img class="m-auto h-full object-contain" format="webp" :src="`brochure/${slide}`" />
+              <nuxt-img class="m-auto h-full object-contain" format="webp" :src="`https://admin.fdhn.fr/storage/uploads${slide.path}`" />
             </template>
           </vueper-slide>
         </vueper-slides>
-      </div>
-      <div v-for="(item, index) in page.content" :key="index">
         <div
-          v-if="item.textbox !== null && item.textbox !== ''"
+          v-else-if="item.textbox !== null && item.textbox !== ''"
           class="mt-12 max-w-5xl prose md:prose-lg sm:prose-base prose-sm text-justify"
           v-html="item.textbox"
         />
-        <OtherCadre v-else-if="item.cadre != null && item.cadre !== ''" :logo="item.cadre.logo" :contenu="item.cadre.textbox" />
+        <OtherCadre v-else-if="item.cadre !== null && item.cadre !== ''" :logo="item.cadre.logo" :contenu="item.cadre.textbox" />
       </div>
     </div>
   </div>
@@ -51,15 +50,6 @@ export default {
   },
   data () {
     return {
-      slides: [
-        'image-008.png',
-        'image-010.png',
-        'image-012.png',
-        'image-014.png',
-        'image-016.png',
-        'image-018.png',
-        'image-020.png'
-      ],
       breakpoints: {
         640: {
           visibleSlides: 1,
