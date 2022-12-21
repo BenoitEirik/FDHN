@@ -83,7 +83,7 @@ export const actions = {
           Prénom: metadata.firstname,
           Email: metadata.email,
           Adresse: metadata.address,
-          'Code postale': metadata.zipcode,
+          'Code postal': metadata.zipcode,
           Ville: metadata.city
         }
       }).then((paymentIntent) => {
@@ -104,7 +104,7 @@ export const actions = {
           Prénom: metadata.firstname,
           Email: metadata.email,
           Adresse: metadata.address,
-          'Code postale': metadata.zipcode,
+          'Code postal': metadata.zipcode,
           Ville: metadata.city
         }
       }).then((paymentIntent) => {

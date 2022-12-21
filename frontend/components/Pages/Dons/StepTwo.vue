@@ -49,11 +49,11 @@
         <span class="label-text">Adresse *</span>
       </label>
       <input v-model="address" type="text" placeholder="Adresse" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
-      <!-- Code postale -->
+      <!-- Code postal -->
       <label class="label">
-        <span class="label-text">Code postale *</span>
+        <span class="label-text">Code postal *</span>
       </label>
-      <input v-model="zipcode" type="number" placeholder="Code postale" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+      <input v-model="zipcode" type="number" placeholder="Code postal" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
       <!-- Ville -->
       <label class="label">
         <span class="label-text">Ville *</span>
@@ -95,6 +95,11 @@ export default {
     this.$nuxt.$on('process-payment-intent', () => {
       this.processPaymentIntent()
     })
+
+    // Validate form when coming or coming back to this step
+    this.$nuxt.$on('validate-form', () => {
+      this.validateForm()
+    })
   },
   mounted () {
     // Change buttons language of the stepper
@@ -116,9 +121,9 @@ export default {
         this.reason !== '' &&
         this.lastname !== '' &&
         this.firstname !== '' &&
-        this.email !== '' &&
+        this.isEmail(this.email) &&
         this.address !== '' &&
-        this.zipcode !== '' &&
+        this.isNumeric(this.zipcode) &&
         this.city !== ''
       ) {
         this.$emit('can-continue', { value: true })
@@ -143,7 +148,23 @@ export default {
         return false
       }
       return !isNaN(str) && !isNaN(parseFloat(str))
+    },
+    isEmail (email) {
+      return String(email).match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
     }
   }
 }
 </script>
+
+<style scoped>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
