@@ -23,10 +23,10 @@ export default {
     const page = await $axios.$get($config.COCKPIT.URL + '/api/content/item/page/14ff733d626435c85500032b')
 
     const projects = []
-    Array.from(page.content[0].causes).forEach(async (metadata) => {
-      const project = await $axios.$get($config.COCKPIT.URL + `/api/content/item/causes/${metadata._id}`)
-      projects.push(project)
-    })
+    const causes = Array.from(page.content[0].causes)
+    for (let i = 0; i < causes.length; i++) {
+      projects.push(await $axios.$get($config.COCKPIT.URL + `/api/content/item/causes/${causes[i]._id}`))
+    }
 
     return {
       page,
