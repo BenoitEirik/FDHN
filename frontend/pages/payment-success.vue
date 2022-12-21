@@ -7,8 +7,11 @@
             <h1>
               Merci
             </h1>
-            <p class="py-6">
+            <p class="pt-6">
               Le don a été effectué, merci de votre générosité !
+            </p>
+            <p class="pb-6">
+              Vous recevrez dans quelques instants un reçu par email.
             </p>
             <button class="btn btn-primary" @click="$router.push({ path: '/' })">
               Retourner à la page d'accueil
