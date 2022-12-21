@@ -25,10 +25,14 @@ export const state = () => ({
     return_url: 'https://fdhn.fr/payment-success',
     payment_method_data: {}
   },
-  paymentId: ''
+  paymentId: '',
+  metadata: {}
 })
 
 export const mutations = {
+  setMetadata (state, metadata) {
+    state.metadata = metadata
+  },
   setShowLoader (state, showLoader) {
     state.showLoader = showLoader
   },
@@ -54,6 +58,7 @@ export const actions = {
     // Set (or reset) Stripe Element Payment
     commit('setShowLoader', true)
     commit('setActiveStripeElementPayment', false)
+    commit('setMetadata', metadata)
 
     // Store billing details
     state.confirmParams.payment_method_data.billing_details = {

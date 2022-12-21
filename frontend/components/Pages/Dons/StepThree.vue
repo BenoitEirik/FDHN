@@ -6,13 +6,59 @@
     <stripe-element-payment
       v-if="activeStripeElementPayment"
       ref="paymentRef"
-      class="max-w-lg w-11/12 min-h-16"
+      class="mx-6 self-stretch min-h-16"
       :pk="pk"
       :elements-options="elementsOptions"
       :confirm-params="confirmParams"
       locale="fr"
       @element-ready="() => { $store.commit('setShowLoader', false) }"
     />
+    <div class="collapse self-stretch m-6 collapse-plus border border-base-300 bg-base-100 rounded-md">
+      <input type="checkbox" class="peer">
+      <div class="collapse-title text-sm text-primary-content peer-checked:text-secondary-content">
+        Récapitulatif
+      </div>
+      <div class="collapse-content text-primary-content peer-checked:text-secondary-content">
+        <div class="overflow-x-auto">
+          <table class="table table-compact w-full">
+            <tbody>
+              <tr>
+                <td>Montant</td>
+                <td>{{ String(metadata.amount).slice(0, -2) + ','+ String(metadata.amount).slice(-2) }}</td>
+              </tr>
+              <tr>
+                <td>Cause</td>
+                <td>{{ metadata.reason }}</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>{{ metadata.email }}</td>
+              </tr>
+              <tr>
+                <td>Nom</td>
+                <td>{{ metadata.lastname }}</td>
+              </tr>
+              <tr>
+                <td>Prénom</td>
+                <td>{{ metadata.firstname }}</td>
+              </tr>
+              <tr>
+                <td>Adresse</td>
+                <td>{{ metadata.address }}</td>
+              </tr>
+              <tr>
+                <td>Code postal</td>
+                <td>{{ metadata.zipcode }}</td>
+              </tr>
+              <tr>
+                <td>Ville</td>
+                <td>{{ metadata.city }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
     <button ref="btnRef" class="m-6 btn btn-primary w-64 rounded-full btn-outline" @click="pay">
       Payer
     </button>
@@ -27,6 +73,9 @@ export default {
     }
   },
   computed: {
+    metadata () {
+      return this.$store.state.metadata
+    },
     showLoader () {
       return this.$store.state.showLoader
     },
