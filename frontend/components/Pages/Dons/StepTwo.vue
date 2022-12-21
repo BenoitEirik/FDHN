@@ -6,7 +6,7 @@
         <span class="label-text">Montant *</span>
       </label>
       <label class="input-group">
-        <input v-model="amount" type="text" placeholder="1€ minimum" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+        <input v-model="amount" type="number" placeholder="1€ minimum" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
         <span>€</span>
       </label>
       <label class="label">
@@ -67,10 +67,12 @@
 </template>
 
 <script>
+import StripeMoneyFormat from 'stripe-money-format'
+
 export default {
   data () {
     return {
-      amount: '',
+      amount: null,
       reason: '',
       lastname: '',
       firstname: '',
@@ -108,30 +110,25 @@ export default {
   },
   methods: {
     validateForm () {
-      if (this.isNumeric(String(this.amount))) {
-        if (
-          this.amount !== '' &&
-          this.reason !== '' &&
-          this.lastname !== '' &&
-          this.firstname !== '' &&
-          this.email !== '' &&
-          this.address !== '' &&
-          this.zipcode !== '' &&
-          this.city !== ''
-        ) {
-          // Enable the next button
-          this.$emit('can-continue', { value: true })
-        }
+      // Enable the Next step button if all fields are valid
+      if (
+        this.isNumeric(this.amount) &&
+        this.reason !== '' &&
+        this.lastname !== '' &&
+        this.firstname !== '' &&
+        this.email !== '' &&
+        this.address !== '' &&
+        this.zipcode !== '' &&
+        this.city !== ''
+      ) {
+        this.$emit('can-continue', { value: true })
       } else {
-        // Disable the next button
         this.$emit('can-continue', { value: false })
-        // Alert about the error amount
-        alert('Merci d\'entrer un montant valide d\'au moins 1€')
       }
     },
     processPaymentIntent () {
       this.$store.dispatch('processPaymentIntent', {
-        amount: Number(this.amount),
+        amount: StripeMoneyFormat.toStripeCustomCurrency('EUR', 'fr-FR', Number(this.amount)),
         reason: this.reason,
         lastname: this.lastname,
         firstname: this.firstname,

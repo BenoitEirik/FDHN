@@ -70,7 +70,7 @@ export const actions = {
     // Generate (or update) payment intent from the backend
     if (!state.alreadyGeneratedPaymentIntent) {
       this.$axios.$post('/api/create-payment-intent', {
-        amount: metadata.amount + '00',
+        amount: metadata.amount,
         description: metadata.reason,
         metadata: {
           Cause: metadata.reason,
@@ -91,7 +91,7 @@ export const actions = {
     } else {
       this.$axios.$post('/api/update-payment-intent', {
         id: state.paymentId,
-        amount: metadata.amount + '00',
+        amount: metadata.amount,
         description: metadata.reason,
         metadata: {
           Cause: metadata.reason,
