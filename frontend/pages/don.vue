@@ -23,6 +23,7 @@
           @completed-step="completeStep"
           @active-step="isStepActive"
           @stepper-finished="alert"
+          @clicking-back="isClickingBack"
         />
         <!-- Bannière indicatif -->
         <div ref="bannerRef" class="mt-6 alert shadow-lg">
@@ -118,11 +119,16 @@ export default {
           if (step.completed === true) {
             step.completed = false
           }
-          if (step.name === 'first') {
-            this.$nuxt.$emit('init-step-one')
-          } else if (step.name === 'second') {
+          if (step.name === 'second') {
             this.$nuxt.$emit('validate-form')
           }
+        }
+      })
+    },
+    isClickingBack (payload) {
+      this.steps.forEach((step) => {
+        if (step.name === 'first') {
+          this.$nuxt.$emit('reset-step-one')
         }
       })
     },

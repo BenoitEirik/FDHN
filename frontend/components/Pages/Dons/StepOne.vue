@@ -27,8 +27,8 @@ export default {
   },
   created () {
     // Init step one when coming or coming back to this step
-    this.$nuxt.$on('init-step-one', () => {
-      this.initStepOne()
+    this.$nuxt.$on('reset-step-one', () => {
+      this.resetStepOne()
     })
   },
   mounted () {
@@ -44,11 +44,10 @@ export default {
     }
   },
   methods: {
-    initStepOne () {
-      if (!this.$refs.btn_simple_donation.classList.contains('btn-outline') || !this.$refs.btn_recurrent_donation.classList.contains('btn-outline')) {
-        this.$emit('can-continue', { value: true })
-      } else {
-        this.$emit('can-continue', { value: false })
+    resetStepOne () {
+      if (this.$refs.btn_simple_donation !== undefined && this.$refs.btn_recurrent_donation !== undefined) {
+        this.$refs.btn_simple_donation.classList.add('btn-outline')
+        this.$refs.btn_recurrent_donation.classList.add('btn-outline')
       }
     },
     donChoice (choice) {
