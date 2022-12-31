@@ -118,7 +118,9 @@ export default {
           if (step.completed === true) {
             step.completed = false
           }
-          if (step.name === 'second') {
+          if (step.name === 'first') {
+            this.$nuxt.$emit('init-step-one')
+          } else if (step.name === 'second') {
             this.$nuxt.$emit('validate-form')
           }
         }

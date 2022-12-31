@@ -25,6 +25,12 @@ export default {
       choice: 0
     }
   },
+  created () {
+    // Init step one when coming or coming back to this step
+    this.$nuxt.$on('init-step-one', () => {
+      this.initStepOne()
+    })
+  },
   mounted () {
     // Change buttons language of the stepper
     const nextButtons = document.getElementsByClassName('stepper-button next')
@@ -38,6 +44,13 @@ export default {
     }
   },
   methods: {
+    initStepOne () {
+      if (!this.$refs.btn_simple_donation.classList.contains('btn-outline') || !this.$refs.btn_recurrent_donation.classList.contains('btn-outline')) {
+        this.$emit('can-continue', { value: true })
+      } else {
+        this.$emit('can-continue', { value: false })
+      }
+    },
     donChoice (choice) {
       this.choice = choice
       if (choice === 0) {
