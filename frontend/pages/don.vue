@@ -101,8 +101,16 @@ export default {
     }
   },
   methods: {
+    scrollToTop () {
+      if (!this.$isServer) {
+        this.$nextTick(() => {
+          window.scrollTo(0, 0)
+        })
+      }
+    },
     // Executed when @completed-step event is triggered
     completeStep (payload) {
+      this.scrollToTop()
       this.steps.forEach((step) => {
         if (step.name === payload.name) {
           if (step.name === 'second') {
@@ -126,6 +134,7 @@ export default {
       })
     },
     isClickingBack (payload) {
+      this.scrollToTop()
       this.steps.forEach((step) => {
         if (step.name === 'first') {
           this.$nuxt.$emit('reset-step-one')
