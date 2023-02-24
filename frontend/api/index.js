@@ -47,22 +47,22 @@ app.post('/update-payment-intent', async (req, res) => {
 })
 
 app.post('/create-subscription', async (req, res) => {
+  const { metadata } = req.body
+
   // Create customer
   const customer = await stripe.customers.create({
-    name: '',
-    email: '',
+    name: `${metadata.lastname} ${metadata.firstname}`,
+    email: metadata.email,
     address: {
-      line1: '',
-      postal_code: '',
-      city: ''
+      line1: metadata.address,
+      postal_code: metadata.zipcode,
+      city: metadata.city
     }
   })
 
-  console.log('customer =', customer)
-
   // Create price from customer
   const price = await stripe.prices.create({
-    unit_amount: 10000, // TODO:
+    unit_amount: metadata.amount,
     currency: 'eur',
     recurring: {
       interval: 'month'
@@ -70,17 +70,23 @@ app.post('/create-subscription', async (req, res) => {
     product: process.env.STRIPE_SUB_PROD_ID // Link with product created on dashboard
   })
 
-  console.log('price =', price)
-
   // Create subscription
   const subscription = await stripe.subscriptions.create({
     customer: customer.id,
     items: [
       { price: price.id }
-    ]
+    ],
+    payment_behavior: 'default_incomplete',
+    payment_settings: { save_default_payment_method: 'on_subscription' },
+    expand: ['latest_invoice.payment_intent']
   })
 
   console.log('subscription =', subscription)
+
+  res.send({
+    id: subscription.latest_invoice.payment_intent.id,
+    clientSecret: subscription.latest_invoice.payment_intent.client_secret
+  })
 })
 
 module.exports = app

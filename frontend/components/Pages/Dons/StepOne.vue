@@ -53,14 +53,17 @@ export default {
     donChoice (choice) {
       this.choice = choice
       if (choice === 0) {
+        // Unique donation
         this.$refs.btn_simple_donation.classList.remove('btn-outline')
         this.$refs.btn_recurrent_donation.classList.add('btn-outline')
+        this.$store.commit('setSubscribe', false)
         this.$emit('can-continue', { value: true })
       } else {
+        // Recurrent donation
         this.$refs.btn_simple_donation.classList.add('btn-outline')
         this.$refs.btn_recurrent_donation.classList.remove('btn-outline')
-        this.$emit('can-continue', { value: false })
-        window.location.href = 'https://buy.stripe.com/9AQ2b05e78jZ8Mw9AE'
+        this.$store.commit('setSubscribe', true)
+        this.$emit('can-continue', { value: true })
       }
     }
   }

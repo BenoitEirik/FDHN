@@ -132,7 +132,7 @@ export default {
       }
     },
     processPaymentIntent () {
-      this.$store.dispatch('processPaymentIntent', {
+      const metadata = {
         amount: StripeMoneyFormat.toStripeCustomCurrency('EUR', 'fr-FR', Number(this.amount)),
         reason: this.reason,
         lastname: this.lastname,
@@ -141,7 +141,13 @@ export default {
         address: this.address,
         zipcode: this.zipcode,
         city: this.city
-      })
+      }
+
+      if (this.$store.state.subscribe) {
+        this.$store.dispatch('processSubscription', metadata)
+      } else {
+        this.$store.dispatch('processPaymentIntent', metadata)
+      }
     },
     isNumeric (str) {
       if (typeof str !== 'string') {

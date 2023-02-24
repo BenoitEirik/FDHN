@@ -31,6 +31,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  setSubscribe (state, subscribe) {
+    state.subscribe = subscribe
+  },
   setMetadata (state, metadata) {
     state.metadata = metadata
   },
@@ -115,5 +118,35 @@ export const actions = {
         commit('setActiveStripeElementPayment', true)
       })
     }
+  },
+  processSubscription ({ commit, state }, metadata) {
+    // Set (or reset) Stripe Element Payment
+    commit('setShowLoader', true)
+    commit('setActiveStripeElementPayment', false)
+    commit('setMetadata', metadata)
+
+    // Store billing details
+    state.confirmParams.payment_method_data.billing_details = {
+      name: `${metadata.lastname} ${metadata.firstname}`,
+      email: metadata.email,
+      address: {
+        line1: metadata.address,
+        postal_code: metadata.zipcode,
+        city: metadata.city
+      }
+    }
+    commit('setConfirmParams', state.confirmParams)
+
+    this.$axios.post('/api/create-subscription', {
+      metadata
+    }).then((paymentIntent) => {
+      console.log('paymentIntent =', paymentIntent)
+
+      commit('setPaymentId', paymentIntent.data.id)
+      state.elementsOptions.clientSecret = paymentIntent.data.clientSecret
+      commit('setElementsOptions', state.elementsOptions)
+      commit('setAlreadyGeneratedPaymentIntent', true)
+      commit('setActiveStripeElementPayment', true)
+    })
   }
 }
