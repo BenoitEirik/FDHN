@@ -100,6 +100,11 @@ export default {
       ]
     }
   },
+  computed: {
+    return_url () {
+      return this.$store.state.confirmParams.return_url
+    }
+  },
   methods: {
     scrollToTop () {
       if (!this.$isServer) {
@@ -143,7 +148,7 @@ export default {
     },
     // Executed when @stepper-finished event is triggered
     alert (payload) {
-      alert('Votre don est finalisé, merci de votre générosité !')
+      this.$router.push(this.return_url)
     }
   }
 }

@@ -1,4 +1,5 @@
 export const state = () => ({
+  subscribe: false,
   showLoader: true,
   alreadyGeneratedPaymentIntent: false,
   activeStripeElementPayment: false,
