@@ -6,6 +6,7 @@ const stripe = require('stripe')(process.env.STRIPE_SK)
 app.use(express.static('public'))
 app.use(express.json())
 
+// Create payment intent
 app.post('/create-payment-intent', async (req, res) => {
   const { amount, description, metadata } = req.body
 
@@ -27,6 +28,7 @@ app.post('/create-payment-intent', async (req, res) => {
   })
 })
 
+// Update payment intent
 app.post('/update-payment-intent', async (req, res) => {
   const { id, amount, description, metadata } = req.body
 
@@ -42,6 +44,43 @@ app.post('/update-payment-intent', async (req, res) => {
     id: paymentIntent.id,
     clientSecret: paymentIntent.client_secret
   })
+})
+
+app.post('/create-subscription', async (req, res) => {
+  // Create customer
+  const customer = await stripe.customers.create({
+    name: '',
+    email: '',
+    address: {
+      line1: '',
+      postal_code: '',
+      city: ''
+    }
+  })
+
+  console.log('customer =', customer)
+
+  // Create price from customer
+  const price = await stripe.prices.create({
+    unit_amount: 10000, // TODO:
+    currency: 'eur',
+    recurring: {
+      interval: 'month'
+    },
+    product: process.env.STRIPE_SUB_PROD_ID // Link with product created on dashboard
+  })
+
+  console.log('price =', price)
+
+  // Create subscription
+  const subscription = await stripe.subscriptions.create({
+    customer: customer.id,
+    items: [
+      { price: price.id }
+    ]
+  })
+
+  console.log('subscription =', subscription)
 })
 
 module.exports = app
