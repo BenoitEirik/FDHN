@@ -105,6 +105,10 @@ export default {
       return this.$store.state.confirmParams.return_url
     }
   },
+  mounted () {
+    const stepperTop = document.querySelector('div.stepper-box div.top')
+    stepperTop.style.setProperty('padding-top', '20px')
+  },
   methods: {
     scrollToTop () {
       if (!this.$isServer) {
