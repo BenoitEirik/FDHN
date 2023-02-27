@@ -75,7 +75,7 @@ export default {
   },
   computed: {
     submitText () {
-      return this.$store.state.subscribe ? 'Je valide mon don récurrent' : 'Je valide mon don'
+      return this.$store.state.subscribe ? 'Valider mon don récurrent' : 'Valider mon don'
     },
     metadata () {
       return this.$store.state.metadata
