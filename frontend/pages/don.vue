@@ -22,7 +22,7 @@
           :steps="steps"
           @completed-step="completeStep"
           @active-step="isStepActive"
-          @stepper-finished="alert"
+          @stepper-finished="cancellation"
           @clicking-back="isClickingBack"
         />
         <!-- Bannière indicatif -->
@@ -147,8 +147,8 @@ export default {
       })
     },
     // Executed when @stepper-finished event is triggered
-    alert (payload) {
-      this.$router.push(this.return_url)
+    cancellation () {
+      //
     }
   }
 }

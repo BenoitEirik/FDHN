@@ -11,6 +11,7 @@
       :elements-options="elementsOptions"
       :confirm-params="confirmParams"
       locale="fr"
+      @error="() => reset()"
       @element-ready="() => { $store.commit('setShowLoader', false) }"
     />
     <div class="collapse self-stretch m-6 collapse-plus border border-base-300 bg-base-100 rounded-md">
@@ -60,7 +61,7 @@
       </div>
     </div>
     <button ref="btnRef" class="m-6 btn btn-primary w-64 rounded-full btn-outline" @click="pay">
-      Payer
+      {{ submitText }}
     </button>
   </div>
 </template>
@@ -73,6 +74,9 @@ export default {
     }
   },
   computed: {
+    submitText () {
+      return this.$store.state.subscribe ? 'Je valide mon don récurrent' : 'Je valide mon don'
+    },
     metadata () {
       return this.$store.state.metadata
     },
@@ -93,21 +97,28 @@ export default {
     // Change buttons language of the stepper
     const nextButtons = document.getElementsByClassName('stepper-button next')
     if (nextButtons.length !== 0) {
-      nextButtons[0].querySelector('span').innerHTML = 'Suivant'
+      nextButtons[0].querySelector('span').innerHTML = 'Annuler'
+      nextButtons[0].querySelector('i').innerHTML = 'close'
+      nextButtons[0].querySelector('span').style.setProperty('padding-bottom', '4px')
     }
 
     const backButtons = document.getElementsByClassName('stepper-button previous')
     if (backButtons.length !== 0) {
       backButtons[0].querySelector('span').innerHTML = 'Retour'
+      backButtons[0].querySelector('span').style.setProperty('padding-bottom', '4px')
     }
+
+    this.$emit('can-continue', { value: true })
   },
   methods: {
     pay () {
       this.$refs.btnRef.innerHTML = ''
       this.$refs.btnRef.classList.add('loading')
       this.$refs.paymentRef.submit()
-      this.$emit('can-continue', { value: true })
-      this.$emit('change-next', { value: true })
+    },
+    reset () {
+      this.$refs.btnRef.innerHTML = this.submitText
+      this.$refs.btnRef.classList.remove('loading')
     }
   }
 }

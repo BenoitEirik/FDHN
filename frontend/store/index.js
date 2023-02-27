@@ -3,6 +3,7 @@ export const state = () => ({
   showLoader: true,
   alreadyGeneratedPaymentIntent: false,
   activeStripeElementPayment: false,
+  // Stripe Elements Start
   elementsOptions: {
     fonts: [
       {
@@ -22,38 +23,53 @@ export const state = () => ({
       }
     }
   },
-  confirmParams: {
-    return_url: 'https://fdhn.fr/payment-success',
-    payment_method_data: {}
-  },
+  confirmParams: {},
+  // Stripe Elements End
   paymentId: '',
-  metadata: {}
+  metadata: {},
+  subscription: {}
 })
 
 export const mutations = {
-  setSubscribe (state, subscribe) {
-    state.subscribe = subscribe
+  setSubscribe (state, data) {
+    state.subscribe = data
   },
-  setMetadata (state, metadata) {
-    state.metadata = metadata
+  setMetadata (state, data) {
+    state.metadata = data
   },
-  setShowLoader (state, showLoader) {
-    state.showLoader = showLoader
+  setShowLoader (state, data) {
+    state.showLoader = data
   },
-  setAlreadyGeneratedPaymentIntent (state, alreadyGeneratedPaymentIntent) {
-    state.alreadyGeneratedPaymentIntent = alreadyGeneratedPaymentIntent
+  setAlreadyGeneratedPaymentIntent (state, data) {
+    state.alreadyGeneratedPaymentIntent = data
   },
-  setActiveStripeElementPayment (state, activeStripeElementPayment) {
-    state.activeStripeElementPayment = activeStripeElementPayment
+  setActiveStripeElementPayment (state, data) {
+    state.activeStripeElementPayment = data
   },
-  setElementsOptions  (state, elementsOptions) {
-    state.elementsOptions = elementsOptions
+  setElementsOptions  (state, data) {
+    state.elementsOptions = data
   },
-  setConfirmParams (state, confirmParams) {
-    state.confirmParams = confirmParams
+  setConfirmParams (state, data) {
+    state.confirmParams = {
+      return_url: 'https://fdhn.fr/payment-success',
+      payment_method_data: {
+        billing_details: {
+          name: `${data.lastname} ${data.firstname}`,
+          email: data.email,
+          address: {
+            line1: data.address,
+            postal_code: data.zipcode,
+            city: data.city
+          }
+        }
+      }
+    }
   },
-  setPaymentId (state, paymentId) {
-    state.paymentId = paymentId
+  setPaymentId (state, data) {
+    state.paymentId = data
+  },
+  setSubscription (state, data) {
+    state.subscription = data
   }
 }
 
@@ -65,20 +81,11 @@ export const actions = {
     commit('setMetadata', metadata)
 
     // Store billing details
-    state.confirmParams.payment_method_data.billing_details = {
-      name: `${metadata.lastname} ${metadata.firstname}`,
-      email: metadata.email,
-      address: {
-        line1: metadata.address,
-        postal_code: metadata.zipcode,
-        city: metadata.city
-      }
-    }
-    commit('setConfirmParams', state.confirmParams)
+    commit('setConfirmParams', metadata)
 
     // Generate (or update) payment intent from the backend
     if (!state.alreadyGeneratedPaymentIntent) {
-      this.$axios.$post('/api/create-payment-intent', {
+      this.$axios.$post('/api/one-time/create', {
         amount: metadata.amount,
         description: metadata.reason,
         metadata: {
@@ -98,7 +105,7 @@ export const actions = {
         commit('setActiveStripeElementPayment', true)
       })
     } else {
-      this.$axios.$post('/api/update-payment-intent', {
+      this.$axios.$post('/api/one-time/update', {
         id: state.paymentId,
         amount: metadata.amount,
         description: metadata.reason,
@@ -124,29 +131,52 @@ export const actions = {
     commit('setShowLoader', true)
     commit('setActiveStripeElementPayment', false)
     commit('setMetadata', metadata)
-
     // Store billing details
-    state.confirmParams.payment_method_data.billing_details = {
-      name: `${metadata.lastname} ${metadata.firstname}`,
-      email: metadata.email,
-      address: {
-        line1: metadata.address,
-        postal_code: metadata.zipcode,
-        city: metadata.city
-      }
+    commit('setConfirmParams', metadata)
+
+    if (!state.alreadyGeneratedPaymentIntent) {
+      this.$axios.post('/api/subscription/create', {
+        description: metadata.reason,
+        metadata
+      }).then(res => res.data)
+        .then((data) => {
+          commit('setSubscription', {
+            customerId: data.subscription.customerId,
+            subscriptionId: data.subscription.subscriptionId
+          })
+          commit('setPaymentId', data.paymentIntent.id)
+          state.elementsOptions.clientSecret = data.paymentIntent.clientSecret
+          commit('setElementsOptions', state.elementsOptions)
+          commit('setAlreadyGeneratedPaymentIntent', true)
+          commit('setActiveStripeElementPayment', true)
+        })
+    } else {
+      this.$axios.post('/api/subscription/update', {
+        customerId: state.subscription.customerId,
+        subscriptionId: state.subscription.subscriptionId,
+        description: metadata.reason,
+        metadata
+      }).then(res => res.data)
+        .then((data) => {
+          commit('setSubscription', {
+            customerId: data.subscription.customerId,
+            subscriptionId: data.subscription.subscriptionId
+          })
+          commit('setPaymentId', data.paymentIntent.id)
+          state.elementsOptions.clientSecret = data.paymentIntent.clientSecret
+          commit('setElementsOptions', state.elementsOptions)
+          commit('setActiveStripeElementPayment', true)
+        })
     }
-    commit('setConfirmParams', state.confirmParams)
-
-    this.$axios.post('/api/create-subscription', {
-      metadata
-    }).then((paymentIntent) => {
-      console.log('paymentIntent =', paymentIntent)
-
-      commit('setPaymentId', paymentIntent.data.id)
-      state.elementsOptions.clientSecret = paymentIntent.data.clientSecret
-      commit('setElementsOptions', state.elementsOptions)
-      commit('setAlreadyGeneratedPaymentIntent', true)
-      commit('setActiveStripeElementPayment', true)
+  },
+  cancelSubcription ({ commit, state }) {
+    this.$axios.cancellation('/api/subscription/cancel', {
+      //
+    })
+  },
+  cancelPayement ({ commit, state }) {
+    this.$axios.cancellation('/api/subscription/cancel', {
+      //
     })
   }
 }

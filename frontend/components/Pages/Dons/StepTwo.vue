@@ -106,11 +106,13 @@ export default {
     const nextButtons = document.getElementsByClassName('stepper-button next')
     if (nextButtons.length !== 0) {
       nextButtons[0].querySelector('span').innerHTML = 'Suivant'
+      nextButtons[0].querySelector('span').style.setProperty('padding-bottom', '4px')
     }
 
     const backButtons = document.getElementsByClassName('stepper-button previous')
     if (backButtons.length !== 0) {
       backButtons[0].querySelector('span').innerHTML = 'Retour'
+      backButtons[0].querySelector('span').style.setProperty('padding-bottom', '4px')
     }
   },
   methods: {

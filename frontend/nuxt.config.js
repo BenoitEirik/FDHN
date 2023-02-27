@@ -84,7 +84,8 @@ export default {
   },
 
   serverMiddleware: {
-    '/api': '~/api/index.js'
+    '/api/one-time': '~/api/one-time.js',
+    '/api/subscription': '~/api/subscription.js'
   },
 
   image: {
