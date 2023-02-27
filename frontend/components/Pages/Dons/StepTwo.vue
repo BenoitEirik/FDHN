@@ -6,20 +6,20 @@
         <span class="label-text">Montant *</span>
       </label>
       <label class="input-group">
-        <input v-model="amount" type="number" placeholder="1€ minimum" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
-        <span>€</span>
+        <input v-model="amount" type="number" placeholder="1€ minimum" class="input input-bordered border-accent focus:input-accent w-full" @keyup="validateForm()">
+        <span class="bg-accent text-base-100">€</span>
       </label>
       <div v-if="isSubscription" class="pt-2 btn-group">
-        <button class="btn grow shrink" @click="setAmount('5')">
+        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('5')">
           10 €
         </button>
-        <button class="btn grow shrink" @click="setAmount('10')">
+        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('10')">
           15 €
         </button>
-        <button class="btn grow shrink" @click="setAmount('20')">
+        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('20')">
           20 €
         </button>
-        <button class="btn grow shrink" @click="setAmount('50')">
+        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('50')">
           50 €
         </button>
       </div>

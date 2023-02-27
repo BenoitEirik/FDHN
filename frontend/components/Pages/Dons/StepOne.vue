@@ -1,16 +1,11 @@
 <template>
-  <div class="px-6 py-12 flex flex-col items-center">
-    <div class="flex flex-col w-full border-opacity-50">
-      <div class="grid h-20 card place-items-center">
-        <button ref="btn_simple_donation" class="btn btn-outline btn-primary" @click="donChoice(0)">
+  <div class="px-6 pt-20 pb-12 flex flex-col items-center">
+    <div class="w-full max-w-xs">
+      <div class="btn-group grid grid-cols-2">
+        <button ref="btn_simple_donation" class="btn btn-outline btn-accent" @click="donChoice(0)">
           Don unique
         </button>
-      </div>
-      <div class="px-6 divider self-stretch">
-        OU
-      </div>
-      <div class="grid h-20 card place-items-center">
-        <button ref="btn_recurrent_donation" class="btn btn-outline btn-primary" @click="donChoice(1)">
+        <button ref="btn_recurrent_donation" class="btn btn-outline btn-accent" @click="donChoice(1)">
           Dons récurrents
         </button>
       </div>

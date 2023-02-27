@@ -11,7 +11,17 @@ module.exports = {
     extend: {}
   },
   daisyui: {
-    themes: ['bumblebee']
+    themes: [
+      {
+        mytheme: {
+          primary: '#eab308',
+          secondary: '#F9D72F',
+          accent: '#523124',
+          neutral: '#523124',
+          'base-100': '#ffffff'
+        }
+      }
+    ]
   },
   plugins: [
     require('@tailwindcss/typography'),
