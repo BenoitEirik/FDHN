@@ -9,6 +9,20 @@
         <input v-model="amount" type="number" placeholder="1€ minimum" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
         <span>€</span>
       </label>
+      <div v-if="isSubscription" class="pt-2 btn-group">
+        <button class="btn grow shrink" @click="setAmount('5')">
+          10 €
+        </button>
+        <button class="btn grow shrink" @click="setAmount('10')">
+          15 €
+        </button>
+        <button class="btn grow shrink" @click="setAmount('20')">
+          20 €
+        </button>
+        <button class="btn grow shrink" @click="setAmount('50')">
+          50 €
+        </button>
+      </div>
       <label class="label">
         <span class="label-text-alt">Tous les dons sont défiscalisables</span>
       </label>
@@ -90,6 +104,11 @@ export default {
       return { text: reason.title, value: reason.title }
     })
   },
+  computed: {
+    isSubscription () {
+      return this.$store.state.subscribe
+    }
+  },
   created () {
     // Create event to store metadata from don page
     this.$nuxt.$on('process-payment-intent', () => {
@@ -116,6 +135,10 @@ export default {
     }
   },
   methods: {
+    setAmount (value) {
+      this.amount = value
+      this.validateForm()
+    },
     validateForm () {
       // Enable the Next step button if all fields are valid
       if (
