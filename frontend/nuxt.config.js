@@ -1,5 +1,8 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  loading: {
+    color: '#654100'
+  },
   head: {
     title: 'Fonds de dotation de L\'Homme Nouveau',
     htmlAttrs: {
