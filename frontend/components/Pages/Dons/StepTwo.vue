@@ -11,10 +11,10 @@
       </label>
       <div v-if="isSubscription" class="pt-2 btn-group">
         <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('5')">
-          10 €
+          5 €
         </button>
         <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('10')">
-          15 €
+          10 €
         </button>
         <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('20')">
           20 €
