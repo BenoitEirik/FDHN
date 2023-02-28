@@ -6,7 +6,7 @@ app.use(express.static('public'))
 app.use(express.json())
 
 app.post('/create', async (req, res) => {
-  const { metadata } = req.body
+  const { description, metadata } = req.body
 
   // Create customer
   const customer = await stripe.customers.create({
@@ -34,10 +34,17 @@ app.post('/create', async (req, res) => {
         }
       }
     ],
+    description: `Don récurrent : ${description}`,
     payment_behavior: 'default_incomplete',
     payment_settings: { save_default_payment_method: 'on_subscription' },
     expand: ['latest_invoice.payment_intent']
   })
+
+  // Update generated paymentIntent from subscription
+  const paymentIntent = await stripe.paymentIntents.update(
+    subscription.latest_invoice.payment_intent.id,
+    { description }
+  )
 
   res.send({
     subscription: {
@@ -45,14 +52,14 @@ app.post('/create', async (req, res) => {
       customerId: customer.id
     },
     paymentIntent: {
-      id: subscription.latest_invoice.payment_intent.id,
-      clientSecret: subscription.latest_invoice.payment_intent.client_secret
+      id: paymentIntent.id,
+      clientSecret: paymentIntent.client_secret
     }
   })
 })
 
 app.post('/update', async (req, res) => {
-  const { id, customerId, metadata } = req.body
+  const { id, customerId, description, metadata } = req.body
 
   const customer = await stripe.customers.update(
     customerId,
@@ -85,10 +92,17 @@ app.post('/update', async (req, res) => {
         }
       }
     ],
+    description: `Don récurrent : ${description}`,
     payment_behavior: 'default_incomplete',
     payment_settings: { save_default_payment_method: 'on_subscription' },
     expand: ['latest_invoice.payment_intent']
   })
+
+  // Update generated paymentIntent from subscription
+  const paymentIntent = await stripe.paymentIntents.update(
+    subscription.latest_invoice.payment_intent.id,
+    { description }
+  )
 
   res.send({
     subscription: {
@@ -96,8 +110,8 @@ app.post('/update', async (req, res) => {
       customerId: customer.id
     },
     paymentIntent: {
-      id: subscription.latest_invoice.payment_intent.id,
-      clientSecret: subscription.latest_invoice.payment_intent.client_secret
+      id: paymentIntent.id,
+      clientSecret: paymentIntent.client_secret
     }
   })
 })
