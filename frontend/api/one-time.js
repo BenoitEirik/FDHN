@@ -45,4 +45,12 @@ app.post('/update', async (req, res) => {
   })
 })
 
+app.post('/cancel', async (req, res) => {
+  const { id } = req.body
+
+  await stripe.paymentIntents.cancel(id)
+
+  res.sendStatus(204)
+})
+
 module.exports = app

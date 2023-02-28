@@ -41,8 +41,8 @@ app.post('/create', async (req, res) => {
 
   res.send({
     subscription: {
-      customerId: customer.id,
-      subscriptionId: subscription.id
+      id: subscription.id,
+      customerId: customer.id
     },
     paymentIntent: {
       id: subscription.latest_invoice.payment_intent.id,
@@ -52,7 +52,7 @@ app.post('/create', async (req, res) => {
 })
 
 app.post('/update', async (req, res) => {
-  const { customerId, subscriptionId, metadata } = req.body
+  const { id, customerId, metadata } = req.body
 
   const customer = await stripe.customers.update(
     customerId,
@@ -68,9 +68,7 @@ app.post('/update', async (req, res) => {
   )
 
   // Delete previous subscription generated
-  await stripe.subscriptions.del(
-    subscriptionId
-  )
+  await stripe.subscriptions.del(id)
 
   // Recreate subscription
   const subscription = await stripe.subscriptions.create({
@@ -92,18 +90,24 @@ app.post('/update', async (req, res) => {
     expand: ['latest_invoice.payment_intent']
   })
 
-  console.log('subscription =', subscription)
-
   res.send({
     subscription: {
-      customerId: customer.id,
-      subscriptionId: subscription.id
+      id: subscription.id,
+      customerId: customer.id
     },
     paymentIntent: {
       id: subscription.latest_invoice.payment_intent.id,
       clientSecret: subscription.latest_invoice.payment_intent.client_secret
     }
   })
+})
+
+app.post('/cancel', async (req, res) => {
+  const { id } = req.body
+
+  await stripe.subscriptions.del(id)
+
+  res.sendStatus(204)
 })
 
 module.exports = app

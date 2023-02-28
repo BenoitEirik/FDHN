@@ -141,8 +141,8 @@ export const actions = {
       }).then(res => res.data)
         .then((data) => {
           commit('setSubscription', {
-            customerId: data.subscription.customerId,
-            subscriptionId: data.subscription.subscriptionId
+            id: data.subscription.id,
+            customerId: data.subscription.customerId
           })
           commit('setPaymentId', data.paymentIntent.id)
           state.elementsOptions.clientSecret = data.paymentIntent.clientSecret
@@ -152,15 +152,15 @@ export const actions = {
         })
     } else {
       this.$axios.post('/api/subscription/update', {
+        id: state.subscription.id,
         customerId: state.subscription.customerId,
-        subscriptionId: state.subscription.subscriptionId,
         description: metadata.reason,
         metadata
       }).then(res => res.data)
         .then((data) => {
           commit('setSubscription', {
-            customerId: data.subscription.customerId,
-            subscriptionId: data.subscription.subscriptionId
+            id: data.subscription.id,
+            customerId: data.subscription.customerId
           })
           commit('setPaymentId', data.paymentIntent.id)
           state.elementsOptions.clientSecret = data.paymentIntent.clientSecret
@@ -169,14 +169,10 @@ export const actions = {
         })
     }
   },
-  cancelSubcription ({ commit, state }) {
-    this.$axios.cancellation('/api/subscription/cancel', {
-      //
-    })
+  cancelSubscription ({ commit, state }) {
+    this.$axios.post('/api/subscription/cancel', { id: state.subscription.id })
   },
-  cancelPayement ({ commit, state }) {
-    this.$axios.cancellation('/api/subscription/cancel', {
-      //
-    })
+  cancelPayementIntent ({ commit, state }) {
+    this.$axios.post('/api/one-time/cancel', { id: state.paymentId })
   }
 }
