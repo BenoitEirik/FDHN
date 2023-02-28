@@ -7,10 +7,12 @@
       <div class="max-w-5xl">
         <horizontal-stepper
           :steps="steps"
+          :reset="resetStepper"
           @completed-step="completeStep"
           @active-step="isStepActive"
           @stepper-finished="cancelDonation"
           @clicking-back="isClickingBack"
+          @reset="isResettingStepper"
         />
         <!-- Bannière indicatif -->
         <div class="m-6 flex justify-center text-sm">
@@ -79,6 +81,11 @@ export default {
       ]
     }
   },
+  computed: {
+    resetStepper () {
+      return this.$store.state.resetStepper
+    }
+  },
   mounted () {
     const stepperTop = document.querySelector('div.stepper-box div.top')
     stepperTop.style.setProperty('padding-top', '20px')
@@ -97,7 +104,7 @@ export default {
       this.steps.forEach((step) => {
         if (step.name === payload.name) {
           if (step.name === 'second') {
-            this.$nuxt.$emit('process-payment-intent')
+            this.$nuxt.$emit('process-donation')
           }
           step.completed = true
         }
@@ -118,16 +125,28 @@ export default {
     },
     isClickingBack () {
       this.scrollToTop()
+      this.steps.forEach((step) => {
+        if (step.name === 'first') {
+          this.$nuxt.$emit('reset-step-one')
+        }
+      })
+    },
+    isResettingStepper () {
+      this.$store.commit('resetStore')
     },
     // Executed when @stepper-finished event is triggered
     async cancelDonation () {
       if (this.$store.state.subscribe) {
         await this.$store.dispatch('cancelSubscription')
-          .then(() => this.$router.go(0))
       } else {
         await this.$store.dispatch('cancelPaymentIntent')
-          .then(() => this.$router.go(0))
       }
+
+      // Reset stepper
+      this.$store.commit('resetStepper', true)
+      this.$nextTick(() => {
+        this.$store.commit('resetStepper', false)
+      })
     }
   }
 }

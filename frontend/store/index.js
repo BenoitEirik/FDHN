@@ -1,4 +1,4 @@
-export const state = () => ({
+const initialState = {
   subscribe: false,
   showLoader: true,
   alreadyGeneratedPaymentIntent: false,
@@ -27,7 +27,12 @@ export const state = () => ({
   // Stripe Elements End
   paymentId: '',
   metadata: {},
-  subscription: {}
+  subscription: {},
+  resetStepper: false
+}
+
+export const state = () => ({
+  ...initialState
 })
 
 export const mutations = {
@@ -70,6 +75,14 @@ export const mutations = {
   },
   setSubscription (state, data) {
     state.subscription = data
+  },
+  resetStepper (state, data) {
+    state.resetStepper = data
+  },
+  resetStore (state) {
+    state = {
+      ...initialState
+    }
   }
 }
 

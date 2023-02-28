@@ -111,8 +111,8 @@ export default {
   },
   created () {
     // Create event to store metadata from don page
-    this.$nuxt.$on('process-payment-intent', () => {
-      this.processPaymentIntent()
+    this.$nuxt.$on('process-donation', () => {
+      this.processDonation()
     })
 
     // Validate form when coming or coming back to this step
@@ -158,7 +158,7 @@ export default {
         this.$emit('can-continue', { value: false })
       }
     },
-    processPaymentIntent () {
+    processDonation () {
       const metadata = {
         amount: StripeMoneyFormat.toStripeCustomCurrency('EUR', 'fr-FR', Number(this.amount)),
         reason: this.reason,
