@@ -1,4 +1,4 @@
-const initialState = {
+export const state = () => ({
   subscribe: false,
   showLoader: true,
   alreadyGeneratedPaymentIntent: false,
@@ -28,10 +28,6 @@ const initialState = {
   paymentId: '',
   metadata: {},
   subscription: {}
-}
-
-export const state = () => ({
-  ...initialState
 })
 
 export const mutations = {
@@ -178,8 +174,5 @@ export const actions = {
   },
   async cancelPaymentIntent ({ commit, state }) {
     await this.$axios.post('/api/one-time/cancel', { id: state.paymentId })
-  },
-  resetState () {
-    Object.assign(state, initialState)
   }
 }

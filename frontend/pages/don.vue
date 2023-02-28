@@ -118,19 +118,15 @@ export default {
     },
     isClickingBack () {
       this.scrollToTop()
-      this.steps.forEach((step) => {
-        if (step.name === 'first') {
-          this.$nuxt.$emit('reset-step-one')
-          this.cancelDonation()
-        }
-      })
     },
     // Executed when @stepper-finished event is triggered
     async cancelDonation () {
       if (this.$store.state.subscribe) {
-        await this.$store.dispatch('cancelSubscription').then(() => this.$router.go(0))
+        await this.$store.dispatch('cancelSubscription')
+          .then(() => this.$router.go(0))
       } else {
-        await this.$store.dispatch('cancelPaymentIntent').then(() => this.$router.go(0))
+        await this.$store.dispatch('cancelPaymentIntent')
+          .then(() => this.$router.go(0))
       }
     }
   }
