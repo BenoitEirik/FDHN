@@ -116,13 +116,13 @@ export default {
     pay () {
       this.$refs.btnRef.innerHTML = ''
       this.$refs.btnRef.classList.add('loading')
-      document.querySelector('div.stepper-button.next').classList.add('deactivated')
+      this.$emit('can-continue', { value: false }) // Disallow donation cancel
       this.$refs.paymentRef.submit()
     },
     reset () {
       this.$refs.btnRef.innerHTML = this.submitText
       this.$refs.btnRef.classList.remove('loading')
-      document.querySelector('div.stepper-button.next').classList.remove('deactivated')
+      this.$emit('can-continue', { value: true }) // Allow donation cancel
     }
   }
 }
