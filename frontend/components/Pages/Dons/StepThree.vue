@@ -95,17 +95,19 @@ export default {
   },
   mounted () {
     // Change buttons language of the stepper
-    const nextButtons = document.getElementsByClassName('stepper-button next')
-    if (nextButtons.length !== 0) {
-      nextButtons[0].querySelector('span').innerHTML = 'Annuler'
-      nextButtons[0].querySelector('i').innerHTML = 'close'
-      nextButtons[0].querySelector('span').style.setProperty('padding-bottom', '4px')
+    const nextButton = document.querySelector('div.stepper-button.next')
+    if (nextButton !== null) {
+      const [span, i] = [nextButton.querySelector('span'), nextButton.querySelector('i')]
+      span.innerHTML = 'Annuler'
+      span.style.setProperty('padding-bottom', '4px')
+      i.innerHTML = 'close'
     }
 
-    const backButtons = document.getElementsByClassName('stepper-button previous')
-    if (backButtons.length !== 0) {
-      backButtons[0].querySelector('span').innerHTML = 'Retour'
-      backButtons[0].querySelector('span').style.setProperty('padding-bottom', '4px')
+    const backButton = document.querySelector('div.stepper-button.previous')
+    if (backButton !== null) {
+      const span = backButton.querySelector('span')
+      span.innerHTML = 'Retour'
+      span.style.setProperty('padding-bottom', '4px')
     }
 
     this.$emit('can-continue', { value: true })
@@ -114,11 +116,13 @@ export default {
     pay () {
       this.$refs.btnRef.innerHTML = ''
       this.$refs.btnRef.classList.add('loading')
+      document.querySelector('div.stepper-button.next').classList.add('deactivated')
       this.$refs.paymentRef.submit()
     },
     reset () {
       this.$refs.btnRef.innerHTML = this.submitText
       this.$refs.btnRef.classList.remove('loading')
+      document.querySelector('div.stepper-button.next').classList.remove('deactivated')
     }
   }
 }
