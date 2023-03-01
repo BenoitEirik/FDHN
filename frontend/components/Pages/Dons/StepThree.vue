@@ -12,7 +12,7 @@
       :confirm-params="confirmParams"
       locale="fr"
       @error="() => reset()"
-      @element-ready="() => { $store.commit('setShowLoader', false) }"
+      @element-ready="() => { $store.commit('setShowLoader', false); $emit('can-continue', { value: true }) }"
     />
     <div class="collapse self-stretch m-6 collapse-plus border border-base-300 bg-base-100 rounded-md">
       <input type="checkbox" class="peer">
@@ -102,12 +102,24 @@ export default {
       this.$refs.btnRef.innerHTML = ''
       this.$refs.btnRef.classList.add('loading')
       this.$emit('can-continue', { value: false }) // Disallow donation cancel
+      const backButton = document.querySelector('div.stepper-button.previous')
+      if (backButton !== null) {
+        const [span, i] = [backButton.querySelector('span'), backButton.querySelector('i')]
+        span.style.display = 'none'
+        i.style.display = 'none'
+      }
       this.$refs.paymentRef.submit()
     },
     reset () {
       this.$refs.btnRef.innerHTML = this.submitText
       this.$refs.btnRef.classList.remove('loading')
       this.$emit('can-continue', { value: true }) // Allow donation cancel
+      const backButton = document.querySelector('div.stepper-button.previous')
+      if (backButton !== null) {
+        const [span, i] = [backButton.querySelector('span'), backButton.querySelector('i')]
+        span.style.display = 'inline'
+        i.style.display = 'inline-block'
+      }
     }
   }
 }
