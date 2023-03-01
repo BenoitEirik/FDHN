@@ -120,22 +120,6 @@ export default {
       this.validateForm()
     })
   },
-  mounted () {
-    // Change buttons language of the stepper
-    const nextButton = document.querySelector('div.stepper-button.next')
-    if (nextButton !== null) {
-      const span = nextButton.querySelector('span')
-      span.innerHTML = 'Suivant'
-      span.style.setProperty('padding-bottom', '4px')
-    }
-
-    const backButton = document.querySelector('div.stepper-button.previous')
-    if (backButton !== null) {
-      const span = backButton.querySelector('span')
-      span.innerHTML = 'Retour'
-      span.style.setProperty('padding-bottom', '4px')
-    }
-  },
   methods: {
     setAmount (value) {
       this.amount = value

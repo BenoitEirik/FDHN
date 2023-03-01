@@ -94,22 +94,7 @@ export default {
     }
   },
   mounted () {
-    // Change buttons language of the stepper
-    const nextButton = document.querySelector('div.stepper-button.next')
-    if (nextButton !== null) {
-      const [span, i] = [nextButton.querySelector('span'), nextButton.querySelector('i')]
-      span.innerHTML = 'Annuler'
-      span.style.setProperty('padding-bottom', '4px')
-      i.innerHTML = 'close'
-    }
-
-    const backButton = document.querySelector('div.stepper-button.previous')
-    if (backButton !== null) {
-      const span = backButton.querySelector('span')
-      span.innerHTML = 'Retour'
-      span.style.setProperty('padding-bottom', '4px')
-    }
-
+    // Mark cancel button as active
     this.$emit('can-continue', { value: true })
   },
   methods: {

@@ -13,6 +13,7 @@
           @stepper-finished="cancelDonation"
           @clicking-back="isClickingBack"
           @reset="isResettingStepper"
+          @hook:mounted="() => { stepperMounted = true }"
         />
         <!-- Bannière indicatif -->
         <div class="m-6 flex justify-center text-sm">
@@ -41,6 +42,7 @@ export default {
   },
   data () {
     return {
+      stepperMounted: false,
       steps: [
         {
           icon: 'info',
@@ -114,11 +116,37 @@ export default {
     isStepActive (payload) {
       this.steps.forEach((step) => {
         if (step.name === payload.name) {
+          // Mark current step as completed
           if (step.completed === true) {
             step.completed = false
           }
+
           if (step.name === 'second') {
             this.$nuxt.$emit('validate-form')
+          }
+
+          // Button design
+          if (!this.$isServer) {
+            this.$nextTick(() => {
+              const nextButton = document.querySelector('div.stepper-button.next')
+              const backButton = document.querySelector('div.stepper-button.previous')
+              if (nextButton !== null) {
+                const [span, i] = [nextButton.querySelector('span'), nextButton.querySelector('i')]
+                if (step.name === 'third') {
+                  span.innerHTML = 'Annuler'
+                  i.innerHTML = 'close'
+                } else {
+                  span.innerHTML = 'Suivant'
+                  i.innerHTML = 'keyboard_arrow_right'
+                }
+                span.style.setProperty('padding-bottom', '4px')
+              }
+              if (backButton !== null) {
+                const span = backButton.querySelector('span')
+                span.innerHTML = 'Retour'
+                span.style.setProperty('padding-bottom', '4px')
+              }
+            })
           }
         }
       })

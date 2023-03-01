@@ -26,15 +26,6 @@ export default {
       this.resetStepOne()
     })
   },
-  mounted () {
-    // Change buttons language of the stepper
-    const nextButton = document.querySelector('div.stepper-button.next')
-    if (nextButton !== null) {
-      const span = nextButton.querySelector('span')
-      span.innerHTML = 'Suivant'
-      span.style.setProperty('padding-bottom', '4px')
-    }
-  },
   methods: {
     resetStepOne () {
       if (this.$refs.btn_simple_donation !== undefined && this.$refs.btn_recurrent_donation !== undefined) {
