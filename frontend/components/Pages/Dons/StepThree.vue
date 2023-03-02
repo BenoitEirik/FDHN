@@ -1,5 +1,5 @@
 <template>
-  <div class="relative px-6 pt-12 w-full flex flex-col justify-center items-center">
+  <div class="relative sm:px-6 pt-12 w-full flex flex-col justify-center items-center">
     <div :class="((showLoader) ? '':'hidden') + ' absolute m-6 inset-0 bg-white z-40 flex justify-center items-center'">
       <button class="btn btn-ghost btn-lg loading" />
     </div>
@@ -29,7 +29,7 @@
               </tr>
               <tr>
                 <td>Montant</td>
-                <td>{{ String(metadata.amount).slice(0, -2) + ','+ String(metadata.amount).slice(-2) }} €</td>
+                <td>{{ String(metadata.amount).slice(0, -2) + ','+ String(metadata.amount).slice(-2) }} {{ isSubscription ? '€/mois' : '€' }}</td>
               </tr>
               <tr>
                 <td>Cause</td>

@@ -7,7 +7,7 @@
       </label>
       <label class="input-group">
         <input v-model="amount" type="number" placeholder="1€ minimum" class="input input-bordered border-accent focus:input-accent w-full" @keyup="validateForm()">
-        <span class="bg-accent text-base-100">€</span>
+        <span class="bg-accent text-base-100">{{ isSubscription ? '€/mois' : '€' }}</span>
       </label>
       <div v-if="isSubscription" class="pt-2 btn-group">
         <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('10')">
@@ -21,9 +21,6 @@
         </button>
         <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('100')">
           100 €
-        </button>
-        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('200')">
-          200 €
         </button>
       </div>
       <label class="label">
