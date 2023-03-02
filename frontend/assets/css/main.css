@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Hamlet';
-  src: url('../fonts/Hahmlet-Regular.ttf') ;
+  font-family: 'Hahmlet';
+  src: url('~/assets/fonts/Hahmlet-Regular.woff2') format('woff2'),
+    url('~/assets/fonts/Hahmlet-Regular.ttf') format('truetype');
 }
 
-* {
-  font-family: 'Hamlet';
+body {
+  font-family: 'Hahmlet';
 }
