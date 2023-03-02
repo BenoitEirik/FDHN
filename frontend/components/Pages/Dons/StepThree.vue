@@ -24,8 +24,12 @@
           <table class="table table-compact w-full">
             <tbody>
               <tr>
+                <td>Type de don</td>
+                <td>{{ isSubscription ? 'Mensuel' : 'Unique' }}</td>
+              </tr>
+              <tr>
                 <td>Montant</td>
-                <td>{{ String(metadata.amount).slice(0, -2) + ','+ String(metadata.amount).slice(-2) }}</td>
+                <td>{{ String(metadata.amount).slice(0, -2) + ','+ String(metadata.amount).slice(-2) }} €</td>
               </tr>
               <tr>
                 <td>Cause</td>
@@ -74,6 +78,9 @@ export default {
     }
   },
   computed: {
+    isSubscription () {
+      return this.$store.state.subscribe
+    },
     submitText () {
       return this.$store.state.subscribe ? 'Valider mon don récurrent' : 'Valider mon don'
     },

@@ -6,7 +6,7 @@
           Don unique
         </button>
         <button ref="btn_recurrent_donation" class="btn btn-outline btn-accent" @click="donChoice(1)">
-          Dons récurrents
+          Don mensuel
         </button>
       </div>
     </div>
