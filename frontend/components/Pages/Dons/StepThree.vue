@@ -118,6 +118,9 @@ export default {
       this.$refs.paymentRef.submit()
     },
     reset () {
+      if (process.client) {
+        window.scrollTo(0, 0)
+      }
       this.$refs.btnRef.innerHTML = this.submitText
       this.$refs.btnRef.classList.remove('loading')
       this.$emit('can-continue', { value: true }) // Allow donation cancel
