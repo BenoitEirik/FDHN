@@ -7,7 +7,7 @@
       </label>
       <label class="input-group">
         <input v-model="amount" type="number" placeholder="1€ minimum" class="input input-bordered border-accent focus:input-accent w-full" @keyup="validateForm()">
-        <select v-if="isSubscription" v-model="recurrence_interval" class="select select-accent bg-accent text-base-100">
+        <select v-if="isSubscription" v-model="recurring_interval" class="select select-accent bg-accent text-base-100">
           <option value="month" selected>
             €/mois
           </option>
@@ -114,7 +114,7 @@ export default {
       zipcode: '',
       city: '',
       options: [],
-      recurrence_interval: 'month' // used for recurring donation
+      recurring: 'month' // used for recurring donation
     }
   },
   async fetch () {
@@ -171,7 +171,8 @@ export default {
         email: this.email,
         address: this.address,
         zipcode: this.zipcode,
-        city: this.city
+        city: this.city,
+        recurring_interval: this.recurring_interval
       }
 
       if (this.$store.state.subscribe) {

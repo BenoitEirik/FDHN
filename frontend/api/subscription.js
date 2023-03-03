@@ -5,7 +5,8 @@ const stripe = require('stripe')(process.env.STRIPE_SK)
 app.use(express.static('public'))
 app.use(express.json())
 
-async function getPrice (amount) {
+async function getPrice (amount, interval) {
+  const productId = process.env.STRIPE_SUB_PROD_ID
   let hasMore = true
   let pricesData
   let startingAfter
@@ -15,33 +16,35 @@ async function getPrice (amount) {
     // Request existing prices
     const prices = await stripe.prices.list({
       active: true,
-      product: process.env.STRIPE_SUB_PROD_ID,
+      product: productId,
       type: 'recurring',
       ...(startingAfter !== undefined && { starting_after: startingAfter.id })
     })
     pricesData = Array.from(prices.data)
-    price = pricesData.find(price => price.unit_amount === amount)
+    price = pricesData.find(price => price.unit_amount === amount && price.recurring.interval === interval)
     if (price !== undefined) {
-      return price
+      return price // Existing price found
     }
 
+    // Check if there are more pages
     if (prices.has_more) {
       startingAfter = pricesData[pricesData.length - 1]
       hasMore = prices.has_more
     } else {
+      // Create new price if not found existing
+      price = await stripe.prices.create({
+        unit_amount: amount,
+        currency: 'eur',
+        recurring: {
+          interval
+        },
+        product: productId // Link with product created on Stripe dashboard
+      })
       break
     }
   }
 
-  // Create new price if not found existing
-  return await stripe.prices.create({
-    unit_amount: amount,
-    currency: 'eur',
-    recurring: {
-      interval: 'month'
-    },
-    product: process.env.STRIPE_SUB_PROD_ID // Link with product created on Stripe dashboard
-  })
+  return price
 }
 
 app.post('/create', async (req, res) => {
@@ -59,7 +62,7 @@ app.post('/create', async (req, res) => {
   })
 
   // Search price or create it
-  const price = await getPrice(metadata.amount)
+  const price = await getPrice(metadata.amount, metadata.recurring_interval)
 
   // Create subscription
   const subscription = await stripe.subscriptions.create({
@@ -111,7 +114,7 @@ app.post('/update', async (req, res) => {
   await stripe.subscriptions.del(id)
 
   // Search price or create it
-  const price = await getPrice(metadata.amount)
+  const price = await getPrice(metadata.amount, metadata.recurring_interval)
 
   // Recreate subscription
   const subscription = await stripe.subscriptions.create({
