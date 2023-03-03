@@ -11,7 +11,10 @@
               Le don a été effectué, merci de votre générosité !
             </p>
             <p class="pb-6">
-              Vous recevrez dans quelques instants un reçu par email.
+              Vous recevrez une facture par email dans quelques instants.
+            </p>
+            <p v-if="isSubscription" class="pb-6">
+              (Un reçu fiscal vous sera envoyé chaque début d'année)
             </p>
             <button class="btn btn-primary" @click="$router.push({ path: '/' })">
               Retourner à la page d'accueil
@@ -22,3 +25,18 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    isSubscription () {
+      const recurrent = Boolean(this.$route.query.recurrent)
+      if (recurrent) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
+}
+</script>

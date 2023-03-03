@@ -56,7 +56,7 @@ export const mutations = {
   },
   setConfirmParams (state, data) {
     state.confirmParams = {
-      return_url: 'https://fdhn.fr/payment-success',
+      return_url: `${window.location.protocol}//${window.location.hostname}${window.location.port ? ':' + window.location.port : ''}/payment-success${state.subscribe ? '?recurrent=true' : ''}`,
       payment_method_data: {
         billing_details: {
           name: `${data.lastname} ${data.firstname}`,
