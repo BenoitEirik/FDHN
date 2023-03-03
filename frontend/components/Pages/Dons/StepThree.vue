@@ -25,7 +25,11 @@
             <tbody>
               <tr>
                 <td>Type de don</td>
-                <td>{{ isSubscription ? 'Mensuel' : 'Unique' }}</td>
+                <td>{{ isSubscription ? 'Récurrent' : 'Unique' }}</td>
+              </tr>
+              <tr v-if="isSubscription">
+                <td>Facturation</td>
+                <td>{{ metadata.recurring_interval === 'month' ? 'Mensuelle' : 'Annuelle' }}</td>
               </tr>
               <tr>
                 <td>Montant</td>

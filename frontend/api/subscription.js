@@ -88,7 +88,18 @@ app.post('/create', async (req, res) => {
   // Update generated paymentIntent from subscription
   const paymentIntent = await stripe.paymentIntents.update(
     subscription.latest_invoice.payment_intent.id,
-    { description }
+    {
+      description,
+      metadata: {
+        Cause: metadata.reason,
+        Nom: metadata.lastname,
+        Prénom: metadata.firstname,
+        Email: metadata.email,
+        Adresse: metadata.address,
+        'Code postal': metadata.zipcode,
+        Ville: metadata.city
+      }
+    }
   )
 
   res.send({
@@ -149,7 +160,18 @@ app.post('/update', async (req, res) => {
   // Update generated paymentIntent from subscription
   const paymentIntent = await stripe.paymentIntents.update(
     subscription.latest_invoice.payment_intent.id,
-    { description }
+    {
+      description,
+      metadata: {
+        Cause: metadata.reason,
+        Nom: metadata.lastname,
+        Prénom: metadata.firstname,
+        Email: metadata.email,
+        Adresse: metadata.address,
+        'Code postal': metadata.zipcode,
+        Ville: metadata.city
+      }
+    }
   )
 
   res.send({
