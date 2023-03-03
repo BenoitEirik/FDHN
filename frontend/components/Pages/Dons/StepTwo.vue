@@ -114,7 +114,7 @@ export default {
       zipcode: '',
       city: '',
       options: [],
-      recurring: 'month' // used for recurring donation
+      recurring_interval: 'month' // used for recurring donation
     }
   },
   async fetch () {

@@ -71,6 +71,15 @@ app.post('/create', async (req, res) => {
       { price: price.id }
     ],
     description: `Don récurrent : ${description}`,
+    metadata: {
+      Cause: metadata.reason,
+      Nom: metadata.lastname,
+      Prénom: metadata.firstname,
+      Email: metadata.email,
+      Adresse: metadata.address,
+      'Code postal': metadata.zipcode,
+      Ville: metadata.city
+    },
     payment_behavior: 'default_incomplete',
     payment_settings: { save_default_payment_method: 'on_subscription' },
     expand: ['latest_invoice.payment_intent']
@@ -123,6 +132,15 @@ app.post('/update', async (req, res) => {
       { price: price.id }
     ],
     description: `Don récurrent : ${description}`,
+    metadata: {
+      Cause: metadata.reason,
+      Nom: metadata.lastname,
+      Prénom: metadata.firstname,
+      Email: metadata.email,
+      Adresse: metadata.address,
+      'Code postal': metadata.zipcode,
+      Ville: metadata.city
+    },
     payment_behavior: 'default_incomplete',
     payment_settings: { save_default_payment_method: 'on_subscription' },
     expand: ['latest_invoice.payment_intent']
