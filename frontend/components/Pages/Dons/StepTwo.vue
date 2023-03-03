@@ -3,12 +3,22 @@
     <div class="form-control w-full max-w-xs">
       <!-- Montant -->
       <label class="label">
-        <span class="label-text">Montant *</span>
+        <span class="label-text">Montant {{ isSubscription ? '& périodicité ' : '' }}*</span>
       </label>
       <label class="input-group">
         <input v-model="amount" type="number" placeholder="1€ minimum" class="input input-bordered border-accent focus:input-accent w-full" @keyup="validateForm()">
-        <span class="bg-accent text-base-100">{{ isSubscription ? '€/mois' : '€' }}</span>
+        <select v-if="isSubscription" v-model="recurrence_interval" class="select select-accent bg-accent text-base-100">
+          <option value="month" selected>
+            €/mois
+          </option>
+          <option value="year">
+            €/an
+          </option>
+        </select>
+        <span v-else class="bg-accent text-base-100">€</span>
       </label>
+
+      <!-- Amount proposals -->
       <div v-if="isSubscription" class="pt-2 btn-group">
         <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('10')">
           10 €
@@ -23,9 +33,12 @@
           100 €
         </button>
       </div>
+
+      <!-- Message about donations -->
       <label class="label">
         <span class="label-text-alt">Tous les dons sont défiscalisables</span>
       </label>
+
       <!-- Cause -->
       <label class="label">
         <span class="label-text">Cause *</span>
@@ -43,31 +56,37 @@
           <nuxt-link to="/autres-projets">En savoir plus sur les projets soutenus</nuxt-link>
         </span>
       </label>
+
       <!-- Nom -->
       <label class="label">
         <span class="label-text">Nom *</span>
       </label>
       <input v-model="lastname" type="text" placeholder="Nom" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+
       <!-- Prénom -->
       <label class="label">
         <span class="label-text">Prénom *</span>
       </label>
       <input v-model="firstname" type="text" placeholder="Prénom" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+
       <!-- Adresse e-mail -->
       <label class="label">
         <span class="label-text">Email *</span>
       </label>
       <input v-model="email" type="email" placeholder="Email" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+
       <!-- Adresse postale -->
       <label class="label">
         <span class="label-text">Adresse *</span>
       </label>
       <input v-model="address" type="text" placeholder="Adresse" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+
       <!-- Code postal -->
       <label class="label">
         <span class="label-text">Code postal *</span>
       </label>
       <input v-model="zipcode" type="number" placeholder="Code postal" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+
       <!-- Ville -->
       <label class="label">
         <span class="label-text">Ville *</span>
@@ -94,7 +113,8 @@ export default {
       address: '',
       zipcode: '',
       city: '',
-      options: []
+      options: [],
+      recurrence_interval: 'month' // used for recurring donation
     }
   },
   async fetch () {
