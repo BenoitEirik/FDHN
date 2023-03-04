@@ -25,6 +25,7 @@
     "nuxt-protected-mailto": "^0.0.12",
     "stripe": "^10.13.0",
     "stripe-money-format": "^1.0.10",
+    "v-calendar": "^2.4.1",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
     "vue-stepper": "^1.4.2",

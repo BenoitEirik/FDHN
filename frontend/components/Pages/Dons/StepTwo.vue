@@ -34,6 +34,31 @@
         </button>
       </div>
 
+      <!-- Datepicker -->
+      <label v-if="isSubscription" class="mt-2 label cursor-pointer" style="padding-left: 0;">
+        <input v-model="deadline" type="checkbox" class="checkbox checkbox-accent checkbox-sm">
+        <span class="pl-2 label-text grow">Ajouter une échéance (facultatif)</span>
+      </label>
+      <v-date-picker
+        v-if="isSubscription && deadline"
+        v-model="date"
+        :disabled-dates="disabledDates"
+        color="yellow"
+      >
+        <template #default="{ inputValue, togglePopover }">
+          <div class="input-group" @click="togglePopover()">
+            <span class="px-4 flex justify-center items-center bg-accent">
+              <img :src="calendarIcon">
+            </span>
+            <input
+              :value="inputValue"
+              class="input input-bordered border-accent focus:input-accent w-full"
+              readonly
+            >
+          </div>
+        </template>
+      </v-date-picker>
+
       <!-- Message about donations -->
       <label class="label">
         <span class="label-text-alt">Tous les dons sont défiscalisables</span>
@@ -101,6 +126,7 @@
 
 <script>
 import StripeMoneyFormat from 'stripe-money-format'
+import calendarIcon from '@/assets/images/calendar_month_black_24dp.svg'
 
 export default {
   data () {
@@ -114,7 +140,15 @@ export default {
       zipcode: '',
       city: '',
       options: [],
-      recurring_interval: 'month' // used for recurring donation
+      recurring_interval: 'month', // used for recurring donation
+      // datepicker
+      calendarIcon,
+      deadline: false,
+      date: new Date(),
+      disabledDates: {
+        start: new Date(0),
+        end: new Date()
+      }
     }
   },
   async fetch () {
