@@ -206,7 +206,11 @@ export default {
         address: this.address,
         zipcode: this.zipcode,
         city: this.city,
-        recurring_interval: this.recurring_interval
+        recurring_interval: this.recurring_interval,
+        deadline: {
+          active: this.deadline,
+          timestamp: Math.floor(Date.parse(this.date) / 1000)
+        }
       }
 
       if (this.$store.state.subscribe) {

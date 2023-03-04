@@ -80,6 +80,7 @@ app.post('/create', async (req, res) => {
       'Code postal': metadata.zipcode,
       Ville: metadata.city
     },
+    ...(metadata.deadline.active && { cancel_at: metadata.deadline.timestamp }),
     payment_behavior: 'default_incomplete',
     payment_settings: { save_default_payment_method: 'on_subscription' },
     expand: ['latest_invoice.payment_intent']
@@ -152,6 +153,7 @@ app.post('/update', async (req, res) => {
       'Code postal': metadata.zipcode,
       Ville: metadata.city
     },
+    ...(metadata.deadline.active && { cancel_at: metadata.deadline.timestamp }),
     payment_behavior: 'default_incomplete',
     payment_settings: { save_default_payment_method: 'on_subscription' },
     expand: ['latest_invoice.payment_intent']
