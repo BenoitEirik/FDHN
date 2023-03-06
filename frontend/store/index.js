@@ -2,6 +2,7 @@ const initialState = {
   subscribe: false,
   showLoader: true,
   alreadyGeneratedPaymentIntent: false,
+  alreadyGeneratedSubscription: false,
   activeStripeElementPayment: false,
   // Stripe Elements Start
   elementsOptions: {
@@ -47,6 +48,9 @@ export const mutations = {
   },
   setAlreadyGeneratedPaymentIntent (state, data) {
     state.alreadyGeneratedPaymentIntent = data
+  },
+  setAlreadyGeneratedSubscription (state, data) {
+    state.alreadyGeneratedSubscription = data
   },
   setActiveStripeElementPayment (state, data) {
     state.activeStripeElementPayment = data
@@ -147,7 +151,7 @@ export const actions = {
     // Store billing details
     commit('setConfirmParams', metadata)
 
-    if (!state.alreadyGeneratedPaymentIntent) {
+    if (!state.alreadyGeneratedSubscription) {
       this.$axios.post('/api/subscription/create', {
         description: metadata.reason,
         metadata
@@ -160,7 +164,7 @@ export const actions = {
           commit('setPaymentId', data.paymentIntent.id)
           state.elementsOptions.clientSecret = data.paymentIntent.clientSecret
           commit('setElementsOptions', state.elementsOptions)
-          commit('setAlreadyGeneratedPaymentIntent', true)
+          commit('setAlreadyGeneratedSubscription', true)
           commit('setActiveStripeElementPayment', true)
         })
     } else {

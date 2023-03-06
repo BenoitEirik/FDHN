@@ -31,6 +31,10 @@
                 <td>Facturation</td>
                 <td>{{ metadata.recurring_interval === 'month' ? 'Mensuelle' : 'Annuelle' }}</td>
               </tr>
+              <tr v-if="isSubscription && metadata.deadline.active">
+                <td>Échéance</td>
+                <td>{{ formatFromUnixTimestamp() }}</td>
+              </tr>
               <tr>
                 <td>Montant</td>
                 <td>{{ String(metadata.amount).slice(0, -2) + ','+ String(metadata.amount).slice(-2) }} {{ isSubscription ? '€/mois' : '€' }}</td>
@@ -134,6 +138,18 @@ export default {
         span.style.display = 'inline'
         i.style.display = 'inline-block'
       }
+    },
+    formatFromUnixTimestamp () {
+      // créer un objet Date à partir du timestamp en millisecondes
+      const date = new Date(this.metadata.deadline.timestamp * 1000)
+
+      // extraire les éléments de la date
+      const jour = date.getDate().toString().padStart(2, '0')
+      const mois = (date.getMonth() + 1).toString().padStart(2, '0')
+      const annee = date.getFullYear().toString()
+
+      // concaténer les éléments dans le format souhaité
+      return jour + '/' + mois + '/' + annee
     }
   }
 }
