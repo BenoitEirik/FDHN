@@ -5,25 +5,7 @@ const initialState = {
   alreadyGeneratedSubscription: false,
   activeStripeElementPayment: false,
   // Stripe Elements Start
-  elementsOptions: {
-    fonts: [
-      {
-        cssSrc: 'https://fonts.googleapis.com/css2?family=Hahmlet&display=swap'
-      }
-    ],
-    apparence: {
-      theme: 'stripe',
-      variables: {
-        colorPrimary: '#eab308',
-        colorBackground: '#ffffff',
-        colorText: '#30313d',
-        colorDanger: '#b91c1c',
-        fontFamily: 'Hahmlet',
-        spacingUnit: '2px',
-        borderRadius: '8px'
-      }
-    }
-  },
+  elementsOptions: {},
   confirmParams: {},
   // Stripe Elements End
   paymentId: '',
@@ -55,8 +37,27 @@ export const mutations = {
   setActiveStripeElementPayment (state, data) {
     state.activeStripeElementPayment = data
   },
-  setElementsOptions  (state, data) {
-    state.elementsOptions = data
+  setElementsOptions  (state, clientSecret) {
+    state.elementsOptions = {
+      clientSecret,
+      fonts: [
+        {
+          family: 'Hahmlet, Roboto',
+          src: "url('https://fdhn.fr/Hahmlet-Regular.woff2')"
+        }
+      ],
+      appearance: {
+        theme: 'stripe',
+        variables: {
+          colorPrimary: '#eab308',
+          colorBackground: '#ffffff',
+          colorText: '#30313d',
+          colorDanger: '#b91c1c',
+          fontFamily: 'Hahmlet',
+          borderRadius: '8px'
+        }
+      }
+    }
   },
   setConfirmParams (state, data) {
     state.confirmParams = {
@@ -116,8 +117,7 @@ export const actions = {
         }
       }).then((paymentIntent) => {
         commit('setPaymentId', paymentIntent.id)
-        state.elementsOptions.clientSecret = paymentIntent.clientSecret
-        commit('setElementsOptions', state.elementsOptions)
+        commit('setElementsOptions', paymentIntent.clientSecret)
         commit('setAlreadyGeneratedPaymentIntent', true)
         commit('setActiveStripeElementPayment', true)
       })
@@ -137,8 +137,7 @@ export const actions = {
         }
       }).then((paymentIntent) => {
         commit('setPaymentId', paymentIntent.id)
-        state.elementsOptions.clientSecret = paymentIntent.clientSecret
-        commit('setElementsOptions', state.elementsOptions)
+        commit('setElementsOptions', paymentIntent.clientSecret)
         commit('setActiveStripeElementPayment', true)
       })
     }
@@ -162,8 +161,7 @@ export const actions = {
             customerId: data.subscription.customerId
           })
           commit('setPaymentId', data.paymentIntent.id)
-          state.elementsOptions.clientSecret = data.paymentIntent.clientSecret
-          commit('setElementsOptions', state.elementsOptions)
+          commit('setElementsOptions', data.paymentIntent.clientSecret)
           commit('setAlreadyGeneratedSubscription', true)
           commit('setActiveStripeElementPayment', true)
         })
@@ -180,8 +178,7 @@ export const actions = {
             customerId: data.subscription.customerId
           })
           commit('setPaymentId', data.paymentIntent.id)
-          state.elementsOptions.clientSecret = data.paymentIntent.clientSecret
-          commit('setElementsOptions', state.elementsOptions)
+          commit('setElementsOptions', data.paymentIntent.clientSecret)
           commit('setActiveStripeElementPayment', true)
         })
     }
