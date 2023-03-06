@@ -41,10 +41,7 @@ export const mutations = {
     state.elementsOptions = {
       clientSecret,
       fonts: [
-        {
-          family: 'Hahmlet, Roboto',
-          src: "url('https://fdhn.fr/Hahmlet-Regular.woff2')"
-        }
+        { cssSrc: 'https://fonts.googleapis.com/css?family=Hahmlet:400' }
       ],
       appearance: {
         theme: 'stripe',
