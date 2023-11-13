@@ -30,6 +30,12 @@ export default {
       URL: 'https://admin.fdhn.fr',
       ASSETS: 'https://admin.fdhn.fr/storage/uploads',
       PK: 'API-3c47b03055ec7ccd975fa5858669fdb95746f55c'
+    },
+    gtm: {
+      id: process.env.GOOGLE_TAG_MANAGER_ID,
+      enabled: true,
+      debug: false,
+      pageTracking: true
     }
   },
 
@@ -61,6 +67,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
+    '@nuxtjs/gtm',
     'nuxt-protected-mailto',
     '@nuxtjs/axios',
     '@nuxt/image',
