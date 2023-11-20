@@ -35,7 +35,8 @@ export default {
       id: process.env.GOOGLE_TAG_MANAGER_ID,
       enabled: true,
       debug: false,
-      pageTracking: true
+      pageTracking: true,
+      layer: 'dataLayer'
     }
   },
 

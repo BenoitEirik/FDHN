@@ -154,8 +154,8 @@ export default {
   async fetch () {
     // Retrieve list of reasons for donations (= other projects)
     const reasons = await this.$axios.$get(this.$config.COCKPIT.URL + '/api/content/items/causes')
-    this.options = reasons.map(function (reason) {
-      return { text: reason.title, value: reason.title }
+    this.options = reasons.map((reason) => {
+      return { text: reason.title, value: reason.title, trackOnGTM: reason.trackOnGTM }
     })
   },
   computed: {
@@ -211,6 +211,15 @@ export default {
           active: this.deadline,
           timestamp: Math.floor(Date.parse(this.date) / 1000)
         }
+      }
+
+      // Check if reason has to be tracked by GTM
+      const selectedReason = this.options.find(reason => reason.value === this.reason)
+      if (selectedReason && selectedReason.trackOnGTM) {
+        this.$gtm.push({
+          event: 'causeSelection',
+          selectedCause: selectedReason.value
+        })
       }
 
       if (this.$store.state.subscribe) {
