@@ -110,7 +110,8 @@ export const actions = {
           Email: metadata.email,
           Adresse: metadata.address,
           'Code postal': metadata.zipcode,
-          Ville: metadata.city
+          Ville: metadata.city,
+          'Don suite à un courrier Homme Nouveau': metadata.donationFollowingMailFromHN ? 'Oui' : 'Non'
         }
       }).then((paymentIntent) => {
         commit('setPaymentId', paymentIntent.id)
@@ -130,7 +131,8 @@ export const actions = {
           Email: metadata.email,
           Adresse: metadata.address,
           'Code postal': metadata.zipcode,
-          Ville: metadata.city
+          Ville: metadata.city,
+          'Don suite à un courrier Homme Nouveau': metadata.donationFollowingMailFromHN ? 'Oui' : 'Non'
         }
       }).then((paymentIntent) => {
         commit('setPaymentId', paymentIntent.id)

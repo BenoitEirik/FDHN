@@ -117,7 +117,14 @@
         <span class="label-text">Ville *</span>
       </label>
       <input v-model="city" type="text" placeholder="Ville" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
-      <label class="label">
+
+      <!-- Votre don fait suite à la réception d’un courrier papier de l’Homme Nouveau -->
+      <label class="label cursor-pointer">
+        <input v-model="donationFollowingMailFromHN" type="checkbox" class="checkbox checkbox-accent checkbox-sm">
+        <span class="pl-2 label-text text-justify">Votre don fait suite à la réception d’un courrier papier de l’Homme Nouveau</span>
+      </label>
+
+      <label class="mt-2 label">
         <span class="label-text-alt">* Ces champs sont nécessaires pour bénéficier d'une réduction fiscale</span>
       </label>
     </div>
@@ -148,7 +155,8 @@ export default {
       disabledDates: {
         start: new Date(0),
         end: new Date()
-      }
+      },
+      donationFollowingMailFromHN: false
     }
   },
   async fetch () {
@@ -210,7 +218,8 @@ export default {
         deadline: {
           active: this.deadline,
           timestamp: Math.floor(Date.parse(this.date) / 1000)
-        }
+        },
+        donationFollowingMailFromHN: this.donationFollowingMailFromHN
       }
 
       // Check if reason has to be tracked by GTM

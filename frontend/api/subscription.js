@@ -78,7 +78,8 @@ app.post('/create', async (req, res) => {
       Email: metadata.email,
       Adresse: metadata.address,
       'Code postal': metadata.zipcode,
-      Ville: metadata.city
+      Ville: metadata.city,
+      'Don suite à un courrier Homme Nouveau': metadata.donationFollowingMailFromHN ? 'Oui' : 'Non'
     },
     ...(metadata.deadline.active && { cancel_at: metadata.deadline.timestamp }),
     payment_behavior: 'default_incomplete',
@@ -98,7 +99,8 @@ app.post('/create', async (req, res) => {
         Email: metadata.email,
         Adresse: metadata.address,
         'Code postal': metadata.zipcode,
-        Ville: metadata.city
+        Ville: metadata.city,
+        'Don suite à un courrier Homme Nouveau': metadata.donationFollowingMailFromHN ? 'Oui' : 'Non'
       }
     }
   )
@@ -151,7 +153,8 @@ app.post('/update', async (req, res) => {
       Email: metadata.email,
       Adresse: metadata.address,
       'Code postal': metadata.zipcode,
-      Ville: metadata.city
+      Ville: metadata.city,
+      'Don suite à un courrier Homme Nouveau': metadata.donationFollowingMailFromHN ? 'Oui' : 'Non'
     },
     ...(metadata.deadline.active && { cancel_at: metadata.deadline.timestamp }),
     payment_behavior: 'default_incomplete',
@@ -171,7 +174,8 @@ app.post('/update', async (req, res) => {
         Email: metadata.email,
         Adresse: metadata.address,
         'Code postal': metadata.zipcode,
-        Ville: metadata.city
+        Ville: metadata.city,
+        'Don suite à un courrier Homme Nouveau': metadata.donationFollowingMailFromHN ? 'Oui' : 'Non'
       }
     }
   )
