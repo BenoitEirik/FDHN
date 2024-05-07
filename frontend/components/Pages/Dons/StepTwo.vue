@@ -1,12 +1,12 @@
 <template>
-  <div class="px-6 py-12 flex flex-col items-center">
-    <div class="form-control w-full max-w-xs">
+  <div class="flex flex-col items-center px-6 py-12">
+    <div class="w-full max-w-sm form-control">
       <!-- Montant -->
       <label class="label">
         <span class="label-text">Montant {{ isSubscription ? '& périodicité ' : '' }}*</span>
       </label>
       <label class="input-group">
-        <input v-model="amount" type="number" placeholder="1€ minimum" class="input input-bordered border-accent focus:input-accent w-full" @keyup="validateForm()">
+        <input v-model="amount" type="number" placeholder="1€ minimum" class="w-full input input-bordered border-accent focus:input-accent" @keyup="validateForm()">
         <select v-if="isSubscription" v-model="recurring_interval" class="select select-accent bg-accent text-base-100">
           <option value="month" selected>
             €/mois
@@ -20,6 +20,9 @@
 
       <!-- Amount proposals -->
       <div v-if="isSubscription" class="pt-2 btn-group">
+        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('5')">
+          5 €
+        </button>
         <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('10')">
           10 €
         </button>
@@ -35,7 +38,7 @@
       </div>
 
       <!-- Datepicker -->
-      <label v-if="isSubscription" class="mt-2 label cursor-pointer" style="padding-left: 0;">
+      <label v-if="isSubscription" class="mt-2 cursor-pointer label" style="padding-left: 0;">
         <input v-model="deadline" type="checkbox" class="checkbox checkbox-accent checkbox-sm">
         <span class="pl-2 label-text grow">Ajouter une échéance (facultatif)</span>
       </label>
@@ -47,12 +50,12 @@
       >
         <template #default="{ inputValue, togglePopover }">
           <div class="input-group" @click="togglePopover()">
-            <span class="px-4 flex justify-center items-center bg-accent">
+            <span class="flex items-center justify-center px-4 bg-accent">
               <img :src="calendarIcon">
             </span>
             <input
               :value="inputValue"
-              class="input input-bordered border-accent focus:input-accent w-full"
+              class="w-full input input-bordered border-accent focus:input-accent"
               readonly
             >
           </div>
@@ -68,7 +71,7 @@
       <label class="label">
         <span class="label-text">Cause *</span>
       </label>
-      <select v-model="reason" class="select select-bordered focus:select-primary w-full" @keyup="validateForm()">
+      <select v-model="reason" class="w-full select select-bordered focus:select-primary" @keyup="validateForm()">
         <option disabled value="">
           Choisissez
         </option>
@@ -77,7 +80,7 @@
         </option>
       </select>
       <label class="label">
-        <span class="label-text-alt underline">
+        <span class="underline label-text-alt">
           <nuxt-link to="/autres-projets">En savoir plus sur les projets soutenus</nuxt-link>
         </span>
       </label>
@@ -86,42 +89,42 @@
       <label class="label">
         <span class="label-text">Nom *</span>
       </label>
-      <input v-model="lastname" type="text" placeholder="Nom" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+      <input v-model="lastname" type="text" placeholder="Nom" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
 
       <!-- Prénom -->
       <label class="label">
         <span class="label-text">Prénom *</span>
       </label>
-      <input v-model="firstname" type="text" placeholder="Prénom" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+      <input v-model="firstname" type="text" placeholder="Prénom" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
 
       <!-- Adresse e-mail -->
       <label class="label">
         <span class="label-text">Email *</span>
       </label>
-      <input v-model="email" type="email" placeholder="Email" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+      <input v-model="email" type="email" placeholder="Email" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
 
       <!-- Adresse postale -->
       <label class="label">
         <span class="label-text">Adresse *</span>
       </label>
-      <input v-model="address" type="text" placeholder="Adresse" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+      <input v-model="address" type="text" placeholder="Adresse" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
 
       <!-- Code postal -->
       <label class="label">
         <span class="label-text">Code postal *</span>
       </label>
-      <input v-model="zipcode" type="number" placeholder="Code postal" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+      <input v-model="zipcode" type="number" placeholder="Code postal" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
 
       <!-- Ville -->
       <label class="label">
         <span class="label-text">Ville *</span>
       </label>
-      <input v-model="city" type="text" placeholder="Ville" class="input input-bordered focus:input-primary w-full" @keyup="validateForm()">
+      <input v-model="city" type="text" placeholder="Ville" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
 
       <!-- Votre don fait suite à la réception d’un courrier papier de l’Homme Nouveau -->
-      <label class="label cursor-pointer">
+      <label class="cursor-pointer label">
         <input v-model="donationFollowingMailFromHN" type="checkbox" class="checkbox checkbox-accent checkbox-sm">
-        <span class="pl-2 label-text text-justify">Votre don fait suite à la réception d’un courrier papier de l’Homme Nouveau</span>
+        <span class="pl-2 text-justify label-text">Votre don fait suite à la réception d’un courrier papier de l’Homme Nouveau</span>
       </label>
 
       <label class="mt-2 label">
