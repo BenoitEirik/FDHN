@@ -3,7 +3,7 @@
     <div class="w-full max-w-sm form-control">
       <!-- Montant -->
       <label class="label">
-        <span class="label-text">Montant {{ isSubscription ? '& périodicité ' : '' }}*</span>
+        <span class="label-text">Montant {{ isSubscription ? 'prélevé et périodicité ' : '' }}*</span>
       </label>
       <label class="input-group">
         <input v-model="amount" type="number" placeholder="1€ minimum" class="w-full input input-bordered border-accent focus:input-accent" @keyup="validateForm()">
@@ -38,7 +38,7 @@
       </div>
 
       <!-- Datepicker -->
-      <label v-if="isSubscription" class="mt-2 cursor-pointer label" style="padding-left: 0;">
+      <!-- <label v-if="isSubscription" class="mt-2 cursor-pointer label" style="padding-left: 0;">
         <input v-model="deadline" type="checkbox" class="checkbox checkbox-accent checkbox-sm">
         <span class="pl-2 label-text grow">Ajouter une échéance (facultatif)</span>
       </label>
@@ -60,7 +60,7 @@
             >
           </div>
         </template>
-      </v-date-picker>
+      </v-date-picker> -->
 
       <!-- Message about donations -->
       <label class="label">
