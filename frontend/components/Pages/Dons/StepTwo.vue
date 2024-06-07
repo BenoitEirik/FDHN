@@ -7,15 +7,7 @@
       </label>
       <label class="input-group">
         <input v-model="amount" type="number" placeholder="1€ minimum" class="w-full input input-bordered border-accent focus:input-accent" @keyup="validateForm()">
-        <select v-if="isSubscription" v-model="recurring_interval" class="select select-accent bg-accent text-base-100">
-          <option value="month" selected>
-            €/mois
-          </option>
-          <option value="year">
-            €/an
-          </option>
-        </select>
-        <span v-else class="bg-accent text-base-100">€</span>
+        <span class="bg-accent text-base-100 whitespace-nowrap">{{ isSubscription ? '€/mois' : '€' }}</span>
       </label>
 
       <!-- Amount proposals -->
