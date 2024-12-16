@@ -1,38 +1,38 @@
 <template>
   <div class="flex flex-col items-center px-6 py-12">
-    <div class="w-full max-w-sm form-control">
+    <div class="form-control w-full max-w-sm">
       <!-- Montant -->
       <label class="label">
         <span class="label-text">Montant {{ isSubscription ? 'prélevé et périodicité ' : '' }}*</span>
       </label>
       <label class="input-group">
-        <input v-model="amount" type="number" placeholder="1€ minimum" class="w-full input input-bordered border-accent focus:input-accent" @keyup="validateForm()">
-        <span class="bg-accent text-base-100 whitespace-nowrap">{{ isSubscription ? '€/mois' : '€' }}</span>
+        <input v-model.lazy="amount" type="number" placeholder="1€ minimum" class="input-bordered input w-full border-accent focus:input-accent">
+        <span class="whitespace-nowrap bg-accent text-base-100">{{ isSubscription ? '€/mois' : '€' }}</span>
       </label>
 
       <!-- Amount proposals -->
-      <div v-if="isSubscription" class="pt-2 btn-group">
-        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('5')">
+      <div v-if="isSubscription" class="btn-group pt-2">
+        <button class="btn-outline btn-accent btn shrink grow" @click="setAmount('5')">
           5 €
         </button>
-        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('10')">
+        <button class="btn-outline btn-accent btn shrink grow" @click="setAmount('10')">
           10 €
         </button>
-        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('20')">
+        <button class="btn-outline btn-accent btn shrink grow" @click="setAmount('20')">
           20 €
         </button>
-        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('50')">
+        <button class="btn-outline btn-accent btn shrink grow" @click="setAmount('50')">
           50 €
         </button>
-        <button class="btn btn-outline btn-accent grow shrink" @click="setAmount('100')">
+        <button class="btn-outline btn-accent btn shrink grow" @click="setAmount('100')">
           100 €
         </button>
       </div>
 
       <!-- Datepicker -->
-      <!-- <label v-if="isSubscription" class="mt-2 cursor-pointer label" style="padding-left: 0;">
-        <input v-model="deadline" type="checkbox" class="checkbox checkbox-accent checkbox-sm">
-        <span class="pl-2 label-text grow">Ajouter une échéance (facultatif)</span>
+      <!-- <label v-if="isSubscription" class="label mt-2 cursor-pointer" style="padding-left: 0;">
+        <input v-model="deadline" type="checkbox" class="checkbox-accent checkbox checkbox-sm">
+        <span class="label-text grow pl-2">Ajouter une échéance (facultatif)</span>
       </label>
       <v-date-picker
         v-if="isSubscription && deadline"
@@ -42,12 +42,12 @@
       >
         <template #default="{ inputValue, togglePopover }">
           <div class="input-group" @click="togglePopover()">
-            <span class="flex items-center justify-center px-4 bg-accent">
+            <span class="flex items-center justify-center bg-accent px-4">
               <img :src="calendarIcon">
             </span>
             <input
               :value="inputValue"
-              class="w-full input input-bordered border-accent focus:input-accent"
+              class="input-bordered input w-full border-accent focus:input-accent"
               readonly
             >
           </div>
@@ -63,7 +63,7 @@
       <label class="label">
         <span class="label-text">Cause *</span>
       </label>
-      <select v-model="reason" class="w-full select select-bordered focus:select-primary" @keyup="validateForm()">
+      <select v-model.lazy="reason" class="select-bordered select w-full focus:select-primary">
         <option disabled value="">
           Choisissez
         </option>
@@ -72,7 +72,7 @@
         </option>
       </select>
       <label class="label">
-        <span class="underline label-text-alt">
+        <span class="label-text-alt underline">
           <nuxt-link to="/autres-projets">En savoir plus sur les projets soutenus</nuxt-link>
         </span>
       </label>
@@ -81,47 +81,59 @@
       <label class="label">
         <span class="label-text">Nom *</span>
       </label>
-      <input v-model="lastname" type="text" placeholder="Nom" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
+      <input v-model.lazy="lastname" type="text" placeholder="Nom" class="input-bordered input w-full focus:input-primary">
 
       <!-- Prénom -->
       <label class="label">
         <span class="label-text">Prénom *</span>
       </label>
-      <input v-model="firstname" type="text" placeholder="Prénom" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
+      <input v-model.lazy="firstname" type="text" placeholder="Prénom" class="input-bordered input w-full focus:input-primary">
 
       <!-- Adresse e-mail -->
       <label class="label">
         <span class="label-text">Email *</span>
       </label>
-      <input v-model="email" type="email" placeholder="Email" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
+      <input v-model.lazy="email" type="email" placeholder="Email" class="input-bordered input w-full focus:input-primary">
 
       <!-- Adresse postale -->
       <label class="label">
         <span class="label-text">Adresse *</span>
       </label>
-      <input v-model="address" type="text" placeholder="Adresse" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
+      <input v-model.lazy="address" type="text" placeholder="Adresse" class="input-bordered input w-full focus:input-primary">
 
       <!-- Code postal -->
       <label class="label">
         <span class="label-text">Code postal *</span>
       </label>
-      <input v-model="zipcode" type="number" placeholder="Code postal" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
+      <input
+        v-model.lazy="zipcode"
+        type="text"
+        pattern="[0-9]{5}"
+        maxlength="5"
+        placeholder="Code postal"
+        class="input-bordered input w-full focus:input-primary"
+      >
 
       <!-- Ville -->
       <label class="label">
         <span class="label-text">Ville *</span>
       </label>
-      <input v-model="city" type="text" placeholder="Ville" class="w-full input input-bordered focus:input-primary" @keyup="validateForm()">
+      <input v-model.lazy="city" type="text" placeholder="Ville" class="input-bordered input w-full focus:input-primary">
 
       <!-- Votre don fait suite à la réception d’un courrier papier de l’Homme Nouveau -->
-      <label class="cursor-pointer label">
-        <input v-model="donationFollowingMailFromHN" type="checkbox" class="checkbox checkbox-accent checkbox-sm">
-        <span class="pl-2 text-justify label-text">Votre don fait suite à la réception d’un courrier papier de l’Homme Nouveau</span>
+      <label class="label cursor-pointer">
+        <input v-model="donationFollowingMailFromHN" type="checkbox" class="checkbox-accent checkbox checkbox-sm">
+        <span class="label-text pl-2 text-justify">Votre don fait suite à la réception d’un courrier papier de l’Homme Nouveau</span>
       </label>
 
-      <label class="mt-2 label">
+      <label class="label mt-2">
         <span class="label-text-alt">* Ces champs sont nécessaires pour bénéficier d'une réduction fiscale</span>
       </label>
+
+      <!-- Message de validation -->
+      <div v-if="!isFormValid" class="mt-4 text-center text-warning">
+        Vérifiez bien vos informations avant d'appuyer sur suivant
+      </div>
     </div>
   </div>
 </template>
@@ -151,7 +163,8 @@ export default {
         start: new Date(0),
         end: new Date()
       },
-      donationFollowingMailFromHN: false
+      donationFollowingMailFromHN: false,
+      isFormValid: false
     }
   },
   async fetch () {
@@ -166,6 +179,17 @@ export default {
       return this.$store.state.subscribe
     }
   },
+  watch: {
+    // Surveiller tous les champs requis pour la validation
+    amount: 'validateForm',
+    reason: 'validateForm',
+    lastname: 'validateForm',
+    firstname: 'validateForm',
+    email: 'validateForm',
+    address: 'validateForm',
+    zipcode: 'validateForm',
+    city: 'validateForm'
+  },
   created () {
     // Create event to store metadata from don page
     this.$nuxt.$on('process-donation', () => {
@@ -176,28 +200,38 @@ export default {
     this.$nuxt.$on('validate-form', () => {
       this.validateForm()
     })
+
+    // Valider le formulaire au montage si des données existent déjà
+    this.$nextTick(() => {
+      this.validateForm()
+    })
+  },
+  mounted () {
+    this.$emit('can-continue', { value: true })
+  },
+  beforeDestroy () {
+    // Nettoyer les écouteurs d'événements
+    this.$nuxt.$off('process-donation')
+    this.$nuxt.$off('validate-form')
   },
   methods: {
     setAmount (value) {
       this.amount = value
-      this.validateForm()
+      // La validation sera déclenchée par le watcher
     },
     validateForm () {
-      // Enable the Next step button if all fields are valid
-      if (
-        this.isNumeric(this.amount) &&
-        this.reason !== '' &&
-        this.lastname !== '' &&
-        this.firstname !== '' &&
-        this.isEmail(this.email) &&
-        this.address !== '' &&
-        this.isNumeric(this.zipcode) &&
-        this.city !== ''
-      ) {
-        this.$emit('can-continue', { value: true })
-      } else {
-        this.$emit('can-continue', { value: false })
-      }
+      this.isFormValid =
+      this.isNumeric(this.amount) &&
+      this.reason !== '' &&
+      this.lastname !== '' &&
+      this.firstname !== '' &&
+      this.isEmail(this.email) &&
+      this.address !== '' &&
+      this.isValidZipcode(this.zipcode) &&
+      this.city !== ''
+
+      // Toujours émettre true pour permettre de passer à l'étape suivante
+      this.$emit('can-continue', { value: true })
     },
     processDonation () {
       const metadata = {
@@ -237,6 +271,9 @@ export default {
         return false
       }
       return !isNaN(str) && !isNaN(parseFloat(str))
+    },
+    isValidZipcode (zipcode) {
+      return /^[0-9]{5}$/.test(zipcode)
     },
     isEmail (email) {
       return String(email).match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
